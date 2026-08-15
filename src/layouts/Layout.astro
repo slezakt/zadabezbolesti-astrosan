@@ -1,0 +1,120 @@
+---
+import { VisualEditing } from '@sanity/astro/visual-editing';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  preview?: boolean;
+  schemaType?: 'WebSite' | 'Organization' | 'Article' | 'LocalBusiness';
+  schemaData?: Record<string, any>;
+}
+
+const {
+  title = 'Astro & Sanity CMS Šablona',
+  description = 'Univerzální produkční šablona pro Astro 7 a Sanity CMS',
+  preview = false,
+  schemaType = 'WebSite',
+  schemaData = {},
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Strukturovaná data Schema.org -->
+    <SchemaOrg type={schemaType} title={title} description={description} {...schemaData} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#090d16] text-slate-200 min-h-screen flex flex-col antialiased">
+    <div class="flex flex-col min-h-screen">
+      {preview && (
+        <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-semibold px-4 py-2 text-center text-sm flex justify-center items-center gap-4">
+          <span>Režim živého náhledu (Draft Mode) je aktivní</span>
+          <a href="/api/draft-mode/disable" class="bg-slate-950 text-white px-3 py-1 rounded text-xs hover:bg-slate-900 transition">
+            Ukončit náhled
+          </a>
+        </div>
+      )}
+
+      <header class="sticky top-0 z-50 bg-[#090d16]/80 backdrop-blur-md border-b border-white/10" x-data="{ mobileMenuOpen: false }">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+          <a href="/" class="flex items-center gap-2 font-heading font-extrabold text-xl text-white">
+            <span class="bg-gradient-to-r from-indigo-500 to-purple-500 px-2 py-0.5 rounded text-xs text-white">Astro</span>
+            <span>Sanity</span>
+          </a>
+
+          <button
+            class="md:hidden p-2 text-white border border-white/10 rounded-lg bg-slate-900/60"
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            :aria-expanded="mobileMenuOpen"
+            aria-label="Přepnout menu"
+          >
+            <span x-text="mobileMenuOpen ? '✕' : '☰'"></span>
+          </button>
+
+          <ul
+            class="nav-links flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-slate-900 md:bg-transparent border-b border-white/10 md:border-none p-6 md:p-0 gap-4 md:gap-6 text-slate-300 font-medium md:flex"
+            :class="{ 'flex': mobileMenuOpen, 'hidden': !mobileMenuOpen }"
+          >
+            <li><a href="/" class="hover:text-white transition">Domů</a></li>
+            <li><a href="/clanky" class="hover:text-white transition">Články</a></li>
+            <li>
+              <a
+                href="/admin"
+                target="_blank"
+                class="bg-slate-800/80 border border-white/10 px-3.5 py-1.5 rounded-xl text-white hover:border-indigo-500 hover:shadow-[0_0_15px_rgba(99,102,241,0.3)] transition"
+              >
+                Administrace CMS
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10">
+        <slot />
+      </main>
+
+      <footer class="border-t border-white/10 bg-slate-900/80 py-8 px-6 text-center text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-2">
+          <p>&copy; {new Date().getFullYear()} Astro & Sanity CMS Šablona. Všechna práva vyhrazena.</p>
+          <div class="flex gap-3 text-indigo-400 text-xs">
+            <a href="/llms.txt" target="_blank" class="hover:underline">AEO (llms.txt)</a> •
+            <a href="/rss.xml" target="_blank" class="hover:underline">RSS Feed</a> •
+            <a href="/sitemap-index.xml" target="_blank" class="hover:underline">Sitemap</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- GDPR Cookie Consent napojené na multi-provider analytiku -->
+    <CookieConsent />
+
+    {preview && <VisualEditing />}
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "Astro & Sanity CMS Šablona",
+  "short_name": "AstroSanity",
+  "description": "Univerzální produkční šablona v češtině",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

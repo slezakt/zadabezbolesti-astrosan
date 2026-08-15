@@ -1,0 +1,74 @@
+---
+import { Analytics } from '@arraypress/analytics-astro';
+
+interface Props {
+  ga4MeasurementId?: string;
+  plausibleDomain?: string;
+  umamiWebsiteId?: string;
+}
+
+const {
+  ga4MeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID,
+  plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN,
+  umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID,
+} = Astro.props;
+
+const providers: any[] = [];
+
+if (ga4MeasurementId) {
+  providers.push({ type: 'ga4', measurementId: ga4MeasurementId });
+}
+if (plausibleDomain) {
+  providers.push({ type: 'plausible', domain: plausibleDomain });
+}
+if (umamiWebsiteId) {
+  providers.push({ type: 'umami', websiteId: umamiWebsiteId });
+}
+---
+
+<!-- Multi-provider analytika z @arraypress/analytics-astro -->
+{providers.length > 0 && (
+  <Analytics
+    providers={providers}
+    consentStorageKey="cookie-consent"
+    consentAcceptedValue="accepted"
+    consentEventName="consent-accepted"
+  />
+)}
+
+<!-- Alpine.js GDPR Consent Banner -->
+<div
+  class="fixed bottom-6 left-6 right-6 max-w-xl mx-auto bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl z-50"
+  x-data="{
+    open: false,
+    init() {
+      const consent = localStorage.getItem('cookie-consent');
+      if (!consent) {
+        this.open = true;
+      }
+    },
+    accept() {
+      localStorage.setItem('cookie-consent', 'accepted');
+      window.dispatchEvent(new Event('consent-accepted'));
+      this.open = false;
+    },
+    decline() {
+      localStorage.setItem('cookie-consent', 'declined');
+      this.open = false;
+    }
+  }"
+  x-show="open"
+  x-transition
+  style="display: none;"
+>
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div>
+      <strong class="text-white text-sm block mb-1">Nastavení soukromí a Cookies 🍪</strong>
+      <p class="text-slate-400 text-xs leading-relaxed">Tento web využívá soubory cookies a anonymní analytiku ke zlepšení funkčnosti a měření návštěvnosti.</p>
+    </div>
+    <div class="flex gap-2 shrink-0">
+      <button @click="decline()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-400 border border-white/10 hover:text-white transition cursor-pointer">Odmítnout</button>
+      <button @click="accept()" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:opacity-90 transition cursor-pointer">Příjmout vše</button>
+    </div>
+  </div>
+</div>

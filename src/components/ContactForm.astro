@@ -1,0 +1,110 @@
+---
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
+---
+
+<div
+  class="bg-slate-900/60 border border-white/10 rounded-2xl p-8 max-w-xl mx-auto"
+  x-data="{
+    loading: false,
+    success: false,
+    errorMessage: '',
+    formData: {
+      name: '',
+      email: '',
+      message: '',
+      honeypot: ''
+    },
+    async submitForm() {
+      this.loading = true;
+      this.errorMessage = '';
+      this.success = false;
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.formData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          this.success = true;
+          this.formData = { name: '', email: '', message: '', honeypot: '' };
+        } else {
+          this.errorMessage = data.message || 'Při odesílání došlo k chybě.';
+        }
+      } catch (err) {
+        this.errorMessage = 'Spojení se serverem selhalo. Zkontrolujte připojení.';
+      } finally {
+        this.loading = false;
+      }
+    }
+  }"
+>
+  <template x-if="success">
+    <div class="bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 p-4 rounded-xl mb-6 font-medium text-sm">
+      ✓ Děkujeme! Vaše zpráva byla úspěšně odeslána. Brzy se vám ozveme.
+    </div>
+  </template>
+
+  <template x-if="errorMessage">
+    <div class="bg-red-500/15 border border-red-500/30 text-red-400 p-4 rounded-xl mb-6 font-medium text-sm" x-text="errorMessage"></div>
+  </template>
+
+  <form @submit.prevent="submitForm()" class="space-y-5" x-show="!success">
+    <!-- Honeypot (neviditelné pole pro bota) -->
+    <div class="hidden" aria-hidden="true">
+      <input type="text" x-model="formData.honeypot" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div>
+      <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Jméno a příjmení *</label>
+      <input
+        type="text"
+        id="name"
+        x-model="formData.name"
+        required
+        placeholder="Jan Novák"
+        class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition text-sm"
+      />
+    </div>
+
+    <div>
+      <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">E-mailová adresa *</label>
+      <input
+        type="email"
+        id="email"
+        x-model="formData.email"
+        required
+        placeholder="jan@novak.cz"
+        class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition text-sm"
+      />
+    </div>
+
+    <div>
+      <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Vaše zpráva *</label>
+      <textarea
+        id="message"
+        x-model="formData.message"
+        required
+        rows="4"
+        placeholder="Napište nám, jak vám můžeme pomoci..."
+        class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition text-sm"
+      ></textarea>
+    </div>
+
+    {turnstileSiteKey && (
+      <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+    )}
+
+    <button
+      type="submit"
+      class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold py-3.5 px-6 rounded-xl hover:opacity-95 transition disabled:opacity-50 cursor-pointer text-sm shadow-[0_0_20px_rgba(99,102,241,0.3)]"
+      :disabled="loading"
+    >
+      <span x-show="!loading">Odeslat zprávu</span>
+      <span x-show="loading">Odesílám...</span>
+    </button>
+  </form>
+</div>

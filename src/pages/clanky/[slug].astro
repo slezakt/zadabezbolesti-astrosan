@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PortableText from '../../components/PortableText/PortableText.astro';
+import SanityImage from '../../components/SanityImage.astro';
+import { fetchSanity } from '../../utils/sanity';
+import { postQuery } from '../../utils/queries';
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+const preview = Astro.cookies.has('sanity_draft_mode');
+
+let post = null;
+try {
+  post = await fetchSanity(postQuery, { slug }, { preview });
+} catch (e) {
+  post = null;
+}
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout
+  title={`${post.title} | Články`}
+  description={post.excerpt || `Článek ${post.title}`}
+  preview={preview}
+>
+  <article class="article-container">
+    <header class="article-header">
+      <div class="article-meta">
+        {post.publishedAt && (
+          <time datetime={post.publishedAt} class="article-date">
+            {new Date(post.publishedAt).toLocaleDateString('cs-CZ', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            })}
+          </time>
+        )}
+        {post.categories && post.categories.length > 0 && (
+          <div class="article-categories">
+            {post.categories.map((cat: any) => (
+              <span class="category-badge">{cat.title}</span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <h1 class="article-title">{post.title}</h1>
+
+      {post.author && (
+        <div class="article-author">
+          {post.author.image && (
+            <SanityImage image={post.author.image} alt={post.author.name} class="author-avatar" />
+          )}
+          <span class="author-name">Autor: {post.author.name}</span>
+        </div>
+      )}
+    </header>
+
+    {post.mainImage && (
+      <div class="article-hero-image">
+        <SanityImage image={post.mainImage} alt={post.title} loading="eager" />
+      </div>
+    )}
+
+    {post.body && (
+      <div class="article-body">
+        <PortableText value={post.body} />
+      </div>
+    )}
+  </article>
+</Layout>
+
+<style>
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-date {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .article-categories {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .category-badge {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .article-title {
+    font-family: var(--font-heading);
+    font-size: 2.75rem;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .article-hero-image {
+    margin-bottom: 2.5rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .article-body {
+    font-size: 1.1rem;
+  }
+</style>

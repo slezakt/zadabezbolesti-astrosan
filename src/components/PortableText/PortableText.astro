@@ -1,0 +1,71 @@
+---
+import { PortableText as PortableTextComponent } from 'astro-portabletext';
+import SanityImage from '../SanityImage.astro';
+import InternalLink from './InternalLink.astro';
+import YouTubeEmbed from './YouTubeEmbed.astro';
+
+interface Props {
+  value: any;
+}
+
+const { value } = Astro.props;
+
+const components = {
+  type: {
+    image: SanityImage,
+    youtube: YouTubeEmbed,
+  },
+  mark: {
+    internalLink: InternalLink,
+  },
+};
+---
+
+<div class="portable-text">
+  <PortableTextComponent value={value} components={components} />
+</div>
+
+<style is:global>
+  .portable-text {
+    line-height: 1.7;
+    color: var(--color-text, #e2e8f0);
+  }
+
+  .portable-text p {
+    margin-bottom: 1.25rem;
+  }
+
+  .portable-text h1,
+  .portable-text h2,
+  .portable-text h3,
+  .portable-text h4 {
+    color: var(--color-heading, #ffffff);
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .portable-text h1 { font-size: 2.25rem; }
+  .portable-text h2 { font-size: 1.75rem; }
+  .portable-text h3 { font-size: 1.35rem; }
+  .portable-text h4 { font-size: 1.15rem; }
+
+  .portable-text blockquote {
+    border-left: 4px solid var(--color-primary, #6366f1);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--color-text-muted, #94a3b8);
+  }
+
+  .portable-text ul,
+  .portable-text ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .portable-text li {
+    margin-bottom: 0.5rem;
+  }
+</style>

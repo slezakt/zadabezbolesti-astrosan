@@ -1,0 +1,30 @@
+# Build výstupy a mezipaměť
+dist/
+.astro/
+.sanity/
+
+# Závislosti
+node_modules/
+
+# Environmentální proměnné a tajné klíče
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# OS & IDE soubory
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+
+# Logy
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

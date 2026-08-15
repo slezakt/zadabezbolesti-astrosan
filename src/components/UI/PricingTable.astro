@@ -1,0 +1,89 @@
+---
+interface Props {
+  plans?: Array<{
+    name: string;
+    monthlyPrice: number;
+    annualPrice: number;
+    description: string;
+    features: string[];
+    isPopular?: boolean;
+  }>;
+}
+
+const {
+  plans = [
+    {
+      name: 'Start',
+      monthlyPrice: 490,
+      annualPrice: 390,
+      description: 'Ideální pro osobní prezentace a menší projekty.',
+      features: ['Rychlý vývoj', 'Astro 7 + Sanity CMS', 'SEO optimalizace', 'Základní podpora'],
+    },
+    {
+      name: 'Profi',
+      monthlyPrice: 990,
+      annualPrice: 790,
+      description: 'Kompletní balíček pro komerční firemní weby.',
+      features: [
+        'Vše z balíčku Start',
+        'Visual Editing v CMS',
+        'Kontaktní API + Turnstile',
+        'Multi-provider Analytika',
+        'AEO (llms.txt pro AI)',
+      ],
+      isPopular: true,
+    },
+  ],
+} = Astro.props;
+---
+
+<div class="max-w-4xl mx-auto" x-data="{ billingCycle: 'annual' }">
+  <div class="flex justify-center gap-2 mb-12 bg-slate-900/60 p-1.5 rounded-xl border border-white/10 w-fit mx-auto">
+    <button
+      @click="billingCycle = 'monthly'"
+      :class="{ 'bg-slate-800 text-white shadow-md': billingCycle === 'monthly', 'text-slate-400': billingCycle !== 'monthly' }"
+      class="px-5 py-2 rounded-lg font-semibold text-sm cursor-pointer transition"
+    >
+      Měsíčně
+    </button>
+    <button
+      @click="billingCycle = 'annual'"
+      :class="{ 'bg-slate-800 text-white shadow-md': billingCycle === 'annual', 'text-slate-400': billingCycle !== 'annual' }"
+      class="px-5 py-2 rounded-lg font-semibold text-sm cursor-pointer transition flex items-center gap-2"
+    >
+      <span>Ročně</span>
+      <span class="bg-emerald-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">Sleva 20%</span>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {plans.map((plan) => (
+      <div class={`bg-slate-900/60 border ${plan.isPopular ? 'border-indigo-500 shadow-[0_0_30px_rgba(99,102,241,0.25)]' : 'border-white/10'} rounded-3xl p-8 relative flex flex-col`}>
+        {plan.isPopular && (
+          <div class="absolute -top-3 right-6 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+            Nejoblíbenější
+          </div>
+        )}
+        <h3 class="font-heading font-bold text-2xl text-white mb-2">{plan.name}</h3>
+        <p class="text-slate-400 text-sm mb-6">{plan.description}</p>
+
+        <div class="mb-6">
+          <span class="font-heading font-extrabold text-4xl text-white" x-text={`billingCycle === 'annual' ? '${plan.annualPrice} Kč' : '${plan.monthlyPrice} Kč'`}></span>
+          <span class="text-slate-400 text-sm">/ měsíčně</span>
+        </div>
+
+        <ul class="space-y-3 mb-8 flex-1">
+          {plan.features.map((feature) => (
+            <li class="text-slate-200 text-sm flex items-center gap-2">
+              <span class="text-emerald-400">✓</span> {feature}
+            </li>
+          ))}
+        </ul>
+
+        <button class="w-full bg-slate-800 hover:bg-indigo-600 border border-white/10 text-white font-semibold py-3 rounded-xl transition cursor-pointer">
+          Vybrat plán
+        </button>
+      </div>
+    ))}
+  </div>
+</div>

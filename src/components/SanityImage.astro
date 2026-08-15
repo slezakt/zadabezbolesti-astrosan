@@ -1,0 +1,68 @@
+---
+import { urlForImage, getImageDimensions } from '../utils/image';
+
+interface Props {
+  node?: any;
+  image?: any;
+  alt?: string;
+  width?: number;
+  height?: number;
+  sizes?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  node,
+  image = node,
+  alt = image?.alt || '',
+  width: customWidth,
+  height: customHeight,
+  sizes = '(max-width: 800px) 100vw, 800px',
+  class: className = '',
+  loading = 'lazy',
+} = Astro.props;
+
+if (!image?.asset) {
+  return null;
+}
+
+const { width: origWidth, aspectRatio } = getImageDimensions(image);
+
+const displayWidth = customWidth || Math.min(origWidth, 1200);
+const displayHeight = customHeight || Math.round(displayWidth / aspectRatio);
+
+// Generování srcset pro responzivní načítání ze Sanity CDN
+const srcSetWidths = [320, 640, 960, 1200, 1600];
+const srcset = srcSetWidths
+  .filter((w) => w <= origWidth * 1.5)
+  .map((w) => {
+    const h = Math.round(w / aspectRatio);
+    return `${urlForImage(image).width(w).height(h).url()} ${w}w`;
+  })
+  .join(', ');
+
+const src = urlForImage(image).width(displayWidth).height(displayHeight).url();
+---
+
+<img
+  src={src}
+  srcset={srcset}
+  sizes={sizes}
+  alt={alt}
+  width={displayWidth}
+  height={displayHeight}
+  loading={loading}
+  decoding="async"
+  class={`sanity-image ${className}`}
+/>
+
+<style>
+  .sanity-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md, 12px);
+    display: block;
+    object-fit: cover;
+  }
+</style>

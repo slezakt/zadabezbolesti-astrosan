@@ -1,0 +1,100 @@
+---
+interface Props {
+  type?: 'WebSite' | 'Organization' | 'Article' | 'LocalBusiness';
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  publishedAt?: string;
+  authorName?: string;
+  // LocalBusiness specifická metadata pro lokální SEO a Google Mapy
+  address?: {
+    streetAddress?: string;
+    addressLocality?: string;
+    postalCode?: string;
+    addressCountry?: string;
+  };
+  geo?: {
+    latitude: number;
+    longitude: number;
+  };
+  telephone?: string;
+  priceRange?: string;
+  openingHours?: string[];
+}
+
+const {
+  type = 'WebSite',
+  title = 'Astro & Sanity CMS Šablona',
+  description = 'Univerzální produkční šablona v češtině',
+  url = Astro.url.href,
+  image,
+  publishedAt,
+  authorName,
+  address,
+  geo,
+  telephone,
+  priceRange,
+  openingHours,
+} = Astro.props;
+
+let schemaData: any = {};
+
+if (type === 'LocalBusiness') {
+  schemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: title,
+    description: description,
+    url: url,
+    image: image || undefined,
+    telephone: telephone || undefined,
+    priceRange: priceRange || '$$',
+    ...(address && {
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: address.streetAddress,
+        addressLocality: address.addressLocality,
+        postalCode: address.postalCode,
+        addressCountry: address.addressCountry || 'CZ',
+      },
+    }),
+    ...(geo && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: geo.latitude,
+        longitude: geo.longitude,
+      },
+    }),
+    ...(openingHours && {
+      openingHoursSpecification: openingHours.map((hours) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: hours.split(' ')[0],
+        opens: hours.split(' ')[1]?.split('-')[0],
+        closes: hours.split(' ')[1]?.split('-')[1],
+      })),
+    }),
+  };
+} else if (type === 'Article') {
+  schemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: description,
+    url: url,
+    image: image || undefined,
+    datePublished: publishedAt || undefined,
+    author: authorName ? { '@type': 'Person', name: authorName } : undefined,
+  };
+} else {
+  schemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: title,
+    description: description,
+    url: url,
+  };
+}
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schemaData)} />

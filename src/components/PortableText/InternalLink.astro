@@ -1,0 +1,37 @@
+---
+interface Props {
+  node?: any;
+}
+
+const { node } = Astro.props;
+const reference = node?.reference;
+
+let href = '#';
+if (reference?.slug) {
+  if (reference._type === 'post') {
+    href = `/clanky/${reference.slug}`;
+  } else if (reference._type === 'page') {
+    href = reference.slug === 'index' || reference.slug === 'home' ? '/' : `/${reference.slug}`;
+  } else {
+    href = `/${reference.slug}`;
+  }
+}
+---
+
+<a href={href} class="internal-link">
+  <slot />
+</a>
+
+<style>
+  .internal-link {
+    color: var(--color-primary, #3b82f6);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .internal-link:hover {
+    color: var(--color-primary-hover, #2563eb);
+  }
+</style>

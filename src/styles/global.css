@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', 'Inter', system-ui, sans-serif;
+
+  --color-bg-dark: #090d16;
+  --color-bg-alt: #111827;
+  --color-surface: rgba(30, 41, 59, 0.6);
+  --color-surface-hover: rgba(51, 65, 85, 0.8);
+  --color-border-dark: rgba(255, 255, 255, 0.1);
+
+  --color-brand-primary: #6366f1;
+  --color-brand-primary-hover: #4f46e5;
+  --color-brand-accent: #a855f7;
+
+  --color-text-body: #e2e8f0;
+  --color-text-muted: #94a3b8;
+
+  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.25);
+}
+
+@layer base {
+  html, body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-body);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}

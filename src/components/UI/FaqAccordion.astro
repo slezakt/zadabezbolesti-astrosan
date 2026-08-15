@@ -1,0 +1,37 @@
+---
+interface Props {
+  items?: Array<{ question: string; answer: string }>;
+}
+
+const {
+  items = [
+    { question: 'Jaké jsou hlavní výhody této šablony?', answer: 'Šablona spojuje vysokou rychlost Astro 7 s flexibilitou Sanity CMS, lehkou reaktivitou Alpine.js a AEO optimalizací pro AI vyhledávače.' },
+    { question: 'Jak funguje vnořené Sanity Studio?', answer: 'Administrace je přístupná přímo na adrese /admin jako součást Astro aplikace v jediném repozitáři.' },
+    { question: 'Je šablona připravena pro AEO a AI vyhledávače?', answer: 'Ano, obsahuje generátor llms.txt a strukturovaná data Schema.org včetně podpory pro LocalBusiness.' },
+  ],
+} = Astro.props;
+---
+
+<div class="flex flex-col gap-4 max-w-3xl mx-auto" x-data="{ activeIndex: null }">
+  {items.map((item, index) => (
+    <div class="bg-slate-900/60 border border-white/10 rounded-2xl overflow-hidden">
+      <button
+        class="w-full bg-transparent border-none p-5 flex justify-between items-center text-left text-white font-semibold text-lg cursor-pointer"
+        @click={`activeIndex = (activeIndex === ${index} ? null : ${index})`}
+        :aria-expanded={`activeIndex === ${index}`}
+      >
+        <span>{item.question}</span>
+        <span class="text-2xl text-indigo-400 leading-none ml-4" x-text={`activeIndex === ${index} ? '−' : '+'`}></span>
+      </button>
+
+      <div
+        class="px-5 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/10 pt-4"
+        x-show={`activeIndex === ${index}`}
+        x-transition
+        style="display: none;"
+      >
+        <p>{item.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
