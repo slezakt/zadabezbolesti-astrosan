@@ -1,0 +1,16 @@
+---
+import { getAnalyticsConfig } from '../analytics/config';
+const config = getAnalyticsConfig();
+---
+<script is:inline define:vars={{ config }}>window.__STARTER_ANALYTICS_CONFIG__ = config;</script>
+<script>
+  import { initAnalytics } from '../analytics/bootstrap';
+  import { initDOMAnalyticsDelegation } from '../analytics/dom';
+  import { trackEvent } from '../analytics/track';
+  import type { AnalyticsConfig } from '../analytics/config';
+  declare global { interface Window { __STARTER_ANALYTICS_CONFIG__?: AnalyticsConfig } }
+  const config = window.__STARTER_ANALYTICS_CONFIG__;
+  if (config) initAnalytics(config);
+  initDOMAnalyticsDelegation();
+  window.addEventListener('starter-contact-success', () => trackEvent('contact_form_success', { form_id: 'main-contact' }));
+</script>

@@ -3,9 +3,13 @@ import { PortableText as PortableTextComponent } from 'astro-portabletext';
 import SanityImage from '../SanityImage.astro';
 import InternalLink from './InternalLink.astro';
 import YouTubeEmbed from './YouTubeEmbed.astro';
+import type { PageQueryResult, PostQueryResult } from '../../../sanity.types';
+import type { SomePortableTextComponents } from 'astro-portabletext/types';
+
+type PortableTextValue = NonNullable<NonNullable<PageQueryResult>['content']> | NonNullable<NonNullable<PostQueryResult>['body']>;
 
 interface Props {
-  value: any;
+  value: PortableTextValue;
 }
 
 const { value } = Astro.props;
@@ -18,7 +22,7 @@ const components = {
   mark: {
     internalLink: InternalLink,
   },
-};
+} as unknown as SomePortableTextComponents;
 ---
 
 <div class="portable-text">

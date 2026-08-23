@@ -1,23 +1,10 @@
 import type { APIRoute } from 'astro';
-import { fetchSanity } from '../utils/sanity';
-import { siteSettingsQuery, allPagesQuery, allPostsQuery } from '../utils/queries';
-
-export const prerender = false;
+import { getAllPages, getAllPosts, getSiteSettings } from '../utils/content';
 
 export const GET: APIRoute = async ({ site }) => {
   const siteUrl = site ? site.href.replace(/\/$/, '') : 'https://example.com';
 
-  let siteSettings = null;
-  let pages: any[] = [];
-  let posts: any[] = [];
-
-  try {
-    siteSettings = await fetchSanity(siteSettingsQuery);
-    pages = await fetchSanity(allPagesQuery);
-    posts = await fetchSanity(allPostsQuery);
-  } catch (e) {
-    // fallback pro vývoj bez zapojeného CMS
-  }
+  const [siteSettings, pages, posts] = await Promise.all([getSiteSettings(), getAllPages(), getAllPosts()]);
 
   const title = siteSettings?.title || 'Astro & Sanity CMS Webová Prezentace';
   const description = siteSettings?.description || 'Univerzální produkční šablona v češtině';

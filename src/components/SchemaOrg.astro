@@ -1,26 +1,19 @@
 ---
+import type { StructuredDataProps } from '../domain/schema';
+
 interface Props {
   type?: 'WebSite' | 'Organization' | 'Article' | 'LocalBusiness';
   title?: string;
   description?: string;
   url?: string;
-  image?: string;
-  publishedAt?: string;
-  authorName?: string;
-  // LocalBusiness specifická metadata pro lokální SEO a Google Mapy
-  address?: {
-    streetAddress?: string;
-    addressLocality?: string;
-    postalCode?: string;
-    addressCountry?: string;
-  };
-  geo?: {
-    latitude: number;
-    longitude: number;
-  };
-  telephone?: string;
-  priceRange?: string;
-  openingHours?: string[];
+  image?: StructuredDataProps['image'];
+  publishedAt?: StructuredDataProps['publishedAt'];
+  authorName?: StructuredDataProps['authorName'];
+  address?: StructuredDataProps['address'];
+  geo?: StructuredDataProps['geo'];
+  telephone?: StructuredDataProps['telephone'];
+  priceRange?: StructuredDataProps['priceRange'];
+  openingHours?: StructuredDataProps['openingHours'];
 }
 
 const {
@@ -38,7 +31,7 @@ const {
   openingHours,
 } = Astro.props;
 
-let schemaData: any = {};
+let schemaData: Record<string, unknown> = {};
 
 if (type === 'LocalBusiness') {
   schemaData = {

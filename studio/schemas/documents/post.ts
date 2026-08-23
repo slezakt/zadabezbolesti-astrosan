@@ -58,6 +58,7 @@ export const post = defineType({
       title: 'Stručný perex / Anotace',
       type: 'text',
       rows: 3,
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'body',

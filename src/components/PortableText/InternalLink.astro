@@ -1,10 +1,13 @@
 ---
-interface Props {
-  node?: any;
+import type { MarkProps } from 'astro-portabletext/types';
+
+interface InternalLinkDefinition extends Record<string, unknown> {
+  reference?: { _type?: 'page' | 'post'; slug?: string | null } | null;
 }
+type Props = MarkProps<InternalLinkDefinition>;
 
 const { node } = Astro.props;
-const reference = node?.reference;
+const reference = node.markDef.reference;
 
 let href = '#';
 if (reference?.slug) {

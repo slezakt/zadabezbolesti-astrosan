@@ -1,9 +1,12 @@
 ---
 import { urlForImage, getImageDimensions } from '../utils/image';
+import type { SanityImageSource } from '@sanity/image-url';
+
+type ImageValue = SanityImageSource & { asset?: { _ref?: string }; alt?: string };
 
 interface Props {
-  node?: any;
-  image?: any;
+  node?: ImageValue;
+  image?: ImageValue;
   alt?: string;
   width?: number;
   height?: number;

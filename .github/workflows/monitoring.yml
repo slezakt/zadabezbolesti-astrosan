@@ -1,0 +1,23 @@
+name: Production health check
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: production-health
+  cancel-in-progress: true
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm run monitor
+        env:
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+          SMOKE_SITE_TITLE: ${{ vars.SMOKE_SITE_TITLE }}
+          SMOKE_CRITICAL_PATH: ${{ vars.SMOKE_CRITICAL_PATH }}
+          SMOKE_CRITICAL_TITLE: ${{ vars.SMOKE_CRITICAL_TITLE }}

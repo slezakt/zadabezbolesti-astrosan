@@ -1,0 +1,62 @@
+name: Deploy to Cloudflare Workers
+on:
+  push:
+    branches: [main, master]
+  repository_dispatch:
+    types: [sanity-update]
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+      PUBLIC_SANITY_PROJECT_ID: ${{ vars.PUBLIC_SANITY_PROJECT_ID || secrets.PUBLIC_SANITY_PROJECT_ID }}
+      PUBLIC_SANITY_DATASET: ${{ vars.PUBLIC_SANITY_DATASET || secrets.PUBLIC_SANITY_DATASET }}
+      PUBLIC_SANITY_STUDIO_TITLE: ${{ vars.PUBLIC_SANITY_STUDIO_TITLE }}
+      PUBLIC_GITHUB_ACTIONS_URL: ${{ vars.PUBLIC_GITHUB_ACTIONS_URL }}
+      PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_ACCESS_KEY }}
+      PUBLIC_ANALYTICS_PROVIDER: ${{ vars.PUBLIC_ANALYTICS_PROVIDER }}
+      PUBLIC_PLAUSIBLE_DOMAIN: ${{ vars.PUBLIC_PLAUSIBLE_DOMAIN }}
+      PUBLIC_PLAUSIBLE_SCRIPT_URL: ${{ vars.PUBLIC_PLAUSIBLE_SCRIPT_URL }}
+      PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+      PUBLIC_UMAMI_SCRIPT_URL: ${{ vars.PUBLIC_UMAMI_SCRIPT_URL }}
+      PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
+      PUBLIC_RUM_PROVIDER: ${{ vars.PUBLIC_RUM_PROVIDER }}
+      PUBLIC_CLOUDFLARE_BEACON_TOKEN: ${{ vars.PUBLIC_CLOUDFLARE_BEACON_TOKEN }}
+      PUBLIC_ANALYTICS_DEBUG: ${{ vars.PUBLIC_ANALYTICS_DEBUG }}
+      SMOKE_SITE_TITLE: ${{ vars.SMOKE_SITE_TITLE }}
+      SMOKE_CRITICAL_PATH: ${{ vars.SMOKE_CRITICAL_PATH }}
+      SMOKE_CRITICAL_TITLE: ${{ vars.SMOKE_CRITICAL_TITLE }}
+      CONTENT_SOURCE: sanity
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Validate production configuration
+        run: |
+          for name in PUBLIC_SITE_URL PUBLIC_SANITY_PROJECT_ID PUBLIC_SANITY_DATASET PUBLIC_WEB3FORMS_ACCESS_KEY PUBLIC_ANALYTICS_PROVIDER SMOKE_CRITICAL_PATH; do
+            test -n "${!name}" || { printf 'Missing %s\n' "$name" >&2; exit 1; }
+          done
+      - run: npm run typegen
+      - name: Reject schema/type drift
+        run: git diff --exit-code -- schema.json sanity.types.ts
+      - run: npm run test:unit
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run test:predeploy
+      - name: Deploy immutable static release
+        uses: cloudflare/wrangler-action@v3
+        timeout-minutes: 10
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+      - name: Verify live release
+        env: { GITHUB_SHA: "${{ github.sha }}" }
+        run: npm run test:postdeploy

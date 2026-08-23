@@ -1,24 +1,26 @@
 ---
-import { VisualEditing } from '@sanity/astro/visual-editing';
 import SchemaOrg from '../components/SchemaOrg.astro';
-import CookieConsent from '../components/CookieConsent.astro';
+import Analytics from '../components/Analytics.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
+import type { StructuredDataProps } from '../domain/schema';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
-  preview?: boolean;
+  noindex?: boolean;
   schemaType?: 'WebSite' | 'Organization' | 'Article' | 'LocalBusiness';
-  schemaData?: Record<string, any>;
+  schemaData?: StructuredDataProps;
 }
 
 const {
   title = 'Astro & Sanity CMS Šablona',
   description = 'Univerzální produkční šablona pro Astro 7 a Sanity CMS',
-  preview = false,
+  noindex = false,
   schemaType = 'WebSite',
   schemaData = {},
 } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -29,15 +31,19 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+    <link rel="alternate" type="text/plain" title="LLM content summary" href="/llms.txt" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
 
     <!-- Strukturovaná data Schema.org -->
     <SchemaOrg type={schemaType} title={title} description={description} {...schemaData} />
@@ -52,18 +58,9 @@ const {
   </head>
   <body class="bg-[#090d16] text-slate-200 min-h-screen flex flex-col antialiased">
     <div class="flex flex-col min-h-screen">
-      {preview && (
-        <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-semibold px-4 py-2 text-center text-sm flex justify-center items-center gap-4">
-          <span>Režim živého náhledu (Draft Mode) je aktivní</span>
-          <a href="/api/draft-mode/disable" class="bg-slate-950 text-white px-3 py-1 rounded text-xs hover:bg-slate-900 transition">
-            Ukončit náhled
-          </a>
-        </div>
-      )}
-
       <header class="sticky top-0 z-50 bg-[#090d16]/80 backdrop-blur-md border-b border-white/10" x-data="{ mobileMenuOpen: false }">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
-          <a href="/" class="flex items-center gap-2 font-heading font-extrabold text-xl text-white">
+          <a href="/" data-analytics-event="navigation_click" data-analytics-target-id="home" data-analytics-location="header" class="flex items-center gap-2 font-heading font-extrabold text-xl text-white">
             <span class="bg-gradient-to-r from-indigo-500 to-purple-500 px-2 py-0.5 rounded text-xs text-white">Astro</span>
             <span>Sanity</span>
           </a>
@@ -81,8 +78,8 @@ const {
             class="nav-links flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-slate-900 md:bg-transparent border-b border-white/10 md:border-none p-6 md:p-0 gap-4 md:gap-6 text-slate-300 font-medium md:flex"
             :class="{ 'flex': mobileMenuOpen, 'hidden': !mobileMenuOpen }"
           >
-            <li><a href="/" class="hover:text-white transition">Domů</a></li>
-            <li><a href="/clanky" class="hover:text-white transition">Články</a></li>
+            <li><a href="/" data-analytics-event="navigation_click" data-analytics-target-id="home" data-analytics-location="menu" class="hover:text-white transition">Domů</a></li>
+            <li><a href="/clanky/" data-analytics-event="navigation_click" data-analytics-target-id="articles" data-analytics-location="menu" class="hover:text-white transition">Články</a></li>
             <li>
               <a
                 href="/admin"
@@ -112,9 +109,7 @@ const {
       </footer>
     </div>
 
-    <!-- GDPR Cookie Consent napojené na multi-provider analytiku -->
-    <CookieConsent />
-
-    {preview && <VisualEditing />}
+    <Analytics />
+    <ConsentBanner />
   </body>
 </html>

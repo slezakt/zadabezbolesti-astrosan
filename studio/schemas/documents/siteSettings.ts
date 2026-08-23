@@ -16,6 +16,7 @@ export const siteSettings = defineType({
       title: 'Hlavní popis webu',
       type: 'text',
       rows: 3,
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'seo',

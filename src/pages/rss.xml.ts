@@ -1,20 +1,9 @@
 import rss from '@astrojs/rss';
 import type { APIRoute } from 'astro';
-import { fetchSanity } from '../utils/sanity';
-import { allPostsQuery, siteSettingsQuery } from '../utils/queries';
-
-export const prerender = false;
+import { getAllPosts, getSiteSettings } from '../utils/content';
 
 export const GET: APIRoute = async ({ site }) => {
-  let posts: any[] = [];
-  let siteSettings = null;
-
-  try {
-    siteSettings = await fetchSanity(siteSettingsQuery);
-    posts = await fetchSanity(allPostsQuery);
-  } catch (e) {
-    posts = [];
-  }
+  const [siteSettings, posts] = await Promise.all([getSiteSettings(), getAllPosts()]);
 
   return rss({
     title: siteSettings?.title || 'Astro & Sanity Blog',

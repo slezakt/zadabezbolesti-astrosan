@@ -2,30 +2,24 @@
 import Layout from '../../layouts/Layout.astro';
 import PortableText from '../../components/PortableText/PortableText.astro';
 import SanityImage from '../../components/SanityImage.astro';
-import { fetchSanity } from '../../utils/sanity';
-import { postQuery } from '../../utils/queries';
+import { getAllPosts, getPost } from '../../utils/content';
 
-export const prerender = false;
-
-const { slug } = Astro.params;
-const preview = Astro.cookies.has('sanity_draft_mode');
-
-let post = null;
-try {
-  post = await fetchSanity(postQuery, { slug }, { preview });
-} catch (e) {
-  post = null;
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({ params: { slug: post.slug } }));
 }
 
+const { slug } = Astro.params;
+const post = slug ? await getPost(slug) : null;
+
 if (!post) {
-  return Astro.redirect('/404');
+  return new Response(null, { status: 404 });
 }
 ---
 
 <Layout
   title={`${post.title} | Články`}
   description={post.excerpt || `Článek ${post.title}`}
-  preview={preview}
 >
   <article class="article-container">
     <header class="article-header">
@@ -41,7 +35,7 @@ if (!post) {
         )}
         {post.categories && post.categories.length > 0 && (
           <div class="article-categories">
-            {post.categories.map((cat: any) => (
+            {post.categories.map((cat) => (
               <span class="category-badge">{cat.title}</span>
             ))}
           </div>

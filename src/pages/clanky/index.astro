@@ -1,25 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SanityImage from '../../components/SanityImage.astro';
-import { fetchSanity } from '../../utils/sanity';
-import { allPostsQuery } from '../../utils/queries';
+import { getAllPosts } from '../../utils/content';
 
-export const prerender = false;
-
-const preview = Astro.cookies.has('sanity_draft_mode');
-
-let posts: any[] = [];
-try {
-  posts = await fetchSanity(allPostsQuery, {}, { preview });
-} catch (e) {
-  posts = [];
-}
+const posts = await getAllPosts();
 ---
 
 <Layout
   title="Články | Astro & Sanity CMS Šablona"
   description="Seznam publikovaných článků v redakčním systému Sanity"
-  preview={preview}
 >
   <div class="posts-page">
     <header class="page-header">

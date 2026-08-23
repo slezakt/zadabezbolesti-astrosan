@@ -1,36 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PortableText from '../components/PortableText/PortableText.astro';
-import { fetchSanity } from '../utils/sanity';
-import { pageQuery } from '../utils/queries';
+import { getAllPages, getPage } from '../utils/content';
 
-export const prerender = false;
+export async function getStaticPaths() {
+  const pages = await getAllPages();
+  return pages.map((page) => ({ params: { slug: page.slug } }));
+}
 
 const { slug } = Astro.params;
 
-// Pokud slug nebyl zadán, směrujeme na hlavní stranu
-if (!slug) {
-  return Astro.redirect('/');
-}
-
-const preview = Astro.cookies.has('sanity_draft_mode');
-
-let page = null;
-try {
-  page = await fetchSanity(pageQuery, { slug }, { preview });
-} catch (e) {
-  page = null;
-}
+if (!slug) return Astro.redirect('/');
+const page = await getPage(slug);
 
 if (!page) {
-  return Astro.redirect('/404');
+  return new Response(null, { status: 404 });
 }
 ---
 
 <Layout
   title={page.seo?.metaTitle || page.title}
   description={page.seo?.metaDescription}
-  preview={preview}
 >
   <div class="dynamic-page">
     <header class="page-header">

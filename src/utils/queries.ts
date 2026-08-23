@@ -20,7 +20,7 @@ const portableTextFragment = `
 
 // Dotaz na globální nastavení webu
 export const siteSettingsQuery = defineQuery(`
-  *[_type == "siteSettings"][0] {
+  *[_type == "siteSettings" && _id == "siteSettings"][0] {
     title,
     description,
     seo
@@ -29,7 +29,7 @@ export const siteSettingsQuery = defineQuery(`
 
 // Dotaz na seznam všech stránek (pro sitemap a routing)
 export const allPagesQuery = defineQuery(`
-  *[_type == "page" && defined(slug.current)] {
+  *[_type == "page" && defined(slug.current)] | order(slug.current asc) {
     title,
     "slug": slug.current,
     _updatedAt

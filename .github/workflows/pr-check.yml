@@ -1,0 +1,29 @@
+name: PR verification
+on:
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+      PUBLIC_SANITY_PROJECT_ID: ${{ vars.PUBLIC_SANITY_PROJECT_ID || secrets.PUBLIC_SANITY_PROJECT_ID }}
+      PUBLIC_SANITY_DATASET: ${{ vars.PUBLIC_SANITY_DATASET || secrets.PUBLIC_SANITY_DATASET }}
+      PUBLIC_WEB3FORMS_ACCESS_KEY: pr-placeholder
+      PUBLIC_ANALYTICS_PROVIDER: none
+      CONTENT_SOURCE: fallback
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run typegen
+      - name: Reject schema/type drift
+        run: |
+          git diff --exit-code -- schema.json sanity.types.ts
+          test -z "$(git status --porcelain -- schema.json sanity.types.ts)"
+      - run: npm run test:unit
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run test:predeploy
