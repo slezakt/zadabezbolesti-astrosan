@@ -1,5 +1,5 @@
 {
-  "name": "astrosan",
+  "name": "zadabezbolesti-redesign",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
@@ -21,7 +21,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Astro + Sanity redesign projektu zadabezbolesti.cz.",
   "dependencies": {
     "@alpinejs/csp": "^3.16.1",
     "@astrojs/alpinejs": "^1.0.0",
@@ -36,6 +36,7 @@
     "astro": "^7.2.2",
     "astro-portabletext": "^0.13.0",
     "groq": "^6.9.2",
+    "lucide-react": "^1.35.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "sanity": "^6.9.2",

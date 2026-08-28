@@ -1,0 +1,6 @@
+{
+  "name": "ZádaBezBolesti.cz",
+  "description": "Prémiový editorial zdravotní nástroj pro prevenci a úlevu od bolesti zad, ergonomická kalkulačka a ověřené návody.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

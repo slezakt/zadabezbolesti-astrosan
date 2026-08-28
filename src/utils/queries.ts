@@ -20,9 +20,9 @@ const portableTextFragment = `
 
 // Dotaz na globální nastavení webu
 export const siteSettingsQuery = defineQuery(`
-  *[_type == "siteSettings" && _id == "siteSettings"][0] {
-    title,
-    description,
+  *[_type == "siteSettings"][0] {
+    "title": coalesce(title, siteTitle, defaultSeoTitle, "ZádaBezBolesti.cz"),
+    "description": coalesce(description, defaultSeoDescription, "Praktický průvodce ergonomií a zdravým pohybem"),
     seo
   }
 `);
@@ -46,18 +46,39 @@ export const pageQuery = defineQuery(`
     content[] {
       ${portableTextFragment}
     },
+    sections[] {
+      _key,
+      _type,
+      heading,
+      title,
+      variant,
+      text[] {
+        ${portableTextFragment}
+      },
+      content[] {
+        ${portableTextFragment}
+      },
+      items[] {
+        title,
+        description
+      }
+    },
+    faq[] {
+      question,
+      answer
+    },
     seo
   }
 `);
 
-// Dotaz na seznam článků
+// Dotaz na seznam článků (podporuje typ 'post' i 'article')
 export const allPostsQuery = defineQuery(`
-  *[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
+  *[_type in ["post", "article"] && defined(slug.current)] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {
     _id,
     title,
     "slug": slug.current,
-    publishedAt,
-    excerpt,
+    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),
+    "excerpt": coalesce(excerpt, lead, ""),
     mainImage,
     author->{
       name,
@@ -73,13 +94,13 @@ export const allPostsQuery = defineQuery(`
 
 // Dotaz na detail článku podle slug
 export const postQuery = defineQuery(`
-  *[_type == "post" && slug.current == $slug][0] {
+  *[_type in ["post", "article"] && slug.current == $slug][0] {
     _id,
     _type,
     title,
     "slug": slug.current,
-    publishedAt,
-    excerpt,
+    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),
+    "excerpt": coalesce(excerpt, lead, ""),
     mainImage,
     author->{
       name,
@@ -91,9 +112,68 @@ export const postQuery = defineQuery(`
       title,
       "slug": slug.current
     },
-    body[] {
-      ${portableTextFragment}
+    "body": coalesce(body, content, []),
+    sections[] {
+      _key,
+      _type,
+      heading,
+      title,
+      variant,
+      text[] {
+        ${portableTextFragment}
+      },
+      content[] {
+        ${portableTextFragment}
+      },
+      items[] {
+        title,
+        description
+      }
     },
+    faq[] {
+      question,
+      answer
+    },
+    takeaways,
     seo
+  }
+`);
+
+// Dotaz na seznam kategorií
+export const allCategoriesQuery = defineQuery(`
+  *[_type == "category" && defined(slug.current)] | order(title asc) {
+    title,
+    "slug": slug.current,
+    description
+  }
+`);
+
+// Dotaz na kategorii podle slug
+export const categoryQuery = defineQuery(`
+  *[_type == "category" && slug.current == $slug][0] {
+    title,
+    "slug": slug.current,
+    description
+  }
+`);
+
+// Dotaz na články pro konkrétní kategorii
+export const postsByCategoryQuery = defineQuery(`
+  *[_type in ["post", "article"] && defined(slug.current) && $categorySlug in categories[]->slug.current] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),
+    "excerpt": coalesce(excerpt, lead, ""),
+    mainImage,
+    author->{
+      name,
+      "slug": slug.current,
+      image
+    },
+    categories[]->{
+      title,
+      "slug": slug.current
+    }
   }
 `);

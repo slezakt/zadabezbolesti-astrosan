@@ -1,0 +1,178 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PortableText from '../../components/PortableText/PortableText.astro';
+import SanityImage from '../../components/SanityImage.astro';
+import { getAllPosts, getPost } from '../../utils/content';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = slug ? await getPost(slug) : null;
+
+if (!post) {
+  return new Response(null, { status: 404 });
+}
+
+const allPosts = await getAllPosts();
+const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+---
+
+<Layout
+  title={post.seo?.metaTitle || `${post.title} | ZádaBezBolesti.cz`}
+  description={post.seo?.metaDescription || post.excerpt || `Článek ${post.title}`}
+  schemaType="Article"
+  schemaData={{
+    publishedAt: post.publishedAt,
+    authorName: post.author?.name,
+  }}
+>
+  <article class="max-w-3xl mx-auto py-6">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs text-[#66736A] mb-8 font-medium" aria-label="Drobečková navigace">
+      <a href="/" class="hover:text-[#2F5941] link-underline">Domů</a>
+      <span>/</span>
+      <a href="/blog/" class="hover:text-[#2F5941] link-underline">Magazín</a>
+      <span>/</span>
+      <span class="text-[#18211C] truncate max-w-[280px]">{post.title}</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        {post.categories && post.categories.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {post.categories.map((cat) => (
+              <a
+                href={`/blog/kategorie/${cat.slug}/`}
+                class="text-xs font-semibold uppercase tracking-wider text-[#2F5941] bg-[#C9DCCF]/50 hover:bg-[#C9DCCF] px-2.5 py-1 rounded transition-colors"
+              >
+                {cat.title}
+              </a>
+            ))}
+          </div>
+        )}
+        {post.publishedAt && (
+          <time datetime={post.publishedAt} class="text-xs text-[#66736A]">
+            {new Date(post.publishedAt).toLocaleDateString('cs-CZ', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            })}
+          </time>
+        )}
+      </div>
+
+      <h1 class="font-serif-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#18211C] leading-[1.15] mb-6 tracking-tight">
+        {post.title}
+      </h1>
+
+      {post.author && (
+        <div class="flex items-center gap-3 pt-4 border-t border-[#DDE5DD]">
+          {post.author.image && (
+            <SanityImage image={post.author.image} alt={post.author.name} class="w-11 h-11 rounded-full object-cover border border-[#DDE5DD]" />
+          )}
+          <div>
+            <span class="text-sm font-semibold text-[#18211C] block">{post.author.name}</span>
+            <span class="text-xs text-[#66736A]">Odborná lékařská a fyzioterapeutická revize</span>
+          </div>
+        </div>
+      )}
+    </header>
+
+    <!-- Featured Image -->
+    {post.mainImage && (
+      <div class="mb-10 rounded-2xl overflow-hidden bg-[#EAF4EE] border border-[#DDE5DD]">
+        <SanityImage image={post.mainImage} alt={post.title} loading="eager" class="w-full object-cover max-h-[480px]" />
+      </div>
+    )}
+
+    <!-- Lead / Excerpt -->
+    {post.excerpt && (
+      <p class="font-serif-editorial text-xl sm:text-2xl leading-relaxed text-[#18211C] italic mb-8 border-l-2 border-[#2F5941] pl-6">
+        {post.excerpt}
+      </p>
+    )}
+
+    <!-- Main Content -->
+    {post.body && (
+      <div class="prose prose-stone max-w-none text-[#18211C] leading-relaxed space-y-6 text-[16.5px] pb-8">
+        <PortableText value={post.body} />
+      </div>
+    )}
+
+    <!-- Key Takeaways Box -->
+    {post.takeaways && post.takeaways.length > 0 && (
+      <div class="bg-[#EAF4EE] rounded-2xl p-6 sm:p-8 border border-[#C9DCCF] my-10">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#2F5941]"></span>
+          <h3 class="font-serif-editorial text-xl font-bold text-[#173326]">
+            Klíčová doporučení do praxe
+          </h3>
+        </div>
+        <ul class="space-y-2.5 text-[15px] text-[#18211C]">
+          {post.takeaways.map((item) => (
+            <li class="flex items-start gap-2.5">
+              <span class="text-[#2F5941] font-bold">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <!-- FAQ Accordion Section (Rich Snippets) -->
+    {post.faq && post.faq.length > 0 && (
+      <section class="my-12 pt-8 border-t border-[#DDE5DD]">
+        <h2 class="font-serif-editorial text-2xl sm:text-3xl font-bold text-[#18211C] mb-6">
+          Často kladené otázky k tématu
+        </h2>
+        <div class="space-y-3">
+          {post.faq.map((item) => (
+            <details class="bg-[#F7F5EF] border border-[#DDE5DD] rounded-xl p-4 sm:p-5 group open:bg-[#EAF4EE]/40 transition-colors">
+              <summary class="font-semibold text-[16px] text-[#18211C] cursor-pointer list-none flex items-center justify-between gap-4">
+                <span>{item.question}</span>
+                <span class="text-[#2F5941] text-xl transition-transform duration-200 group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-3 text-[14.5px] leading-relaxed text-[#66736A] pt-2 border-t border-[#DDE5DD]/60">
+                {item.answer}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Related Articles Section -->
+    {relatedPosts.length > 0 && (
+      <aside class="my-16 pt-10 border-t border-[#DDE5DD]">
+        <h2 class="font-serif-editorial text-2xl sm:text-3xl font-bold text-[#18211C] mb-6">
+          Související články a návody
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {relatedPosts.map((related) => (
+            <a
+              href={`/blog/${related.slug}/`}
+              class="editorial-row p-5 rounded-2xl bg-[#EAF4EE]/60 border border-[#DDE5DD] hover:border-[#2F5941] transition-all flex flex-col justify-between group"
+            >
+              <div>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-[#2F5941] block mb-2">
+                  {related.categories && related.categories[0] ? related.categories[0].title : 'Zdraví'}
+                </span>
+                <h3 class="font-serif-editorial text-[17px] font-semibold text-[#18211C] group-hover:text-[#2F5941] leading-snug mb-2">
+                  {related.title}
+                </h3>
+              </div>
+              <div class="mt-4 pt-3 border-t border-[#DDE5DD] flex items-center justify-between text-xs text-[#2F5941] font-semibold">
+                <span>Přečíst</span>
+                <span class="row-arrow">→</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </aside>
+    )}
+  </article>
+</Layout>

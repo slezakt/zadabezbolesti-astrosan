@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/template/Header';
+import { Footer } from '../components/template/Footer';
+
+const faqItems = [
+  {
+    question: 'Jak často bych měl při sedavé práci cvičit?',
+    answer: 'Ideální je tzv. mikro-cvičení: každých 45–60 minut vstát a zařadit 1–2 minuty protažení hrudníku a šíje. Pravidelné krátké intervence během dne jsou účinnější než jednorázový hodinový trénink večer.'
+  },
+  {
+    question: 'Můžu cvičit, když mám akutní bolest v bedrech?',
+    answer: 'Při akutní bolesti se vyhněte hlubokým předklonům a rotacím. Zvolte úlevovou pozici v lehu na zádech s nohama položenýma na židli (90° v kolenou a kyčlích) a jemné brániční dýchání.'
+  },
+  {
+    question: 'Proč mě bolí mezi lopatkami po cvičení?',
+    answer: 'Často jde o reakci přetížených svalů, které byly příliš dlouho v protažení. Cvičte bez švihových pohybů, s důrazem na výdech a otevření prsních svalů.'
+  },
+  {
+    question: 'Které cviky jsou pro záda rizikové?',
+    answer: 'Klasické sedy-lehy (zkracují flexory kyčlí a stlačují bedra), prudké kroužení hlavou v záklonu a rotace trupu se zátěží bez zpevněného středu těla.'
+  }
+];
+
+const clusterArticles = [
+  {
+    title: '3minutový strečink v kanceláři přímo u stolu',
+    href: '/blog/strecink-v-kancelari/',
+    readTime: '3 min praxe',
+    desc: 'Blesková dechová a mobilizační sekvence na židli pro uvolnění hrudníku a trapézů.'
+  },
+  {
+    title: '7 jednoduchých cviků pro úlevu od bolesti zad',
+    href: '/blog/7-jednoduchych-cviku-pro-ulevu-od-bolesti-zad/',
+    readTime: '5 min praxe',
+    desc: 'Základní rehabilitační cviky, které zvládnete doma na koberci bez jakéhokoliv náčiní.'
+  },
+  {
+    title: 'Cviky na krční páteř pro kancelářské pracovníky',
+    href: '/blog/cviky-na-krcni-pater-pro-kancelarske-pracovniky/',
+    readTime: '4 min praxe',
+    desc: 'Bezpečné posílení hlubokých flexorů krku a protažení přetížených šíjových svalů.'
+  },
+  {
+    title: 'Cviky na uvolnění bederní páteře',
+    href: '/blog/cviky-na-uvolneni-bederni-patere/',
+    readTime: '6 min praxe',
+    desc: 'Sestava pro dekompresi bederních obratlů, aktivaci hýždí a uvolnění flexorů kyčlí.'
+  }
+];
+---
+
+<Layout
+  title="Cviky na záda: jednoduché sestavy pro úlevu a zdravou páteř | ZádaBezBolesti.cz"
+  description="Ověřené rehabilitační a mobilizační cviky na záda pro lidi u počítače. Rychlé 3minutové sestavy k židli i hloubková cvičení na doma."
+  faq={faqItems}
+  hideChrome={true}
+>
+  <div class="min-h-screen bg-[#F7F5EF] text-[#18211C] flex flex-col font-sans selection:bg-[#C9DCCF] selection:text-[#173326]">
+    <Header />
+    
+    <main class="flex-1">
+      {/* Editorial Hero Header */}
+      <section class="w-full pt-12 pb-16 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <nav aria-label="Drobečková navigace" class="mb-6">
+            <ol class="flex items-center gap-2 text-xs font-mono text-[#66736A]">
+              <li><a href="/" class="hover:text-[#2F5941] underline underline-offset-2">Domů</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="text-[#18211C] font-semibold" aria-current="page">Cviky na záda</li>
+            </ol>
+          </nav>
+
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
+              Tematický pilíř • Pohybová terapie & Mobilita
+            </span>
+          </div>
+
+          <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
+            Cviky na záda: <br class="hidden sm:inline" />
+            bezpečné sestavy pro okamžitou úlevu i prevenci
+          </h1>
+
+          <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
+            Záda nepotřebují dril ani pocení v posilovně. Potřebují přesné, kontrolované pohyby, 
+            které uvolní zkrácené svalové skupiny a aktivují hluboké stabilizátory páteře.
+          </p>
+
+        </div>
+      </section>
+
+      {/* 3 Core Exercise Categories */}
+      <section class="w-full py-16 sm:py-20 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            Vyberte si sestavu podle situace
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Přehled tří hlavních cvičebních protokolů podle toho, kolik máte času a kde se právě nacházíte:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            
+            <div class="bg-[#EAF4EE] rounded-2xl p-6 border border-[#C9DCCF] flex flex-col justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider font-semibold text-[#2F5941] block mb-2">3 minuty • Bez pomůcek</span>
+                <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">U pracovního stolu</h3>
+                <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                  Mobilizace hrudníku, uvolnění trapézů a brániční dech přímo na kancelářské židli bez nutnosti převlékání.
+                </p>
+              </div>
+              <a href="/blog/strecink-v-kancelari/" class="text-xs font-semibold text-[#2F5941] bg-[#F7F5EF] px-3 py-2 rounded-xl border border-[#DDE5DD] text-center hover:bg-white transition-colors">
+                Spustit 3minutový set →
+              </a>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD] flex flex-col justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider font-semibold text-[#66736A] block mb-2">7 minut • Podložka</span>
+                <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">Bedra a pánev</h3>
+                <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                  Dekomprese bederních plotének, protažení flexorů kyčlí a aktivace hýžďových svalů pro stabilní pánev.
+                </p>
+              </div>
+              <a href="/blog/cviky-na-uvolneni-bederni-patere/" class="text-xs font-semibold text-[#18211C] bg-[#F7F5EF] px-3 py-2 rounded-xl border border-[#DDE5DD] text-center hover:bg-[#EAF4EE] transition-colors">
+                Zobrazit cviky na bedra →
+              </a>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD] flex flex-col justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider font-semibold text-[#66736A] block mb-2">5 minut • Sed či stoj</span>
+                <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">Krk a šíje</h3>
+                <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                  Korekce předsunuté hlavy (chin tuck), laterální úklony šíje a uvolnění pálivého napětí mezi lopatkami.
+                </p>
+              </div>
+              <a href="/blog/cviky-na-krcni-pater-pro-kancelarske-pracovniky/" class="text-xs font-semibold text-[#18211C] bg-[#F7F5EF] px-3 py-2 rounded-xl border border-[#DDE5DD] text-center hover:bg-[#EAF4EE] transition-colors">
+                Zobrazit cviky na krk →
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* Cluster Articles */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941] block mb-2">
+            Článkový klastr
+          </span>
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
+            Všechny návody a cvičební sestavy
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {clusterArticles.map((article) => (
+              <a
+                href={article.href}
+                class="editorial-card group p-6 rounded-2xl bg-[#F7F5EF] border border-[#DDE5DD] hover:border-[#2F5941] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span class="text-xs font-mono text-[#66736A] block mb-2">{article.readTime}</span>
+                  <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-2">
+                    {article.title}
+                  </h3>
+                  <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                    {article.desc}
+                  </p>
+                </div>
+                <span class="text-xs font-semibold text-[#2F5941] group-hover:text-[#F2644B] inline-flex items-center gap-1 link-underline">
+                  Číst návod →
+                </span>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section class="w-full py-16 sm:py-20 bg-[#F7F5EF] border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8 text-center">
+            Časté dotazy ke cvičení na záda
+          </h2>
+
+          <div class="space-y-4">
+            {faqItems.map((item) => (
+              <details class="faq-item group bg-white rounded-xl border border-[#DDE5DD] p-6 text-left">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#18211C] text-[17px] focus:outline-none">
+                  <span>{item.question}</span>
+                  <span class="faq-icon text-[#2F5941] font-bold text-xl transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-4 text-[#66736A] leading-relaxed text-[15px] border-t border-[#DDE5DD] pt-4">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Pillar Cross-links CTA */}
+      <section class="w-full py-16 bg-[#173326] text-[#F7F5EF]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <h2 class="font-serif-editorial text-3xl font-bold mb-4">Máte odcvičeno? Zkontrolujte ergonomii stolu</h2>
+          <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
+            Správné nastavení židle a monitoru zabrání tomu, aby se napětí v těle znovu vytvořilo.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/ergonomie-pracoviste/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">
+              Ergonomie pracoviště
+            </a>
+            <a href="/zdravy-spanek/" class="px-6 py-3.5 rounded-xl bg-[#2F5941] text-[#F7F5EF] font-semibold hover:bg-[#3d7053] transition-colors border border-[#C9DCCF]/30">
+              Zdravý spánek
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

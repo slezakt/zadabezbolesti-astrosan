@@ -3,57 +3,22 @@ import Layout from '../layouts/Layout.astro';
 
 ---
 
-<Layout title="Stránka nenalezena (404)" noindex>
-  <div class="error-container">
-    <div class="error-code">404</div>
-    <h1 class="error-title">Stránka nenalezena</h1>
-    <p class="error-description">
+<Layout title="Stránka nenalezena (404) | ZádaBezBolesti.cz" noindex>
+  <div class="text-center py-20 px-6 max-w-lg mx-auto">
+    <div class="font-serif-editorial text-7xl sm:text-8xl font-bold text-[#F2644B] mb-4">
+      404
+    </div>
+    <h1 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#18211C] mb-4">
+      Stránka nenalezena
+    </h1>
+    <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
       Požadovaná stránka neexistuje nebo byla přesunuta na jinou adresu.
     </p>
-    <a href="/" class="btn-home">Zpět na hlavní stranu</a>
+    <a
+      href="/"
+      class="btn-press inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#173326] text-[#F7F5EF] font-medium hover:bg-[#2F5941] transition-colors"
+    >
+      Zpět na hlavní stranu
+    </a>
   </div>
 </Layout>
-
-<style>
-  .error-container {
-    text-align: center;
-    padding: 5rem 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .error-code {
-    font-family: var(--font-heading);
-    font-size: 6rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .error-title {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-
-  .error-description {
-    color: var(--color-text-muted);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-
-  .btn-home {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: var(--shadow-glow);
-  }
-</style>

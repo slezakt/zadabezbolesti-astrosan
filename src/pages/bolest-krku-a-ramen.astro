@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/template/Header';
+import { Footer } from '../components/template/Footer';
+
+const faqItems = [
+  {
+    question: 'Proč mě bolí krk a ramena při práci u počítače?',
+    answer: 'Hlavní mechanickou příčinou je předsunuté držení hlavy (tzv. text neck) a trvalé napětí horních trapézů způsobené visícími lokty bez opory na stole.'
+  },
+  {
+    question: 'Jak rychle ulevit od ztuhlé šíje přímo u stolu?',
+    answer: 'Zkuste cvik „zasunutí brady“ (chin tuck) kombinovaný s jemným bočním úklonem hlavy a vědomým spuštěním ramen dolů s dlouhým výdechem.'
+  },
+  {
+    question: 'Pomůže na ztuhlé trapézy masážní pistole?',
+    answer: 'Ano, ale pouze na nízkou intenzitu a nikdy ne přímo na krční obratle ani úpony u lebky. Masírujte pouze měkké svalové bříško trapézu.'
+  },
+  {
+    question: 'Kdy je bolest šíje a ramen nebezpečná?',
+    answer: 'Pokud bolest vystřeluje do celé paže až do prstů, je doprovázena brněním, slabostí ruky nebo náhlými závratěmi, vyhledejte neprodleně lékaře.'
+  }
+];
+
+const clusterArticles = [
+  {
+    title: 'Bolest krční páteře z práce u počítače: příčiny a řešení',
+    href: '/blog/bolest-krcni-patere-z-prace-u-pocitace-priciny-a-reseni/',
+    readTime: '6 min čtení',
+    desc: 'Podrobný rozbor syndromu horního zkřížení a předsunuté hlavy.'
+  },
+  {
+    title: 'Cviky na šíji a ramena pro kancelář',
+    href: '/blog/cviky-na-sijici-a-ramena/',
+    readTime: '5 min praxe',
+    desc: '7 rychlých a bezpečných cviků pro okamžité uvolnění svalového napětí.'
+  },
+  {
+    title: 'Bolest trapézového svalu: proč tuhne a jak ho uvolnit',
+    href: '/blog/bolest-trapezoveho-svalu/',
+    readTime: '4 min čtení',
+    desc: 'Proč jsou trapézy nejvíce přetíženým svalem při stresu a práci s myší.'
+  },
+  {
+    title: 'Ideální nastavení monitoru: výška, vzdálenost, sklon',
+    href: '/blog/idealni-nastaveni-monitoru-vyska-vzdalenost-sklon/',
+    readTime: '5 min čtení',
+    desc: 'Přesný návod na umístění displeje pro uvolnění krční páteře.'
+  }
+];
+---
+
+<Layout
+  title="Bolest krku a ramen: příčiny, ergonomie a cviky | ZádaBezBolesti.cz"
+  description="Průvodce uvolněním krční páteře a trapézů při sedavém zaměstnání. Zjistěte, jak nastavit monitor, odstranit předsun hlavy a které cviky přinášejí okamžitou úlevu."
+  faq={faqItems}
+  hideChrome={true}
+>
+  <div class="min-h-screen bg-[#F7F5EF] text-[#18211C] flex flex-col font-sans selection:bg-[#C9DCCF] selection:text-[#173326]">
+    <Header />
+    
+    <main class="flex-1">
+      {/* Editorial Hero Header */}
+      <section class="w-full pt-12 pb-16 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <nav aria-label="Drobečková navigace" class="mb-6">
+            <ol class="flex items-center gap-2 text-xs font-mono text-[#66736A]">
+              <li><a href="/" class="hover:text-[#2F5941] underline underline-offset-2">Domů</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="text-[#18211C] font-semibold" aria-current="page">Bolest krku a ramen</li>
+            </ol>
+          </nav>
+
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#F2644B]"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
+              Tematický pilíř • Krční páteř & Trapézy
+            </span>
+          </div>
+
+          <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
+            Bolest krku a ramen: <br class="hidden sm:inline" />
+            příčiny, první pomoc a prevence
+          </h1>
+
+          <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
+            Lidská hlava váží přibližně 5 kg. Při předsunutí o pouhých 5 centimetrů dopředu však zatížení krčních obratlů 
+            a šíjových svalů vzroste až na 18–20 kg. Zde je návod, jak tento cyklus přetížení zastavit.
+          </p>
+
+        </div>
+      </section>
+
+      {/* 3 Main Root Causes */}
+      <section class="w-full py-16 sm:py-20 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            1. Proč krk a ramena tuhnou
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Bolest šíje málokdy vzniká ze dne na den. Jde o chronickou adaptaci těla na statickou polohu u monitoru.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD]">
+              <span class="text-xs font-mono text-[#F2644B] block mb-2">01 • Biomechanika</span>
+              <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-2">Předsun hlavy</h3>
+              <p class="text-sm text-[#66736A] leading-relaxed">
+                Při čtení z nízkého monitoru nebo mobilu padá hlava dopředu. Krční lordóza se oplošťuje a horní obratle jsou v trvalém přetížení.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD]">
+              <span class="text-xs font-mono text-[#F2644B] block mb-2">02 • Statické napětí</span>
+              <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-2">Visící předloktí</h3>
+              <p class="text-sm text-[#66736A] leading-relaxed">
+                Pokud lokty neleží na desce stolu ani na područkách, horní trapézy musí celých 8 hodin držet váhu paží (cca 8 kg).
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD]">
+              <span class="text-xs font-mono text-[#F2644B] block mb-2">03 • Psychosomatika</span>
+              <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-2">Stresový reflex</h3>
+              <p class="text-sm text-[#66736A] leading-relaxed">
+                Při mentálním vypětí sympatikus reflexně přitahuje ramena k uším a zkracuje dech pouze do horní části hrudníku.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* Ergonomic Interventions */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            2. Ergonomické zásady pro uvolnění krku
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Cviky pomáhají uvolnit stažené svaly, ale bez úpravy pracovního místa se napětí do hodiny vrátí.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex gap-4 p-5 rounded-xl bg-[#F7F5EF] border border-[#DDE5DD]">
+              <span class="w-8 h-8 rounded-full bg-[#2F5941] text-[#F7F5EF] flex items-center justify-center font-bold text-sm shrink-0">1</span>
+              <div>
+                <h3 class="font-semibold text-[#18211C] mb-1">Výška monitoru v úrovni očí</h3>
+                <p class="text-sm text-[#66736A]">
+                  Horní třetina obrazovky musí být v přímé horizontální linii očí. Při práci na notebooku použijte stojánek a samostatnou klávesnici.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 p-5 rounded-xl bg-[#F7F5EF] border border-[#DDE5DD]">
+              <span class="w-8 h-8 rounded-full bg-[#2F5941] text-[#F7F5EF] flex items-center justify-center font-bold text-sm shrink-0">2</span>
+              <div>
+                <h3 class="font-semibold text-[#18211C] mb-1">Podepřená předloktí (úhel 90°)</h3>
+                <p class="text-sm text-[#66736A]">
+                  Přisuňte se těsně ke stolu. Lokty musí spočívat na desce nebo područkách židle tak, aby ramena byla zcela uvolněná.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 p-5 rounded-xl bg-[#F7F5EF] border border-[#DDE5DD]">
+              <span class="w-8 h-8 rounded-full bg-[#2F5941] text-[#F7F5EF] flex items-center justify-center font-bold text-sm shrink-0">3</span>
+              <div>
+                <h3 class="font-semibold text-[#18211C] mb-1">Vertikální myš</h3>
+                <p class="text-sm text-[#66736A]">
+                  Tradiční myš nutí předloktí k pronaci (přetočení), což přenáší napětí přes loket až do šíje. Vertikální úchop udržuje ruku v neutrální pozici.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <a href="/ergonomie-pracoviste/" class="inline-flex items-center gap-2 text-[15px] font-semibold text-[#2F5941] hover:text-[#F2644B] link-underline">
+            Přejít na kompletního průvodce ergonomií stolu a židle →
+          </a>
+
+        </div>
+      </section>
+
+      {/* Cluster Articles */}
+      <section class="w-full py-16 sm:py-20 bg-[#F7F5EF] border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941] block mb-2">
+            Článkový klastr
+          </span>
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
+            Všechny články o krční páteři a šíji
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {clusterArticles.map((article) => (
+              <a
+                href={article.href}
+                class="editorial-card group p-6 rounded-2xl bg-white border border-[#DDE5DD] hover:border-[#2F5941] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span class="text-xs font-mono text-[#66736A] block mb-2">{article.readTime}</span>
+                  <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-2">
+                    {article.title}
+                  </h3>
+                  <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                    {article.desc}
+                  </p>
+                </div>
+                <span class="text-xs font-semibold text-[#2F5941] group-hover:text-[#F2644B] inline-flex items-center gap-1 link-underline">
+                  Číst návod →
+                </span>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8 text-center">
+            Časté otázky k bolesti krku a ramen
+          </h2>
+
+          <div class="space-y-4">
+            {faqItems.map((item) => (
+              <details class="faq-item group bg-[#F7F5EF] rounded-xl border border-[#DDE5DD] p-6 text-left">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#18211C] text-[17px] focus:outline-none">
+                  <span>{item.question}</span>
+                  <span class="faq-icon text-[#2F5941] font-bold text-xl transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-4 text-[#66736A] leading-relaxed text-[15px] border-t border-[#DDE5DD] pt-4">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Bottom Cross CTA */}
+      <section class="w-full py-16 bg-[#173326] text-[#F7F5EF]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <h2 class="font-serif-editorial text-3xl font-bold mb-4">Potřebujete okamžitou sestavu cviků?</h2>
+          <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
+            Prohlédněte si naši kompletní knihovnu rehabilitačních cvičení na záda a šíji.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/cviky-na-zada/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">
+              Cviky na záda
+            </a>
+            <a href="/nastroje/kalkulacka/" class="px-6 py-3.5 rounded-xl bg-[#2F5941] text-[#F7F5EF] font-semibold hover:bg-[#3d7053] transition-colors border border-[#C9DCCF]/30">
+              Ergonomická kalkulačka
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/template/Header';
+import { Footer } from '../../components/template/Footer';
+import { ErgonomicCalculator } from '../../components/template/ErgonomicCalculator';
+---
+
+<Layout
+  title="Ergonomická kalkulačka: Nastavení výšky stolu a židle | ZádaBezBolesti.cz"
+  description="Interaktivní výpočet optimální výšky desky stolu, sedáku židle a polohy monitoru podle vaší tělesné výšky (ISO 9241 norma)."
+  hideChrome={true}
+>
+  <div class="min-h-screen bg-[#F7F5EF] text-[#18211C] flex flex-col font-sans selection:bg-[#C9DCCF] selection:text-[#173326]">
+    <Header />
+
+    <main class="flex-1 max-w-7xl mx-auto px-6 sm:px-8 py-8 w-full">
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs font-mono text-[#66736A] mb-8" aria-label="Drobečková navigace">
+        <a href="/" class="hover:text-[#2F5941] underline underline-offset-2">Domů</a>
+        <span aria-hidden="true">/</span>
+        <span>Nástroje</span>
+        <span aria-hidden="true">/</span>
+        <span class="text-[#18211C] font-semibold" aria-current="page">Ergonomická kalkulačka</span>
+      </nav>
+
+      <div class="max-w-3xl mb-8">
+        <h1 class="font-serif-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#18211C] tracking-tight leading-[1.15] mb-3">
+          Ergonomická kalkulačka: Nastavení stolu a židle
+        </h1>
+        <p class="text-[17px] text-[#66736A] leading-relaxed">
+          Spočítejte si optimální výšku pracovní desky stolu, sedáku židle a horní hrany monitoru přesně podle vaší tělesné výšky v souladu s mezinárodní normou ISO 9241.
+        </p>
+      </div>
+
+      <ErgonomicCalculator client:load />
+
+      <!-- Educational section below calculator -->
+      <section class="max-w-4xl mx-auto my-16 bg-white p-8 sm:p-10 rounded-2xl border border-[#DDE5DD]">
+        <h2 class="font-serif-editorial text-2xl sm:text-3xl font-bold text-[#18211C] mb-4">
+          Jak používat výsledky kalkulačky v praxi
+        </h2>
+        <div class="space-y-4 text-[15px] text-[#18211C]/90 leading-relaxed">
+          <p>
+            Tato kalkulačka vychází z mezinárodních ergonomických standardů <strong>ISO 9241-5</strong> a antropometrických tabulek průměrné evropské populace. Slouží jako spolehlivý výchozí bod pro individuální nastavení vašeho pracovního místa.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+            <div class="p-5 rounded-xl bg-[#EAF4EE] border border-[#C9DCCF]">
+              <h3 class="font-semibold text-[16px] text-[#173326] mb-1">1. Nejprve nastavte židli</h3>
+              <p class="text-xs text-[#66736A] leading-relaxed">
+                Chodidla musí stát plnou plochou na podlaze a kolena svírat úhel 90–100°. Pokud máte po nastavení stůl příliš vysoko, použijte podložku pod nohy.
+              </p>
+            </div>
+            <div class="p-5 rounded-xl bg-[#EAF4EE] border border-[#C9DCCF]">
+              <h3 class="font-semibold text-[16px] text-[#173326] mb-1">2. Poté přizpůsobte stůl a monitor</h3>
+              <p class="text-xs text-[#66736A] leading-relaxed">
+                Předloktí mají ležet volně na stole bez zvedání ramen. Horní hrana obrazovky v rovině očí zabrání předsouvání brady a tuhnutí šíje.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

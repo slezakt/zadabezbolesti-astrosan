@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-paper: #F7F5EF;
+    --color-mint: #EAF4EE;
+    --color-ink: #18211C;
+    --color-deep-forest: #173326;
+    --color-forest: #2F5941;
+    --color-muted: #66736A;
+    --color-line: #DDE5DD;
+    --color-coral: #F2644B;
+    --color-warning-soft: #FFF1E8;
+    --color-sage: #C9DCCF;
+  }
+
+  html {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-serif-editorial {
+    font-family: 'Fraunces', Georgia, serif;
+    font-feature-settings: "liga", "clig", "kern";
+  }
+
+  /* Custom focus ring according to specification */
+  :focus-visible {
+    outline: 2px solid var(--color-coral) !important;
+    outline-offset: 4px !important;
+  }
+}
+
+/* Micro-interaction classes */
+.editorial-row {
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+}
+
+.editorial-row:hover .row-arrow {
+  transform: translateX(4px);
+}
+
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness 0.15s ease, color 0.15s ease;
+}
+
+.link-underline:hover {
+  text-decoration-thickness: 2px;
+}

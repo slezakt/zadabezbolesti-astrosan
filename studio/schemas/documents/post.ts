@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity';
+import { defineType, defineField, defineArrayMember } from 'sanity';
 
 export const post = defineType({
   name: 'post',
@@ -64,6 +64,43 @@ export const post = defineType({
       name: 'body',
       title: 'Text článku',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'faq',
+      title: 'Často kladené otázky (FAQ pro Google Rich Snippets)',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'question',
+              type: 'string',
+              title: 'Otázka',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'answer',
+              type: 'text',
+              title: 'Odpověď',
+              rows: 3,
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'question',
+              subtitle: 'answer',
+            },
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'takeaways',
+      title: 'Klíčová doporučení (Takeaways)',
+      type: 'array',
+      of: [{ type: 'string' }],
     }),
     defineField({
       name: 'seo',

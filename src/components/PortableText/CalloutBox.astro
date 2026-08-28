@@ -1,0 +1,32 @@
+---
+interface Props {
+  node: {
+    type?: string;
+    title?: string;
+    text: string;
+  };
+}
+
+const { node } = Astro.props;
+const type = node.type || 'tip';
+const isWarning = type === 'warning';
+const isInfo = type === 'info';
+---
+
+<div class={`rounded-2xl p-6 my-6 border ${
+  isWarning 
+    ? 'bg-[#FFF1E8] border-[#F2644B]/30 text-[#18211C]' 
+    : isInfo 
+    ? 'bg-[#F7F5EF] border-[#2F5941]/30 text-[#18211C]' 
+    : 'bg-[#EAF4EE] border-[#C9DCCF] text-[#173326]'
+}`}>
+  <div class="flex items-center gap-2 mb-2">
+    <span class={`w-2.5 h-2.5 rounded-full ${isWarning ? 'bg-[#F2644B]' : 'bg-[#2F5941]'}`}></span>
+    <h4 class="font-serif-editorial font-bold text-lg text-[#18211C] m-0">
+      {node.title || (isWarning ? 'Upozornění' : isInfo ? 'Informace' : 'Tip fyzioterapeuta')}
+    </h4>
+  </div>
+  <p class="text-[15px] leading-relaxed text-[#18211C]/90 m-0">
+    {node.text}
+  </p>
+</div>

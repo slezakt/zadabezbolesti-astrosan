@@ -58,7 +58,7 @@ export type BlockContent = Array<
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+      style?: "normal" | "h2" | "h3" | "h4" | "blockquote";
       listItem?: "bullet" | "number";
       markDefs?: Array<
         | {
@@ -85,6 +85,20 @@ export type BlockContent = Array<
       alt?: string;
       caption?: string;
       _type: "image";
+      _key: string;
+    }
+  | {
+      type?: "tip" | "warning" | "info";
+      title?: string;
+      text: string;
+      _type: "calloutBox";
+      _key: string;
+    }
+  | {
+      name: string;
+      description: string;
+      reps?: string;
+      _type: "exerciseCard";
       _key: string;
     }
   | {
@@ -144,6 +158,11 @@ export type Page = {
   title: string;
   slug: Slug;
   content?: BlockContent;
+  faq?: Array<{
+    question: string;
+    answer: string;
+    _key: string;
+  }>;
   seo?: Seo;
 };
 
@@ -186,6 +205,12 @@ export type Post = {
   >;
   excerpt: string;
   body?: BlockContent;
+  faq?: Array<{
+    question: string;
+    answer: string;
+    _key: string;
+  }>;
+  takeaways?: Array<string>;
   seo?: Seo;
 };
 
@@ -378,7 +403,7 @@ export type AllSanitySchemaTypes =
 
 // Source: src/utils/queries.ts
 // Variable: siteSettingsQuery
-// Query: *[_type == "siteSettings" && _id == "siteSettings"][0] {    title,    description,    seo  }
+// Query: *[_type == "siteSettings"][0] {    "title": coalesce(title, siteTitle, defaultSeoTitle, "ZádaBezBolesti.cz"),    "description": coalesce(description, defaultSeoDescription, "Praktický průvodce ergonomií a zdravým pohybem"),    seo  }
 export type SiteSettingsQueryResult = {
   title: string;
   description: string;
@@ -396,7 +421,7 @@ export type AllPagesQueryResult = Array<{
 
 // Source: src/utils/queries.ts
 // Variable: pageQuery
-// Query: *[_type == "page" && slug.current == $slug][0] {    _id,    _type,    title,    "slug": slug.current,    content[] {        ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }    },    seo  }
+// Query: *[_type == "page" && slug.current == $slug][0] {    _id,    _type,    title,    "slug": slug.current,    content[] {        ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }    },    sections[] {      _key,      _type,      heading,      title,      variant,      text[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      content[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      items[] {        title,        description      }    },    faq[] {      question,      answer    },    seo  }
 export type PageQueryResult = {
   _id: string;
   _type: "page";
@@ -410,7 +435,7 @@ export type PageQueryResult = {
           _type: "span";
           _key: string;
         }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+        style?: "blockquote" | "h2" | "h3" | "h4" | "normal";
         listItem?: "bullet" | "number";
         markDefs: Array<
           | {
@@ -441,6 +466,20 @@ export type PageQueryResult = {
         _key: string;
       }
     | {
+        type?: "info" | "tip" | "warning";
+        title?: string;
+        text: string;
+        _type: "calloutBox";
+        _key: string;
+      }
+    | {
+        name: string;
+        description: string;
+        reps?: string;
+        _type: "exerciseCard";
+        _key: string;
+      }
+    | {
         asset?: SanityImageAssetReference;
         media?: unknown;
         hotspot?: SanityImageHotspot;
@@ -456,12 +495,17 @@ export type PageQueryResult = {
         _key: string;
       }
   > | null;
+  sections: null;
+  faq: Array<{
+    question: string;
+    answer: string;
+  }> | null;
   seo: Seo | null;
 } | null;
 
 // Source: src/utils/queries.ts
 // Variable: allPostsQuery
-// Query: *[_type == "post" && defined(slug.current)] | order(publishedAt desc) {    _id,    title,    "slug": slug.current,    publishedAt,    excerpt,    mainImage,    author->{      name,      "slug": slug.current,      image    },    categories[]->{      title,      "slug": slug.current    }  }
+// Query: *[_type in ["post", "article"] && defined(slug.current)] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {    _id,    title,    "slug": slug.current,    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),    "excerpt": coalesce(excerpt, lead, ""),    mainImage,    author->{      name,      "slug": slug.current,      image    },    categories[]->{      title,      "slug": slug.current    }  }
 export type AllPostsQueryResult = Array<{
   _id: string;
   title: string;
@@ -496,7 +540,7 @@ export type AllPostsQueryResult = Array<{
 
 // Source: src/utils/queries.ts
 // Variable: postQuery
-// Query: *[_type == "post" && slug.current == $slug][0] {    _id,    _type,    title,    "slug": slug.current,    publishedAt,    excerpt,    mainImage,    author->{      name,      "slug": slug.current,      image,      bio    },    categories[]->{      title,      "slug": slug.current    },    body[] {        ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }    },    seo  }
+// Query: *[_type in ["post", "article"] && slug.current == $slug][0] {    _id,    _type,    title,    "slug": slug.current,    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),    "excerpt": coalesce(excerpt, lead, ""),    mainImage,    author->{      name,      "slug": slug.current,      image,      bio    },    categories[]->{      title,      "slug": slug.current    },    "body": coalesce(body, content, []),    sections[] {      _key,      _type,      heading,      title,      variant,      text[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      content[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      items[] {        title,        description      }    },    faq[] {      question,      answer    },    takeaways,    seo  }
 export type PostQueryResult = {
   _id: string;
   _type: "post";
@@ -529,62 +573,68 @@ export type PostQueryResult = {
     title: string;
     slug: string;
   }> | null;
-  body: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet" | "number";
-        markDefs: Array<
-          | {
-              href?: string;
-              blank?: boolean;
-              _type: "externalLink";
-              _key: string;
-            }
-          | {
-              reference:
-                | {
-                    _type: "page";
-                    title: string;
-                    slug: string;
-                  }
-                | {
-                    _type: "post";
-                    title: string;
-                    slug: string;
-                  }
-                | null;
-              _type: "internalLink";
-              _key: string;
-            }
-        > | null;
-        level?: number;
-        _type: "block";
-        _key: string;
-      }
-    | {
-        asset?: SanityImageAssetReference;
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        caption?: string;
-        _type: "image";
-        _key: string;
-      }
-    | {
-        url: string;
-        _type: "youtube";
-        _key: string;
-      }
-  > | null;
+  body: Array<never> | BlockContent;
+  sections: null;
+  faq: Array<{
+    question: string;
+    answer: string;
+  }> | null;
+  takeaways: Array<string> | null;
   seo: Seo | null;
 } | null;
+
+// Source: src/utils/queries.ts
+// Variable: allCategoriesQuery
+// Query: *[_type == "category" && defined(slug.current)] | order(title asc) {    title,    "slug": slug.current,    description  }
+export type AllCategoriesQueryResult = Array<{
+  title: string;
+  slug: string;
+  description: string | null;
+}>;
+
+// Source: src/utils/queries.ts
+// Variable: categoryQuery
+// Query: *[_type == "category" && slug.current == $slug][0] {    title,    "slug": slug.current,    description  }
+export type CategoryQueryResult = {
+  title: string;
+  slug: string;
+  description: string | null;
+} | null;
+
+// Source: src/utils/queries.ts
+// Variable: postsByCategoryQuery
+// Query: *[_type in ["post", "article"] && defined(slug.current) && $categorySlug in categories[]->slug.current] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {    _id,    title,    "slug": slug.current,    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),    "excerpt": coalesce(excerpt, lead, ""),    mainImage,    author->{      name,      "slug": slug.current,      image    },    categories[]->{      title,      "slug": slug.current    }  }
+export type PostsByCategoryQueryResult = Array<{
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt: string;
+  mainImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  author: {
+    name: string;
+    slug: string | null;
+    image: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    } | null;
+  } | null;
+  categories: Array<{
+    title: string;
+    slug: string;
+  }> | null;
+}>;
 
 // Source: studio/tools/deploy/queries.ts
 // Variable: deployToolStateQuery
@@ -604,11 +654,14 @@ export type DeployToolStateQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "siteSettings" && _id == "siteSettings"][0] {\n    title,\n    description,\n    seo\n  }\n': SiteSettingsQueryResult;
+    '\n  *[_type == "siteSettings"][0] {\n    "title": coalesce(title, siteTitle, defaultSeoTitle, "Z\xE1daBezBolesti.cz"),\n    "description": coalesce(description, defaultSeoDescription, "Praktick\xFD pr\u016Fvodce ergonomi\xED a zdrav\xFDm pohybem"),\n    seo\n  }\n': SiteSettingsQueryResult;
     '\n  *[_type == "page" && defined(slug.current)] | order(slug.current asc) {\n    title,\n    "slug": slug.current,\n    _updatedAt\n  }\n': AllPagesQueryResult;
-    '\n  *[_type == "page" && slug.current == $slug][0] {\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    content[] {\n      \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n    },\n    seo\n  }\n': PageQueryResult;
-    '\n  *[_type == "post" && defined(slug.current)] | order(publishedAt desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    publishedAt,\n    excerpt,\n    mainImage,\n    author->{\n      name,\n      "slug": slug.current,\n      image\n    },\n    categories[]->{\n      title,\n      "slug": slug.current\n    }\n  }\n': AllPostsQueryResult;
-    '\n  *[_type == "post" && slug.current == $slug][0] {\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    publishedAt,\n    excerpt,\n    mainImage,\n    author->{\n      name,\n      "slug": slug.current,\n      image,\n      bio\n    },\n    categories[]->{\n      title,\n      "slug": slug.current\n    },\n    body[] {\n      \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n    },\n    seo\n  }\n': PostQueryResult;
+    '\n  *[_type == "page" && slug.current == $slug][0] {\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    content[] {\n      \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n    },\n    sections[] {\n      _key,\n      _type,\n      heading,\n      title,\n      variant,\n      text[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      content[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      items[] {\n        title,\n        description\n      }\n    },\n    faq[] {\n      question,\n      answer\n    },\n    seo\n  }\n': PageQueryResult;
+    '\n  *[_type in ["post", "article"] && defined(slug.current)] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),\n    "excerpt": coalesce(excerpt, lead, ""),\n    mainImage,\n    author->{\n      name,\n      "slug": slug.current,\n      image\n    },\n    categories[]->{\n      title,\n      "slug": slug.current\n    }\n  }\n': AllPostsQueryResult;
+    '\n  *[_type in ["post", "article"] && slug.current == $slug][0] {\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),\n    "excerpt": coalesce(excerpt, lead, ""),\n    mainImage,\n    author->{\n      name,\n      "slug": slug.current,\n      image,\n      bio\n    },\n    categories[]->{\n      title,\n      "slug": slug.current\n    },\n    "body": coalesce(body, content, []),\n    sections[] {\n      _key,\n      _type,\n      heading,\n      title,\n      variant,\n      text[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      content[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      items[] {\n        title,\n        description\n      }\n    },\n    faq[] {\n      question,\n      answer\n    },\n    takeaways,\n    seo\n  }\n': PostQueryResult;
+    '\n  *[_type == "category" && defined(slug.current)] | order(title asc) {\n    title,\n    "slug": slug.current,\n    description\n  }\n': AllCategoriesQueryResult;
+    '\n  *[_type == "category" && slug.current == $slug][0] {\n    title,\n    "slug": slug.current,\n    description\n  }\n': CategoryQueryResult;
+    '\n  *[_type in ["post", "article"] && defined(slug.current) && $categorySlug in categories[]->slug.current] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),\n    "excerpt": coalesce(excerpt, lead, ""),\n    mainImage,\n    author->{\n      name,\n      "slug": slug.current,\n      image\n    },\n    categories[]->{\n      title,\n      "slug": slug.current\n    }\n  }\n': PostsByCategoryQueryResult;
     '{\n  "lastRequest": *[_id == "deploymentRequest" && _type == "deploymentRequest"][0] {\n    requestId, requestedAt, requestedById, requestedByName, note\n  },\n  "draftCount": count(*[_id in path("drafts.**") && _type in $trackedTypes])\n}': DeployToolStateQueryResult;
   }
 }

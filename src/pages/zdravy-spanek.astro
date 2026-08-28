@@ -1,0 +1,328 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/template/Header';
+import { Footer } from '../components/template/Footer';
+
+const faqItems = [
+  {
+    question: 'Jaká je nejlepší poloha při spaní při bolesti beder?',
+    answer: 'Poloha na boku s mírně pokrčenými koleny a polštářem mezi nimi. Polštář vyrovnává pánev a udržuje bederní páteř v neutrální rovině bez torzního napětí.'
+  },
+  {
+    question: 'Pomůže tvrdá matrace na bolest zad?',
+    answer: 'Mýtus o extra tvrdé matraci byl překonán. Ideální je středně tvrdá matrace, která umožní rameni a pánvi mírně se zanořit tak, aby páteř zůstala v přirozené přímce.'
+  },
+  {
+    question: 'Proč mě bolí krk po probuzení?',
+    answer: 'Nejčastější příčinou je nevhodná výška polštáře nebo spaní na břiše. Na boku potřebujete vyšší polštář odpovídající šířce ramene, na zádech nižší profil.'
+  },
+  {
+    question: 'Kdy je ranní bolest zad varovným signálem?',
+    answer: 'Pokud ranní ztuhlost přetrvává déle než 60 minut a nezmírní se po rozhýbání, nebo pokud vás bolest pravidelně budí v druhé polovině noci, navštivte lékaře.'
+  }
+];
+
+const clusterArticles = [
+  {
+    title: 'Nejlepší poloha při spánku pro regeneraci plotének',
+    href: '/blog/nejlepsi-poloha-pri-spanku/',
+    readTime: '6 min čtení',
+    desc: 'Rozbor biomechaniky spaní na boku, zádech i břiše a jejich vliv na páteř.'
+  },
+  {
+    title: 'Jak vybrat správný polštář pro krční páteř',
+    href: '/blog/spravny-polstar-pro-zdrava-zada/',
+    readTime: '4 min čtení',
+    desc: 'Přesný návod na změření výšky anatomického polštáře podle šířky ramen.'
+  },
+  {
+    title: 'Jak vybrat matraci pro bolavá záda',
+    href: '/blog/jak-vybrat-matraci/',
+    readTime: '5 min čtení',
+    desc: 'Jak zvolit tvrdost podle váhy a polohy spánku. Kdy je čas na výměnu.'
+  },
+  {
+    title: 'Večerní rutina pro uvolnění zad a lepší spánek',
+    href: '/blog/vecerni-rutina-lepsi-spanek-uvolneni-zad/',
+    readTime: '5 min čtení',
+    desc: '3 jednoduché zklidňující cviky před ulehnutím pro zklidnění nervového systému.'
+  }
+];
+---
+
+<Layout
+  title="Zdravý spánek a záda: polohy, matrace a polštáře | ZádaBezBolesti.cz"
+  description="Komplexní průvodce regenerací páteře během spánku. Správné polohy při spaní, výběr matrace a polštáře pro život bez ranní bolesti zad."
+  faq={faqItems}
+  hideChrome={true}
+>
+  <div class="min-h-screen bg-[#F7F5EF] text-[#18211C] flex flex-col font-sans selection:bg-[#C9DCCF] selection:text-[#173326]">
+    <Header />
+    
+    <main class="flex-1">
+      {/* Editorial Hero Header */}
+      <section class="w-full pt-12 pb-16 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <nav aria-label="Drobečková navigace" class="mb-6">
+            <ol class="flex items-center gap-2 text-xs font-mono text-[#66736A]">
+              <li><a href="/" class="hover:text-[#2F5941] underline underline-offset-2">Domů</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="text-[#18211C] font-semibold" aria-current="page">Zdravý spánek</li>
+            </ol>
+          </nav>
+
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
+              Tematický pilíř • Noční regenerace
+            </span>
+          </div>
+
+          <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
+            Zdravý spánek: <br class="hidden sm:inline" />
+            jak probudit tělo bez bolesti zad
+          </h1>
+
+          <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
+            Během 7–8 hodin spánku meziobratlové ploténky rehydratují a nasávají tekutinu po celodenním tlaku gravitace. 
+            Pokud však spíte v rotaci nebo na proleželé matraci, noční regenerace se mění v chronické přetížení.
+          </p>
+
+        </div>
+      </section>
+
+      {/* 3 Sleeping Positions */}
+      <section class="w-full py-16 sm:py-20 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            1. Tři polohy spánku a jejich vliv na páteř
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Neexistuje jedna univerzální poloha pro každého, ale některé pozice kladou na páteř výrazně nižší nároky než jiné.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            
+            <div class="bg-[#EAF4EE] rounded-2xl p-6 border border-[#C9DCCF] flex flex-col justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider font-semibold text-[#2F5941] block mb-2">Zlatý standard</span>
+                <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">Na boku</h3>
+                <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                  Při pokrčených kolenou a polštářku mezi stehny zůstává páteř v přirozené přímce bez kroucení pánve.
+                </p>
+              </div>
+              <span class="text-xs font-semibold text-[#2F5941] bg-[#F7F5EF] px-2.5 py-1 rounded-full border border-[#DDE5DD] inline-block text-center">
+                Doporučeno pro 70 % lidí
+              </span>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD] flex flex-col justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider font-semibold text-[#66736A] block mb-2">Neutrální osa</span>
+                <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">Na zádech</h3>
+                <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                  Rovnoměrně rozkládá váhu těla. Malý polštářek pod koleny sníží tah flexorů kyčlí a uleví bederní lordóze.
+                </p>
+              </div>
+              <span class="text-xs font-semibold text-[#66736A] bg-[#F7F5EF] px-2.5 py-1 rounded-full border border-[#DDE5DD] inline-block text-center">
+                Vhodné s nižším polštářem
+              </span>
+            </div>
+
+            <div class="bg-[#FFF1E8] rounded-2xl p-6 border border-[#F2644B]/30 flex flex-col justify-between">
+              <div>
+                <span class="text-xs uppercase tracking-wider font-semibold text-[#F2644B] block mb-2">Vysoká zátěž</span>
+                <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">Na břiše</h3>
+                <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                  Hlava je 7 hodin otočena o 90°, bedra v hyperlordóze. Způsobuje ranní ztuhlost šíje a tenzní bolesti.
+                </p>
+              </div>
+              <span class="text-xs font-semibold text-[#F2644B] bg-white px-2.5 py-1 rounded-full border border-[#F2644B]/30 inline-block text-center">
+                Nedoporučuje se při bolesti
+              </span>
+            </div>
+
+          </div>
+
+          <a href="/blog/nejlepsi-poloha-pri-spanku/" class="inline-flex items-center gap-2 text-[15px] font-semibold text-[#2F5941] hover:text-[#F2644B] link-underline">
+            Podrobný průvodce polohami při spaní a jejich korekcí →
+          </a>
+
+        </div>
+      </section>
+
+      {/* Mattress Guide */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            2. Matrace: základ správného nočního uložení
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Tvrdost matrace se musí odvíjet od tělesné hmotnosti a převládající polohy při spánku, nikoliv od marketingových tvrzení.
+          </p>
+
+          <div class="overflow-x-auto rounded-xl border border-[#DDE5DD] mb-8">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-[#F7F5EF] border-b border-[#DDE5DD]">
+                <tr>
+                  <th class="py-3.5 px-4 font-semibold text-[#18211C]">Poloha spánku</th>
+                  <th class="py-3.5 px-4 font-semibold text-[#18211C]">Doporučená tuhost</th>
+                  <th class="py-3.5 px-4 font-semibold text-[#18211C]">Biomechanický důvod</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#DDE5DD] text-[#66736A]">
+                <tr>
+                  <td class="py-3.5 px-4 font-medium text-[#18211C]">Na boku</td>
+                  <td class="py-3.5 px-4 font-semibold text-[#2F5941]">Středně měkká (H2–H3)</td>
+                  <td class="py-3.5 px-4">Rameno a pánev se musí mírně vtisknout, aby páteř zůstala v rovině.</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-medium text-[#18211C]">Na zádech</td>
+                  <td class="py-3.5 px-4 font-semibold text-[#2F5941]">Středně tvrdá (H3)</td>
+                  <td class="py-3.5 px-4">Pánev se nesmí propadat, bederní lordóza potřebuje stabilní oporu.</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-medium text-[#18211C]">Na břiše</td>
+                  <td class="py-3.5 px-4 font-semibold text-[#2F5941]">Tvrdší (H3–H4)</td>
+                  <td class="py-3.5 px-4">Zabraňuje nadměrnému prohnutí beder do matrace.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="bg-[#EAF4EE] border-l-4 border-[#2F5941] p-5 rounded-r-xl mb-6">
+            <p class="text-sm text-[#18211C]">
+              <strong>Kdy vyměnit matraci:</strong> Běžná životnost matrace je 7–10 let. Pokud má uprostřed viditelný průhyb nebo se po ránu cítíte ztuhlejší než večer, tělo již nemá oporu.
+            </p>
+          </div>
+
+          <a href="/blog/jak-vybrat-matraci/" class="inline-flex items-center gap-2 text-[15px] font-semibold text-[#2F5941] hover:text-[#F2644B] link-underline">
+            Kompletní průvodce výběrem matrace podle váhy a typu výplně →
+          </a>
+
+        </div>
+      </section>
+
+      {/* Pillow Height */}
+      <section class="w-full py-16 sm:py-20 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            3. Výška polštáře a krční lordóza
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Výška polštáře musí přesně vyplnit prostor mezi koncem ramene a uchem. Příliš vysoký polštář drží krk v předklonu, příliš nízký v úklonu.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 text-center">
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD]">
+              <h3 class="font-semibold text-[#18211C] mb-1">Spáč na boku</h3>
+              <p class="font-serif-editorial text-3xl font-bold text-[#2F5941] my-2">10–14 cm</p>
+              <p class="text-xs text-[#66736A]">Odpovídá šířce ramenního kloubu</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD]">
+              <h3 class="font-semibold text-[#18211C] mb-1">Spáč na zádech</h3>
+              <p class="font-serif-editorial text-3xl font-bold text-[#2F5941] my-2">7–10 cm</p>
+              <p class="text-xs text-[#66736A]">S anatomickou vlnou pod krkem</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-[#DDE5DD]">
+              <h3 class="font-semibold text-[#18211C] mb-1">Spáč na břiše</h3>
+              <p class="font-serif-editorial text-3xl font-bold text-[#2F5941] my-2">Minimální</p>
+              <p class="text-xs text-[#66736A]">Nízký polštář nebo bez polštáře</p>
+            </div>
+          </div>
+
+          <a href="/blog/spravny-polstar-pro-zdrava-zada/" class="inline-flex items-center gap-2 text-[15px] font-semibold text-[#2F5941] hover:text-[#F2644B] link-underline">
+            Průvodce výběrem anatomického polštáře z paměťové pěny →
+          </a>
+
+        </div>
+      </section>
+
+      {/* Cluster Articles */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941] block mb-2">
+            Článkový klastr
+          </span>
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
+            Všechny články o spánku a zádech
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {clusterArticles.map((article) => (
+              <a
+                href={article.href}
+                class="editorial-card group p-6 rounded-2xl bg-[#F7F5EF] border border-[#DDE5DD] hover:border-[#2F5941] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span class="text-xs font-mono text-[#66736A] block mb-2">{article.readTime}</span>
+                  <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-2">
+                    {article.title}
+                  </h3>
+                  <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                    {article.desc}
+                  </p>
+                </div>
+                <span class="text-xs font-semibold text-[#2F5941] group-hover:text-[#F2644B] inline-flex items-center gap-1 link-underline">
+                  Číst návod →
+                </span>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section class="w-full py-16 sm:py-20 bg-[#F7F5EF] border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8 text-center">
+            Časté otázky o spánku a regeneraci zad
+          </h2>
+
+          <div class="space-y-4">
+            {faqItems.map((item) => (
+              <details class="faq-item group bg-white rounded-xl border border-[#DDE5DD] p-6 text-left">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#18211C] text-[17px] focus:outline-none">
+                  <span>{item.question}</span>
+                  <span class="faq-icon text-[#2F5941] font-bold text-xl transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-4 text-[#66736A] leading-relaxed text-[15px] border-t border-[#DDE5DD] pt-4">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Pillar Cross-links CTA */}
+      <section class="w-full py-16 bg-[#173326] text-[#F7F5EF]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <h2 class="font-serif-editorial text-3xl font-bold mb-4">Bolí vás záda i během dne při sezení?</h2>
+          <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
+            Pokračujte na naše další klíčové průvodce ergonomií a cviky pro pracovní stůl.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/ergonomie-pracoviste/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">
+              Ergonomie pracoviště
+            </a>
+            <a href="/cviky-na-zada/" class="px-6 py-3.5 rounded-xl bg-[#2F5941] text-[#F7F5EF] font-semibold hover:bg-[#3d7053] transition-colors border border-[#C9DCCF]/30">
+              Cviky na záda
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

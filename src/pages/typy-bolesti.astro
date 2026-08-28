@@ -1,0 +1,315 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/template/Header';
+import { Footer } from '../components/template/Footer';
+
+const faqItems = [
+  {
+    question: 'Jak poznám, zda jde o svalové přetížení, nebo o ploténku?',
+    answer: 'Svalové přetížení se projevuje tupým tlakem a ztuhlostí, která se zhoršuje statickým sezením a zlepšuje mírným pohybem. Postižení ploténky (h carnage, protruze) často vyvolává ostrou, pálivou bolest vystřelující do nohy či paže, provázenou brněním nebo ztrátou citlivosti.'
+  },
+  {
+    question: 'Co je to syndrom horního zkřížení?',
+    answer: 'Jde o svalovou dysbalanci typickou pro práci u počítače. Vyznačuje se zkrácením prsních svalů a horních trapézů v kombinaci s oslabením mezilopatkových svalů a hlubokých flexorů krku, což vede k předsunutí hlavy a zakulacení ramen.'
+  },
+  {
+    question: 'Proč mě bolí v kříži po delším stání nebo chůzi?',
+    answer: 'Častou příčinou je překlopení pánve dopředu (hyperlordóza) způsobené zkrácenými flexory kyčlí ze sezení a ochablými hýžďovými a břišními svaly, které neposkytují oporu bedrům.'
+  },
+  {
+    question: 'Kdy je nutné při bolesti zad okamžitě volat lékaře?',
+    answer: 'Při ztrátě kontroly nad močením či stolicí, náhlé slabosti nohy (zakopávání špičkou), necitlivosti v oblasti rozkroku nebo při vystřelující bolesti provázené vysokou horečkou.'
+  }
+];
+
+const painTypes = [
+  {
+    id: 'krcni',
+    tag: 'Cervikální oblast',
+    title: 'Krční páteř a šíje',
+    desc: 'Tuhnutí trapézů, omezený rozsah otáčení hlavy a tenzní bolesti vystřelující do spánků.',
+    symptoms: ['Pocit tíhy na ramenou', 'Bolest hlavy v zátylku', 'Zhoršení při práci na notebooku'],
+    articleHref: '/bolest-krku-a-ramen/'
+  },
+  {
+    id: 'hrudni',
+    tag: 'Torakální oblast',
+    title: 'Hrudní páteř a mezi lopatkami',
+    desc: 'Pálivý tlak, bodání při hlubokém nádechu a pocit zablokovaného žebra z mělkého dýchání a předklonu.',
+    symptoms: ['Bodavá bolest pod lopatkou', 'Pálení při dlouhém sezení', 'Omezená rotace hrudníku'],
+    articleHref: '/blog/bolest-mezi-lopatkami/'
+  },
+  {
+    id: 'bederni',
+    tag: 'Lumbální oblast',
+    title: 'Bederní páteř a kříž',
+    desc: 'Nejčastější typ bolesti. Tupý tlak po probuzení, únava v bedrech při stání nebo akutní ústřel (houserec).',
+    symptoms: ['Ztuhlost při vstávání z židle', 'Tlak v kříži po chůzi', 'Úlevová poloha v lehu'],
+    articleHref: '/blog/cviky-na-uvolneni-bederni-patere/'
+  },
+  {
+    id: 'si-kloub',
+    tag: 'Pánevní pletenec',
+    title: 'Kostrč a SI skloubení',
+    desc: 'Jednostranná bodavá bolest v oblasti hýždě vystřelující do zadní strany stehna, často zaměňovaná za ischias.',
+    symptoms: ['Bolest při došlapu na jednu nohu', 'Potíže při vstávání ze sedu', 'Citlivost na dotek u křížové kosti'],
+    articleHref: '/blog/sedavy-zivotni-styl-jak-nici-zada-a-co-s-tim-delat/'
+  }
+];
+
+const clusterArticles = [
+  {
+    title: 'Příčiny a úleva od bolesti mezi lopatkami',
+    href: '/blog/bolest-mezi-lopatkami/',
+    readTime: '6 min čtení',
+    desc: 'Mechanismus zkrácených prsních svalů, blokád žeber a první pomoc u stolu.'
+  },
+  {
+    title: 'Cviky na uvolnění bederní páteře',
+    href: '/blog/cviky-na-uvolneni-bederni-patere/',
+    readTime: '6 min praxe',
+    desc: '5 rehabilitačních kroků pro dekompresi bederních plotének a stabilizaci pánve.'
+  },
+  {
+    title: 'Bolest zad v noci: proč vzniká a jak spát',
+    href: '/blog/bolest-zad-v-noci/',
+    readTime: '5 min čtení',
+    desc: 'Proč se ranní ztuhlost a noční buzení objevují i u mladých lidí a jak vybrat matraci.'
+  },
+  {
+    title: 'Bolest zad ze stresu a psychosomatika',
+    href: '/blog/bolest-zad-ze-stresu/',
+    readTime: '5 min čtení',
+    desc: 'Jak stažená bránice a stresový režim sympatiku vytvářejí svalový krunýř.'
+  }
+];
+---
+
+<Layout
+  title="Typy bolesti zad: rozdělení, příčiny a varovné signály | ZádaBezBolesti.cz"
+  description="Přehledný anatomický průvodce typy bolesti zad. Zjistěte původ bolesti v krku, mezi lopatkami, v bedrech či kříži a naučte se rozpoznat varovné signály."
+  faq={faqItems}
+  hideChrome={true}
+>
+  <div class="min-h-screen bg-[#F7F5EF] text-[#18211C] flex flex-col font-sans selection:bg-[#C9DCCF] selection:text-[#173326]">
+    <Header />
+    
+    <main class="flex-1">
+      {/* Editorial Hero Header */}
+      <section class="w-full pt-12 pb-16 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <nav aria-label="Drobečková navigace" class="mb-6">
+            <ol class="flex items-center gap-2 text-xs font-mono text-[#66736A]">
+              <li><a href="/" class="hover:text-[#2F5941] underline underline-offset-2">Domů</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="text-[#18211C] font-semibold" aria-current="page">Typy bolesti zad</li>
+            </ol>
+          </nav>
+
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#F2644B]"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
+              Tematický pilíř • Diagnostická mapa
+            </span>
+          </div>
+
+          <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
+            Typy bolesti zad: <br class="hidden sm:inline" />
+            jak rozpoznat příčinu a zvolit správný postup
+          </h1>
+
+          <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
+            Bolest zad není diagnóza, ale signál těla o přetížení konkrétního svalového, kloubního nebo vazivového segmentu. 
+            Správné určení lokality a charakteru bolesti je prvním krokem k bezpečné a trvalé úlevě.
+          </p>
+
+        </div>
+      </section>
+
+      {/* 4 Anatomical Pain Areas */}
+      <section class="w-full py-16 sm:py-20 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            1. Rozdělení bolesti podle anatomické lokality
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Každá část páteře má odlišnou biomechaniku, hybnost a náchylnost k jinému typu přetížení:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            {painTypes.map((area) => (
+              <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#DDE5DD] flex flex-col justify-between hover:border-[#2F5941] transition-all">
+                <div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-[#2F5941] block mb-2">{area.tag}</span>
+                  <h3 class="font-serif-editorial text-2xl font-semibold text-[#18211C] mb-3">{area.title}</h3>
+                  <p class="text-sm text-[#66736A] leading-relaxed mb-4">{area.desc}</p>
+                  
+                  <div class="space-y-1.5 mb-6 pt-3 border-t border-[#DDE5DD]">
+                    <span class="text-xs font-semibold text-[#18211C] block mb-1">Typické projevy:</span>
+                    {area.symptoms.map((s) => (
+                      <div class="flex items-center gap-2 text-xs text-[#66736A]">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#F2644B]"></span>
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  href={area.articleHref}
+                  class="btn-press w-full py-3 px-4 rounded-xl bg-[#EAF4EE] text-[#173326] font-semibold text-xs text-center hover:bg-[#2F5941] hover:text-[#F7F5EF] transition-colors inline-block"
+                >
+                  Zobrazit podrobného průvodce →
+                </a>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Red Flags / Varovné signály */}
+      <section class="w-full py-16 sm:py-20 bg-[#FFF1E8] border-b border-[#F2644B]/30">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <div class="flex items-center gap-2 mb-3 text-[#F2644B]">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#F2644B]"></span>
+            <span class="text-xs uppercase tracking-widest font-bold">Bezpečnostní filtr • Červené vlajky</span>
+          </div>
+
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-bold text-[#18211C] mb-4">
+            Kdy domácí cvičení odložit a vyhledat lékaře
+          </h2>
+
+          <p class="text-[16px] text-[#18211C]/90 leading-relaxed mb-8">
+            Ve většině případů (cca 90 %) jde o tzv. nespecifickou bolest zad způsobenou svalovým napětím. 
+            Při následujících příznacích však může jít o útlak nervového kořene nebo interní onemocnění:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white p-6 sm:p-8 rounded-2xl border border-[#F2644B]/30">
+            <div class="space-y-3">
+              <h3 class="font-bold text-base text-[#18211C]">Neurologické symptomy</h3>
+              <ul class="space-y-2 text-sm text-[#18211C]/80">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#F2644B] font-bold">•</span>
+                  <span>Ostrá bolest vystřelující pod koleno nebo do prstů ruky.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#F2644B] font-bold">•</span>
+                  <span>Náhlé oslabení svalů nohy (propadávání špičky při chůzi).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#F2644B] font-bold">•</span>
+                  <span>Ztráta citlivosti v oblasti hráze a porucha kontroly močení (syndrom cauda equina – volejte 155!).</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="font-bold text-base text-[#18211C]">Systémové a klidové příznaky</h3>
+              <ul class="space-y-2 text-sm text-[#18211C]/80">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#F2644B] font-bold">•</span>
+                  <span>Klidová bolest, která vás pravidelně budí ve druhé polovině noci.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#F2644B] font-bold">•</span>
+                  <span>Bolest zad provázená nevysvětlitelnou horečkou nebo nočním pocením.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#F2644B] font-bold">•</span>
+                  <span>Bolest vzniklá bezprostředně po pádu, úrazu či autonehodě.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Cluster Articles */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941] block mb-2">
+            Článkový klastr
+          </span>
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
+            Doporučené návody k jednotlivým typům bolesti
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {clusterArticles.map((article) => (
+              <a
+                href={article.href}
+                class="editorial-card group p-6 rounded-2xl bg-[#F7F5EF] border border-[#DDE5DD] hover:border-[#2F5941] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span class="text-xs font-mono text-[#66736A] block mb-2">{article.readTime}</span>
+                  <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-2">
+                    {article.title}
+                  </h3>
+                  <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                    {article.desc}
+                  </p>
+                </div>
+                <span class="text-xs font-semibold text-[#2F5941] group-hover:text-[#F2644B] inline-flex items-center gap-1 link-underline">
+                  Číst návod →
+                </span>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section class="w-full py-16 sm:py-20 bg-[#F7F5EF] border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8 text-center">
+            Časté otázky k typům bolesti zad
+          </h2>
+
+          <div class="space-y-4">
+            {faqItems.map((item) => (
+              <details class="faq-item group bg-white rounded-xl border border-[#DDE5DD] p-6 text-left">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#18211C] text-[17px] focus:outline-none">
+                  <span>{item.question}</span>
+                  <span class="faq-icon text-[#2F5941] font-bold text-xl transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-4 text-[#66736A] leading-relaxed text-[15px] border-t border-[#DDE5DD] pt-4">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Cross links CTA */}
+      <section class="w-full py-16 bg-[#173326] text-[#F7F5EF]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <h2 class="font-serif-editorial text-3xl font-bold mb-4">Víte, co vás trápí? Vyberte další krok</h2>
+          <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
+            Pokračujte na ucelené cvičební sestavy nebo si změřte správné ergonomické parametry stolu.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/cviky-na-zada/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">
+              Cviky na záda
+            </a>
+            <a href="/ergonomie-pracoviste/" class="px-6 py-3.5 rounded-xl bg-[#2F5941] text-[#F7F5EF] font-semibold hover:bg-[#3d7053] transition-colors border border-[#C9DCCF]/30">
+              Ergonomie pracoviště
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

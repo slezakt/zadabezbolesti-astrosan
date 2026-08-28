@@ -10,7 +10,6 @@ export const blockContent = defineType({
       type: 'block',
       styles: [
         { title: 'Běžný text', value: 'normal' },
-        { title: 'Nadpis H1', value: 'h1' },
         { title: 'Nadpis H2', value: 'h2' },
         { title: 'Nadpis H3', value: 'h3' },
         { title: 'Nadpis H4', value: 'h4' },
@@ -82,6 +81,64 @@ export const blockContent = defineType({
           name: 'caption',
           type: 'string',
           title: 'Popisek obrázku',
+        }),
+      ],
+    }),
+    defineArrayMember({
+      name: 'calloutBox',
+      type: 'object',
+      title: 'Tip / Upozornění (Callout)',
+      fields: [
+        defineField({
+          name: 'type',
+          type: 'string',
+          title: 'Typ boxu',
+          options: {
+            list: [
+              { title: 'Tip fyzioterapeuta', value: 'tip' },
+              { title: 'Důležité upozornění', value: 'warning' },
+              { title: 'Bezpečnostní doporučení', value: 'info' },
+            ],
+          },
+          initialValue: 'tip',
+        }),
+        defineField({
+          name: 'title',
+          type: 'string',
+          title: 'Nadpis boxu',
+        }),
+        defineField({
+          name: 'text',
+          type: 'text',
+          title: 'Text sdělení',
+          rows: 3,
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+    defineArrayMember({
+      name: 'exerciseCard',
+      type: 'object',
+      title: 'Karta cviku',
+      fields: [
+        defineField({
+          name: 'name',
+          type: 'string',
+          title: 'Název cviku',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'description',
+          type: 'text',
+          title: 'Popis provedení',
+          rows: 3,
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'reps',
+          type: 'string',
+          title: 'Počet opakování / doba',
+          placeholder: 'např. 3× 20 sekund',
         }),
       ],
     }),

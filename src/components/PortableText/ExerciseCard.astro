@@ -1,0 +1,30 @@
+---
+interface Props {
+  node: {
+    name: string;
+    description: string;
+    reps?: string;
+  };
+}
+
+const { node } = Astro.props;
+---
+
+<div class="bg-[#F7F5EF] rounded-2xl p-6 my-6 border border-[#DDE5DD] shadow-sm">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-3 border-b border-[#DDE5DD]">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-[#F2644B]"></span>
+      <h4 class="font-serif-editorial font-bold text-lg text-[#18211C] m-0">
+        {node.name}
+      </h4>
+    </div>
+    {node.reps && (
+      <span class="text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded bg-[#EAF4EE] text-[#2F5941] border border-[#C9DCCF]">
+        {node.reps}
+      </span>
+    )}
+  </div>
+  <p class="text-[15px] leading-relaxed text-[#66736A] m-0">
+    {node.description}
+  </p>
+</div>

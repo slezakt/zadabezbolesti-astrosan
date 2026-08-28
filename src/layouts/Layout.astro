@@ -11,20 +11,24 @@ interface Props {
   noindex?: boolean;
   schemaType?: 'WebSite' | 'Organization' | 'Article' | 'LocalBusiness';
   schemaData?: StructuredDataProps;
+  hideChrome?: boolean;
+  faq?: Array<{ question: string; answer: string }>;
 }
 
 const {
-  title = 'Astro & Sanity CMS Šablona',
-  description = 'Univerzální produkční šablona pro Astro 7 a Sanity CMS',
+  title = 'ZádaBezBolesti.cz – Zdravotní magazín a ergonomický nástroj',
+  description = 'Bezpečný první krok při bolesti zad. Praktické návody, ergonomická kalkulačka a ověřené cviky pro lidi se sedavým zaměstnáním.',
   noindex = false,
   schemaType = 'WebSite',
   schemaData = {},
+  hideChrome = false,
+  faq,
 } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
 ---
 
 <!doctype html>
-<html lang="cs">
+<html lang="cs" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,67 +50,142 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
     <meta property="og:url" content={canonicalUrl} />
 
     <!-- Strukturovaná data Schema.org -->
-    <SchemaOrg type={schemaType} title={title} description={description} {...schemaData} />
+    <SchemaOrg type={schemaType} title={title} description={description} faq={faq} {...schemaData} />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Fraunces & Hanken Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="bg-[#090d16] text-slate-200 min-h-screen flex flex-col antialiased">
+  <body class="bg-[#F7F5EF] text-[#18211C] min-h-screen flex flex-col antialiased selection:bg-[#C9DCCF] selection:text-[#18211C]">
     <div class="flex flex-col min-h-screen">
-      <header class="sticky top-0 z-50 bg-[#090d16]/80 backdrop-blur-md border-b border-white/10" x-data="{ mobileMenuOpen: false }">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
-          <a href="/" data-analytics-event="navigation_click" data-analytics-target-id="home" data-analytics-location="header" class="flex items-center gap-2 font-heading font-extrabold text-xl text-white">
-            <span class="bg-gradient-to-r from-indigo-500 to-purple-500 px-2 py-0.5 rounded text-xs text-white">Astro</span>
-            <span>Sanity</span>
-          </a>
+      {!hideChrome && (
+        <header class="sticky top-0 z-40 w-full bg-[#F7F5EF]/90 backdrop-blur-md border-b border-[#DDE5DD]/60" x-data="{ mobileMenuOpen: false }">
+          <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="group flex items-baseline gap-1.5 focus:outline-none" data-analytics-event="navigation_click" data-analytics-target-id="home" data-analytics-location="header">
+              <span class="font-serif-editorial text-2xl font-bold tracking-tight text-[#18211C]">
+                ZádaBezBolesti<span class="text-[#F2644B]">.cz</span>
+              </span>
+              <span class="hidden sm:inline-block text-[11px] uppercase tracking-wider text-[#66736A] font-medium border-l border-[#DDE5DD] pl-2.5 ml-1">
+                Zdravotní editorial
+              </span>
+            </a>
 
-          <button
-            class="md:hidden p-2 text-white border border-white/10 rounded-lg bg-slate-900/60"
-            @click="mobileMenuOpen = !mobileMenuOpen"
-            :aria-expanded="mobileMenuOpen"
-            aria-label="Přepnout menu"
-          >
-            <span x-text="mobileMenuOpen ? '✕' : '☰'"></span>
-          </button>
-
-          <ul
-            class="nav-links flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-slate-900 md:bg-transparent border-b border-white/10 md:border-none p-6 md:p-0 gap-4 md:gap-6 text-slate-300 font-medium md:flex"
-            :class="{ 'flex': mobileMenuOpen, 'hidden': !mobileMenuOpen }"
-          >
-            <li><a href="/" data-analytics-event="navigation_click" data-analytics-target-id="home" data-analytics-location="menu" class="hover:text-white transition">Domů</a></li>
-            <li><a href="/clanky/" data-analytics-event="navigation_click" data-analytics-target-id="articles" data-analytics-location="menu" class="hover:text-white transition">Články</a></li>
-            <li>
-              <a
-                href="/admin"
-                target="_blank"
-                class="bg-slate-800/80 border border-white/10 px-3.5 py-1.5 rounded-xl text-white hover:border-indigo-500 hover:shadow-[0_0_15px_rgba(99,102,241,0.3)] transition"
-              >
-                Administrace CMS
+            <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-[#18211C]">
+              <a href="/typy-bolesti/" class="hover:text-[#2F5941] link-underline">Bolesti zad</a>
+              <a href="/cviky-na-zada/" class="hover:text-[#2F5941] link-underline">Cviky</a>
+              <a href="/ergonomie-pracoviste/" class="hover:text-[#2F5941] link-underline">Ergonomie</a>
+              <a href="/zdravy-spanek/" class="hover:text-[#2F5941] link-underline">Spánek</a>
+              <a href="/nastroje/kalkulacka/" class="hover:text-[#2F5941] link-underline inline-flex items-center gap-1.5">
+                Kalkulačka
+                <span class="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#C9DCCF] text-[#173326] font-semibold">ISO</span>
               </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+              <a href="/blog/" class="hover:text-[#2F5941] link-underline">Magazín</a>
+            </nav>
 
-      <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10">
+            <div class="hidden sm:flex items-center gap-4">
+              <a
+                href="/#diagnostic"
+                class="btn-press inline-flex items-center justify-center px-5 py-2.5 rounded-[12px] bg-[#173326] text-[#F7F5EF] text-[15px] font-medium hover:bg-[#2F5941] transition-colors"
+              >
+                Najít pomoc
+              </a>
+            </div>
+
+            <button
+              class="lg:hidden p-2 text-[#18211C] hover:bg-[#EAF4EE] rounded-lg transition-colors"
+              @click="mobileMenuOpen = !mobileMenuOpen"
+              :aria-expanded="mobileMenuOpen"
+              aria-label="Přepnout menu"
+            >
+              <span x-text="mobileMenuOpen ? '✕' : '☰'" class="text-lg"></span>
+            </button>
+          </div>
+
+          <div
+            class="lg:hidden bg-[#F7F5EF] border-b border-[#DDE5DD] px-6 py-6"
+            x-show="mobileMenuOpen"
+            x-transition
+          >
+            <nav class="flex flex-col gap-4 text-lg font-medium text-[#18211C]">
+              <a href="/typy-bolesti/" class="py-1 hover:text-[#2F5941]">Bolesti zad</a>
+              <a href="/cviky-na-zada/" class="py-1 hover:text-[#2F5941]">Cviky na záda</a>
+              <a href="/ergonomie-pracoviste/" class="py-1 hover:text-[#2F5941]">Ergonomie pracoviště</a>
+              <a href="/zdravy-spanek/" class="py-1 hover:text-[#2F5941]">Zdravý spánek</a>
+              <a href="/nastroje/kalkulacka/" class="py-1 hover:text-[#2F5941]">Ergonomická kalkulačka</a>
+              <a href="/blog/" class="py-1 hover:text-[#2F5941]">Magazín a články</a>
+              <div class="pt-4 border-t border-[#DDE5DD]">
+                <a
+                  href="/#diagnostic"
+                  class="w-full block btn-press py-3 rounded-[12px] bg-[#173326] text-[#F7F5EF] text-center font-medium hover:bg-[#2F5941]"
+                >
+                  Najít pomoc podle bolesti
+                </a>
+              </div>
+            </nav>
+          </div>
+        </header>
+      )}
+
+      <main class:list={[{ "flex-1 max-w-7xl w-full mx-auto px-6 py-10": !hideChrome, "flex-1 w-full": hideChrome }]}>
         <slot />
       </main>
 
-      <footer class="border-t border-white/10 bg-slate-900/80 py-8 px-6 text-center text-slate-400 text-sm">
-        <div class="max-w-7xl mx-auto flex flex-col items-center gap-2">
-          <p>&copy; {new Date().getFullYear()} Astro & Sanity CMS Šablona. Všechna práva vyhrazena.</p>
-          <div class="flex gap-3 text-indigo-400 text-xs">
-            <a href="/llms.txt" target="_blank" class="hover:underline">AEO (llms.txt)</a> •
-            <a href="/rss.xml" target="_blank" class="hover:underline">RSS Feed</a> •
-            <a href="/sitemap-index.xml" target="_blank" class="hover:underline">Sitemap</a>
+      {!hideChrome && (
+        <footer class="w-full bg-[#EAF4EE] border-t border-[#DDE5DD] py-14 text-[#18211C] mt-auto">
+          <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#DDE5DD]">
+              <div class="md:col-span-5 flex flex-col">
+                <span class="font-serif-editorial text-2xl font-bold tracking-tight text-[#18211C] mb-3">
+                  ZádaBezBolesti<span class="text-[#F2644B]">.cz</span>
+                </span>
+                <p class="text-[14px] leading-relaxed text-[#66736A] max-w-sm mb-4">
+                  Prémiový digitální zdravotní průvodce a ergonomický kalkulátor. Pomáháme lidem se sedavým zaměstnáním udělat bezpečný první krok k úlevě od bolesti zad.
+                </p>
+                <div class="text-xs text-[#66736A]">
+                  Obsah je koncipován podle doporučení České fyzioterapeutické společnosti a standardů ISO 9241.
+                </div>
+              </div>
+
+              <div class="md:col-span-3 flex flex-col">
+                <span class="text-xs uppercase tracking-widest font-semibold text-[#173326] mb-4">Sekce a témata</span>
+                <ul class="space-y-2.5 text-[14px] text-[#18211C]">
+                  <li><a href="/typy-bolesti/" class="hover:text-[#2F5941] link-underline">Bolesti zad a příčiny</a></li>
+                  <li><a href="/cviky-na-zada/" class="hover:text-[#2F5941] link-underline">Cviky a mobilita u stolu</a></li>
+                  <li><a href="/ergonomie-pracoviste/" class="hover:text-[#2F5941] link-underline">Ergonomie stolu a židle</a></li>
+                  <li><a href="/zdravy-spanek/" class="hover:text-[#2F5941] link-underline">Zdravý spánek a regenerace</a></li>
+                  <li><a href="/blog/" class="hover:text-[#2F5941] link-underline font-medium">Magazín a články</a></li>
+                </ul>
+              </div>
+
+              <div class="md:col-span-4 flex flex-col">
+                <span class="text-xs uppercase tracking-widest font-semibold text-[#173326] mb-4">Nástroje a bezpečí</span>
+                <ul class="space-y-2.5 text-[14px] text-[#18211C] mb-6">
+                  <li><a href="/nastroje/kalkulacka/" class="hover:text-[#2F5941] link-underline font-medium">Ergonomická kalkulačka (ISO)</a></li>
+                  <li><a href="/rizikove-faktory/" class="text-[#F2644B] hover:text-[#173326] link-underline font-medium">Varovné signály a kdy volat lékaře</a></li>
+                </ul>
+                <div class="bg-[#F7F5EF] p-4 rounded-xl border border-[#DDE5DD] text-xs text-[#66736A] leading-relaxed">
+                  <strong>Upozornění:</strong> Informace na tomto webu mají výhradně edukativní charakter a v žádném případě nenahrazují odborné lékařské vyšetření ani individuální fyzioterapii. Akutní nesnesitelná bolest vyžaduje linku 155.
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#66736A] gap-4">
+              <div>
+                © {new Date().getFullYear()} ZádaBezBolesti.cz. Všechna práva vyhrazena.
+              </div>
+              <div class="flex gap-3 text-[#2F5941] text-xs">
+                <a href="/llms.txt" target="_blank" class="hover:underline">AEO (llms.txt)</a> •
+                <a href="/rss.xml" target="_blank" class="hover:underline">RSS Feed</a> •
+                <a href="/sitemap-index.xml" target="_blank" class="hover:underline">Sitemap</a>
+              </div>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
 
     <Analytics />

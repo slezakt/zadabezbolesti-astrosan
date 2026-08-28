@@ -1,6 +1,8 @@
-# Astro + Sanity starter
+# Záda bez bolesti redesign
 
-Praktický produkční základ pro malé a střední klientské weby. Starter upřednostňuje rychlost výroby, spolehlivost, SEO, jednoduchou správu obsahu, měřitelné výsledky a nízké provozní náklady.
+Klientský projekt založený ze starteru `astrosan` pro redesign webu `zadabezbolesti.cz`.
+
+Projekt zachovává upstream workflow vůči mateřskému starteru, aby šly přenášet opravy a vylepšení z `astrosan` bez zbytečných konfliktů.
 
 ## Co obsahuje
 

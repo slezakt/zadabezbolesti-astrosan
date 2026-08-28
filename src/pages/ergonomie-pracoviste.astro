@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/template/Header';
+import { Footer } from '../components/template/Footer';
+import { ErgonomicCalculator } from '../components/template/ErgonomicCalculator';
+
+const faqItems = [
+  {
+    question: 'Jaká je ideální výška pracovního stolu pro sezení?',
+    answer: 'Ideální výška desky stolu závisí na výšce vaší postavy. Při sezení by měla odpovídat výšce vašich loktů v úhlu 90° při uvolněných ramenech (např. 72 cm pro výšku 175 cm).'
+  },
+  {
+    question: 'Jak vysoko má být horní hrana monitoru?',
+    answer: 'Horní hrana zobrazovací plochy má být přesně v horizontální rovině vašich očí. Oči přirozeně hledí mírně dolů (úhel 15–20°), což zabraňuje přetížení šíje.'
+  },
+  {
+    question: 'Má smysl pracovat celý den ve stoje?',
+    answer: 'Ne. Celodenní stání přetěžuje plosky nohou a bederní lordózu. Ideální rytmus podle ergonomické normy ISO 9241 je střídání 45 minut dynamického sedu a 15 minut práce ve stoje.'
+  },
+  {
+    question: 'Jak poznám, že mám špatně nastavenou židli?',
+    answer: 'Pokud vám nohy visí ve vzduchu (tlak na stehna), opěradlo vás nutí sedět v záklonu nebo vás bolí bedra po 30 minutách, židle není nastavena na vaše tělesné proporce.'
+  }
+];
+
+const clusterArticles = [
+  {
+    title: 'Ideální nastavení monitoru: výška, vzdálenost, sklon',
+    href: '/blog/idealni-nastaveni-monitoru-vyska-vzdalenost-sklon/',
+    readTime: '5 min čtení',
+    desc: 'Podrobný průvodce umístěním jednoho i dvou monitorů pro úlevu od bolesti krční páteře.'
+  },
+  {
+    title: 'Jak správně sedět u počítače krok za krokem',
+    href: '/blog/jak-spravne-sedet-u-pocitace/',
+    readTime: '6 min čtení',
+    desc: 'Kompletní ergonomický návod na nastavení židle, područek, bederní opěrky a nohou.'
+  },
+  {
+    title: 'Polohovací stoly a střídání sedu a stoje',
+    href: '/blog/vyskove-nastavitelny-stul-pruvodce/',
+    readTime: '4 min čtení',
+    desc: 'Jak nastavit výšku stolu pro práci ve stoje a pravidlo 45/15 v praxi.'
+  },
+  {
+    title: 'Monitor vs. laptop: proč samotný notebook ničí záda',
+    href: '/blog/monitor-vs-laptop-zada/',
+    readTime: '5 min čtení',
+    desc: 'Proč práce s notebookem na klíně vede k syndromu horního zkřížení a jak to vyřešit.'
+  }
+];
+---
+
+<Layout
+  title="Ergonomie pracoviště: nastavení stolu, židle a monitoru | ZádaBezBolesti.cz"
+  description="Vědecky přesný návod na ergonomické nastavení pracovního místa. Zjistěte ideální výšku stolu, židle a monitoru podle své výšky s naší interaktivní kalkulačkou."
+  faq={faqItems}
+  hideChrome={true}
+>
+  <div class="min-h-screen bg-[#F7F5EF] text-[#18211C] flex flex-col font-sans selection:bg-[#C9DCCF] selection:text-[#173326]">
+    <Header />
+    
+    <main class="flex-1">
+      {/* Editorial Hero Header */}
+      <section class="w-full pt-12 pb-16 border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <nav aria-label="Drobečková navigace" class="mb-6">
+            <ol class="flex items-center gap-2 text-xs font-mono text-[#66736A]">
+              <li><a href="/" class="hover:text-[#2F5941] underline underline-offset-2">Domů</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="text-[#18211C] font-semibold" aria-current="page">Ergonomie pracoviště</li>
+            </ol>
+          </nav>
+
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
+              Tematický pilíř • Ergonomický standard ISO 9241
+            </span>
+          </div>
+
+          <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
+            Ergonomie pracoviště: <br class="hidden sm:inline" />
+            nastavte svůj stůl, židli a monitor na milimetr přesně
+          </h1>
+
+          <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
+            Většina bolestí zad při práci u počítače nevzniká slabým svalstvem, ale statickým přetížením 
+            v nevhodných úhlech. Zde najdete přesné parametry vycházející z biomechanických norem.
+          </p>
+
+        </div>
+      </section>
+
+      {/* Embedded Interactive Calculator */}
+      <div class="border-b border-[#DDE5DD]">
+        <ErgonomicCalculator client:visible />
+      </div>
+
+      {/* Reference ISO Table */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
+            Přehledná tabulka ergonomických výšek (pro sed i stoj)
+          </h2>
+          <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
+            Referenční hodnoty vycházející z evropské normy EN 527 a ISO 9241 pro tělesné proporce:
+          </p>
+
+          <div class="overflow-x-auto rounded-xl border border-[#DDE5DD] mb-8">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-[#F7F5EF] border-b border-[#DDE5DD]">
+                <tr>
+                  <th class="py-3.5 px-4 font-semibold text-[#18211C]">Výška postavy</th>
+                  <th class="py-3.5 px-4 font-semibold text-[#18211C]">Výška sedáku</th>
+                  <th class="py-3.5 px-4 font-semibold text-[#18211C]">Výška stolu (sed)</th>
+                  <th class="py-3.5 px-4 font-semibold text-[#18211C]">Výška stolu (stoj)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#DDE5DD] text-[#66736A]">
+                <tr>
+                  <td class="py-3.5 px-4 font-medium text-[#18211C]">160 cm</td>
+                  <td class="py-3.5 px-4">40–42 cm</td>
+                  <td class="py-3.5 px-4 font-semibold text-[#2F5941]">65–68 cm</td>
+                  <td class="py-3.5 px-4">98–102 cm</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-medium text-[#18211C]">170 cm</td>
+                  <td class="py-3.5 px-4">43–45 cm</td>
+                  <td class="py-3.5 px-4 font-semibold text-[#2F5941]">70–73 cm</td>
+                  <td class="py-3.5 px-4">105–109 cm</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-medium text-[#18211C]">180 cm</td>
+                  <td class="py-3.5 px-4">46–48 cm</td>
+                  <td class="py-3.5 px-4 font-semibold text-[#2F5941]">74–77 cm</td>
+                  <td class="py-3.5 px-4">112–116 cm</td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-4 font-medium text-[#18211C]">190 cm</td>
+                  <td class="py-3.5 px-4">49–52 cm</td>
+                  <td class="py-3.5 px-4 font-semibold text-[#2F5941]">78–82 cm</td>
+                  <td class="py-3.5 px-4">119–123 cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Cluster Articles */}
+      <section class="w-full py-16 sm:py-20 bg-[#F7F5EF] border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941] block mb-2">
+            Článkový klastr
+          </span>
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
+            Všechny články o ergonomii pracoviště
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {clusterArticles.map((article) => (
+              <a
+                href={article.href}
+                class="editorial-card group p-6 rounded-2xl bg-white border border-[#DDE5DD] hover:border-[#2F5941] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span class="text-xs font-mono text-[#66736A] block mb-2">{article.readTime}</span>
+                  <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-2">
+                    {article.title}
+                  </h3>
+                  <p class="text-sm text-[#66736A] leading-relaxed mb-4">
+                    {article.desc}
+                  </p>
+                </div>
+                <span class="text-xs font-semibold text-[#2F5941] group-hover:text-[#F2644B] inline-flex items-center gap-1 link-underline">
+                  Číst návod →
+                </span>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section class="w-full py-16 sm:py-20 bg-white border-b border-[#DDE5DD]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8">
+          
+          <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8 text-center">
+            Časté dotazy k ergonomii pracoviště
+          </h2>
+
+          <div class="space-y-4">
+            {faqItems.map((item) => (
+              <details class="faq-item group bg-[#F7F5EF] rounded-xl border border-[#DDE5DD] p-6 text-left">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#18211C] text-[17px] focus:outline-none">
+                  <span>{item.question}</span>
+                  <span class="faq-icon text-[#2F5941] font-bold text-xl transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-4 text-[#66736A] leading-relaxed text-[15px] border-t border-[#DDE5DD] pt-4">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Cross links CTA */}
+      <section class="w-full py-16 bg-[#173326] text-[#F7F5EF]">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <h2 class="font-serif-editorial text-3xl font-bold mb-4">Máte správně nastavený stůl? Začněte s pohybem</h2>
+          <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
+            Prohlédněte si rehabilitační cviky a dechové techniky, které můžete provádět přímo u stolu.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/cviky-na-zada/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">
+              Cviky na záda
+            </a>
+            <a href="/zdravy-spanek/" class="px-6 py-3.5 rounded-xl bg-[#2F5941] text-[#F7F5EF] font-semibold hover:bg-[#3d7053] transition-colors border border-[#C9DCCF]/30">
+              Zdravý spánek
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </div>
+</Layout>

@@ -11,12 +11,12 @@ const reference = node.markDef.reference;
 
 let href = '#';
 if (reference?.slug) {
-  if (reference._type === 'post') {
-    href = `/clanky/${reference.slug}`;
+  if (reference._type === 'post' || (reference._type as string) === 'article') {
+    href = `/blog/${reference.slug}/`;
   } else if (reference._type === 'page') {
-    href = reference.slug === 'index' || reference.slug === 'home' ? '/' : `/${reference.slug}`;
+    href = reference.slug === 'index' || reference.slug === 'home' ? '/' : `/${reference.slug}/`;
   } else {
-    href = `/${reference.slug}`;
+    href = `/${reference.slug}/`;
   }
 }
 ---

@@ -25,11 +25,12 @@ const fail = (message) => { console.error(`[predeploy] ${message}`); errors += 1
 
 for (const file of htmlFiles) {
   const relative = path.relative(root, file).replaceAll('\\', '/');
-  const pathname = relative === 'index.html' ? '/' : `/${relative.replace(/index\.html$/, '')}`;
+  const pathname = relative === 'index.html' ? '/' : `/${relative.replace(/\/?index\.html$/, '')}/`;
   const html = fs.readFileSync(file, 'utf8');
   const isStudio = pathname === '/admin/' || pathname.startsWith('/admin/');
-  if (!isStudio && pathname !== '/404.html' && !/<link[^>]+rel=["']canonical["']/i.test(html)) fail(`${relative}: missing canonical.`);
-  if (!isStudio && !/<script[^>]+type=["']application\/ld\+json["']/i.test(html)) fail(`${relative}: missing JSON-LD.`);
+  const isRedirect = /http-equiv=["']refresh["']/i.test(html) || /<meta[^>]+content=["'][^"']*url=/i.test(html);
+  if (!isStudio && !isRedirect && pathname !== '/404.html' && !/<link[^>]+rel=["']canonical["']/i.test(html)) fail(`${relative}: missing canonical.`);
+  if (!isStudio && !isRedirect && !/<script[^>]+type=["']application\/ld\+json["']/i.test(html)) fail(`${relative}: missing JSON-LD.`);
   for (const match of html.matchAll(/<a[^>]+href=["']([^"']+)["']/gi)) {
     const href = match[1];
     if (/^(?:https?:|mailto:|tel:|javascript:|#)/.test(href)) continue;

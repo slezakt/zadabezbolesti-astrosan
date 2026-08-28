@@ -1,0 +1,1022 @@
+[
+  {
+    "id": "002ecdd3-2c0b-48da-8ff5-92517f1678f4",
+    "title": "Rizikové faktory",
+    "slug": "rizikove-faktory",
+    "content": [
+      {
+        "_key": "2e433e4d2598-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "2e433e4d2598-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Sedavé zaměstnání"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "9e660de13bd7",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "7a2d6f726c78",
+            "_type": "span",
+            "marks": [],
+            "text": "Dlouhé sezení zvyšuje tlak na ploténky, oslabuje hluboké svaly trupu a zhoršuje cirkulaci. Nejvíce trpí dolní část zad a krční páteř. Riziko roste po 6–8 hodinách denně bez pohybu."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "125149a15049-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "125149a15049-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Špatné držení těla"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "162bd446ab4d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "5a00d74552a9",
+            "_type": "span",
+            "marks": [],
+            "text": "Hrbění, předsunutá hlava a spadlá ramena vytváří dlouhodobé přetížení krční a hrudní páteře. Postupně se zkracují svaly na přední straně těla a oslabují mezilopatkové svaly."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "3117aca98073-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "3117aca98073-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Nedostatek pohybu"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "98fd296f8319",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "c9e1c5818314",
+            "_type": "span",
+            "marks": [],
+            "text": "Páteř potřebuje pohyb — bez něj tuhnou klouby, oslabují stabilizační svaly a zhoršuje se celková flexibilita. I 15 minut aktivního pohybu denně dokáže snížit bolestivost."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "0dafecbe1fef-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "0dafecbe1fef-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Nadváha"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "5523e2e176a6",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "bf2ab8abbd45",
+            "_type": "span",
+            "marks": [],
+            "text": "Vyšší tělesná hmotnost zvyšuje tlak na bederní páteř, kyčle i kolena. Zároveň podporuje zánět, který může bolest zad zhoršovat. I malá redukce váhy přináší velkou úlevu."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "2aa52517ad20-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "2aa52517ad20-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Stres"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "b63ae7482a07",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "32f4cd3de2ba",
+            "_type": "span",
+            "marks": [],
+            "text": "Při stresu se automaticky aktivují trapézy, ztuhne šíje a zhorší se dýchání. Dlouhodobé napětí často vede k bolestem hlavy, krčních svalů a mezilopatkové oblasti."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "ac2b1b246b97-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "ac2b1b246b97-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Špatný spánek"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "360c2e3ed3a8",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "71dba2a5ee91",
+            "_type": "span",
+            "marks": [],
+            "text": "Nekvalitní spánek zhoršuje regeneraci svalů i nervového systému. Tělo si hůře poradí s bolestí a zánětem. Ranní ztuhlost zad je jedním z nejčastějších projevů."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "faq": [],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Nejčastější rizikové faktory bolesti zad: sedavé zaměstnání, špatné držení těla, nedostatek pohybu, nadváha, stres a špatný spánek. Zjisti, co je způsobuje a jak je můžeš začít řešit.",
+      "metaTitle": "Rizikové faktory bolesti zad – sedavé zaměstnání, držení těla, stres | ZádaBezBolesti.cz"
+    }
+  },
+  {
+    "id": "2d2bc4f3-de7b-442f-b177-886e5f562859",
+    "title": "Odborný průvodce pro život bez bolesti zad",
+    "slug": "home",
+    "content": [
+      {
+        "_key": "h1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s1",
+            "_type": "span",
+            "marks": [],
+            "text": "ZádaBezBolesti.cz je nezávislý zdravotní a ergonomický portál zaměřený na prevenci, diagnostiku a úlevu od bolestí pohybového aparátu způsobených sedavým zaměstnáním a stresem."
+          }
+        ]
+      }
+    ],
+    "faq": [],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Praktické návody, cviky a ergonomické tipy, které ti pomohou zbavit se bolesti zad při práci u počítače. Zlepši své držení těla a posil zdravější návyky.",
+      "metaTitle": "ZádaBezBolesti.cz – Jak žít bez bolesti zad u počítače"
+    }
+  },
+  {
+    "id": "378df0f2-aa01-4981-913e-0a8e4132db47",
+    "title": "Proč nás bolí záda: Hlavní příčiny a mechanismy přetížení",
+    "slug": "proc-nas-boli-zada",
+    "content": [
+      {
+        "_key": "pnbz-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s1",
+            "_type": "span",
+            "marks": [],
+            "text": "Lidské tělo je evolučně uzpůsobeno k neustálé chůzi a různorodému pohybu. Dnešní sedavý způsob života, kdy trávíme 8–12 hodin denně ve statickém sedu u počítače, v autě nebo na gauči, představuje pro páteř extrémní nepřirozenou zátěž."
+          }
+        ]
+      },
+      {
+        "_key": "pnbz-2",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s2",
+            "_type": "span",
+            "marks": [],
+            "text": "1. Svalová atrofie a ztráta hluboké stabilizace"
+          }
+        ]
+      },
+      {
+        "_key": "pnbz-3",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s3",
+            "_type": "span",
+            "marks": [],
+            "text": "Při pasivním sezení svaly trupu „usínají“. Hluboké stabilizátory (m. transversus abdominis, mm. multifidi, bránice) přestávají držet obratle ve správné pozici. Tuto stabilizační roli pak přebírají povrchové svaly, které na to nejsou stavěné, a dochází k jejich bolestivému reflexnímu spazmu."
+          }
+        ]
+      },
+      {
+        "_key": "pnbz-4",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s4",
+            "_type": "span",
+            "marks": [],
+            "text": "2. Dehydratace a výhřez meziobratlových plotének"
+          }
+        ]
+      },
+      {
+        "_key": "pnbz-5",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s5",
+            "_type": "span",
+            "marks": [],
+            "text": "Meziobratlové ploténky nemají vlastní cévní zásobení. Jejich výživa probíhá difúzí – jako houba nasávají živiny při střídání zátěže a odlehčení. Celodenní statický tlak brání regeneraci, ploténky ztrácejí vodu, stávají se křehkými a může dojít k protruzi (vyklenutí) nebo výhřezu."
+          }
+        ]
+      },
+      {
+        "_key": "pnbz-6",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s6",
+            "_type": "span",
+            "marks": [],
+            "text": "3. Předsunuté držení hlavy (Forward head posture)"
+          }
+        ]
+      },
+      {
+        "_key": "pnbz-7",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s7",
+            "_type": "span",
+            "marks": [],
+            "text": "Lidská hlava váží průměrně 5 kg. S každým centimetrem posunu brady vpřed k monitoru roste efektivní zátěž na krční obratle až na trojnásobek. Výsledkem jsou bolesti krku, zablokovaná žebra a tenzní bolesti hlavy."
+          }
+        ]
+      }
+    ],
+    "faq": [],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Objevte 5 hlavních důvodů, proč vzniká bolest zad při práci u počítače. Pochopte příčinu a začněte ji řešit efektivně dříve, než bude pozdě.",
+      "metaTitle": "Proč vás bolí záda? 5 hlavních rizikových faktorů (A jak je zastavit)"
+    }
+  },
+  {
+    "id": "7e22925e-b782-4aa5-baed-81288c65ffd2",
+    "title": "Ergonomie",
+    "slug": "ergonomie-pracoviste",
+    "content": [
+      {
+        "_key": "040f964850a2",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "9a543e6f6497",
+            "_type": "span",
+            "text": "Ergonomie."
+          }
+        ],
+        "markDefs": null,
+        "style": "normal"
+      }
+    ],
+    "faq": [],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Kompletní průvodce ergonomií pracoviště. Správné nastavení stolu, židle a monitoru krok za krokem. Interaktivní checklist + české normy a legislativa.",
+      "metaTitle": "Ergonomie pracoviště: Jak správně nastavit pracovní stůl (průvodce 2026)"
+    }
+  },
+  {
+    "id": "80777bb1-67b7-4df4-84d6-4ea8d019976e",
+    "title": "Cviky",
+    "slug": "cviky-na-zada",
+    "content": [
+      {
+        "_key": "d880a448b46b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "59fbed0a5b5e",
+            "_type": "span",
+            "marks": [],
+            "text": "Cviky"
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "faq": [],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Hledáte účinné cviky na záda? Připravili jsme pro vás srozumitelný návod na cviky, které zvládnete i u pracovního stolu. Začněte se cítit lépe!",
+      "metaTitle": "7 nejlepších cviků na záda (2026): Rychlá úleva od bolesti v kanceláři"
+    }
+  },
+  {
+    "id": "c764e495-0e94-465c-8387-8277d7f81ca3",
+    "title": "O projektu",
+    "slug": "o-projektu",
+    "content": [
+      {
+        "_key": "bb96987767b2-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "bb96987767b2-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Proč tento projekt vznikl"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "f2fe8822b644",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "3a2b2a747774",
+            "_type": "span",
+            "marks": [],
+            "text": "Dlouhé sezení, práce na počítači a nedostatek pohybu se u většiny lidí dříve nebo později projeví bolestí zad."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "5b353313836b",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "3a2b2a747774",
+            "_type": "span",
+            "marks": [
+              "strong"
+            ],
+            "text": "ZádaBezBolesti.cz"
+          },
+          {
+            "_key": "f4856394a699",
+            "_type": "span",
+            "marks": [],
+            "text": " vznikla jako snaha vytvořit přehledné místo, kde jsou tyto informace vysvětlené jasně, stručně a bez složitého odborného jazyka."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "e14c0797dc15",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "3a2b2a747774",
+            "_type": "span",
+            "marks": [],
+            "text": "Nejde o zdravotnický web nebo odbornou poradnu — pouze o srozumitelný přehled toho, co si může každý v rámci svého dne ovlivnit sám."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "0fd9dfa404f2-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "0fd9dfa404f2-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Pro koho ZádaBezBolesti.cz je"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "49c557fd109d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "0e5e8791433b",
+            "_type": "span",
+            "marks": [],
+            "text": "Pro každého, kdo tráví velkou část dne u počítače a začíná cítit, že jeho záda nejsou z toho nadšená."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "573db0a22188",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "0e5e8791433b",
+            "_type": "span",
+            "marks": [],
+            "text": "Projekt je určen lidem, kteří chtějí porozumět základním příčinám bolesti, najít praktické tipy a zařadit jednoduché cviky nebo drobné změny v ergonomii."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "124e433a2584-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "124e433a2584-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Kdo za projektem stojí"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "91ad7d2be76d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "cbc2ed8738c9",
+            "_type": "span",
+            "marks": [],
+            "text": "Projekt vznikl jako osobní iniciativa s cílem pomoci lidem lépe se orientovat v tématu bolestí zad způsobených sedavým životním stylem."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "ea2ee5d90750",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "cbc2ed8738c9",
+            "_type": "span",
+            "marks": [],
+            "text": "Nejedná se o zdravotnický web a neposkytujeme zdravotní rady — cílem je nabídnout přehledné informace, které mohou být užitečné při úvahách o změně návyků nebo pracovního prostředí."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "faq": [],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Příběh projektu zaměřeného na úlevu od bolesti zad při práci na počítači. Jednoduché rady, prevence, ergonomie a zdravé návyky.",
+      "metaTitle": "O projektu ZádaBezBolesti.cz – proč vznikl a komu pomáhá"
+    }
+  },
+  {
+    "id": "ca6f966b-1942-4b49-86c8-75d56152d9eb",
+    "title": "Příčiny bolesti zad: Proč k přetížení dochází",
+    "slug": "priciny",
+    "content": [
+      {
+        "_key": "pr1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s1",
+            "_type": "span",
+            "marks": [],
+            "text": "Bolest zad je ve více než 85 % případů tzv. nespecifická – nevzniká poškozením kostní struktury, ale funkční poruchou pohybového aparátu v důsledku chronického statického přetěžování."
+          }
+        ]
+      },
+      {
+        "_key": "pr2",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s2",
+            "_type": "span",
+            "marks": [],
+            "text": "1. Svalové dysbalance a zkřížené syndromy"
+          }
+        ]
+      },
+      {
+        "_key": "pr3",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s3",
+            "_type": "span",
+            "marks": [],
+            "text": "Při celodenním sezení se zkracují svaly na přední straně těla (prsní svaly, flexory kyčlí) a ochabují svaly na zadní straně (mezilopatkové svaly, hýždě). Vzniká tzv. horní a dolní zkřížený syndrom podle profesora Jandy."
+          }
+        ]
+      },
+      {
+        "_key": "pr4",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s4",
+            "_type": "span",
+            "marks": [],
+            "text": "2. Hydrostatický tlak na meziobratlové ploténky"
+          }
+        ]
+      },
+      {
+        "_key": "pr5",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s5",
+            "_type": "span",
+            "marks": [],
+            "text": "Ve vzpřímeném stoji je tlak v bederních ploténkách 100 %. Při pasivním sezení s vyhrbenými zády stoupá tento tlak až na 190 %. Dochází k dehydrataci plotének a postupnému tlaku na nervové kořeny."
+          }
+        ]
+      },
+      {
+        "_key": "pr6",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s6",
+            "_type": "span",
+            "marks": [],
+            "text": "3. Psychický stres a hypertonus"
+          }
+        ]
+      },
+      {
+        "_key": "pr7",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s7",
+            "_type": "span",
+            "marks": [],
+            "text": "Stres vyplavuje kortizol a adrenalin, které vyvolávají evoluční obrannou reakci „útok nebo útěk“. Svaly šíje a beder se sevřou, což omezí mikrocirkulaci a způsobí chronickou bolest."
+          }
+        ]
+      }
+    ],
+    "faq": [],
+    "seo": {}
+  },
+  {
+    "id": "ce7c3147-f7ab-40dc-9829-b691565a547b",
+    "title": "Jak se zbavit bolesti zad: Ucelený průvodce od akutní fáze po prevenci",
+    "slug": "jak-se-zbavit-bolesti-zad",
+    "content": [
+      {
+        "_key": "zb1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s1",
+            "_type": "span",
+            "marks": [],
+            "text": "Zbavit se bolesti zad vyžaduje systematický přístup. Léky tlumí pouze signál v mozku, ale neodstraňují příčinu – svalovou dysbalanci, přetížení plotének nebo špatné ergonomické návyky. Úspěšný proces léčby dělíme do 3 navazujících fází."
+          }
+        ]
+      },
+      {
+        "_key": "zb2",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s2",
+            "_type": "span",
+            "marks": [],
+            "text": "Fáze 1: Akutní úleva a zklidnění (Prvních 24–48 hodin)"
+          }
+        ]
+      },
+      {
+        "_key": "zb3",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s3",
+            "_type": "span",
+            "marks": [],
+            "text": "Při náhlém ústřelu nebo prudké bolesti zapomeňte na silové protahování. Klíčem je úlevová poloha (poloha psoas – leh na zádech s nohama položenýma na židli v úhlu 90° v kyčlích i kolenou). Suché teplo a klidový režim umožní zklidnění reflexního svalového spazmu."
+          }
+        ]
+      },
+      {
+        "_key": "zb4",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s4",
+            "_type": "span",
+            "marks": [],
+            "text": "Fáze 2: Jemná mobilizace a obnova pohyblivosti"
+          }
+        ]
+      },
+      {
+        "_key": "zb5",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s5",
+            "_type": "span",
+            "marks": [],
+            "text": "Jakmile odezní nejostřejší bolest (zpravidla po 2–3 dnech), je nutné začít s lehkým pohybem. Klid na lůžku delší než 48 hodin prokazatelně prodlužuje dobu rekonvalescence. Zařaďte jemné kroužení pánví, kočičí hřbet v malém rozsahu a krátké procházky po rovném terénu."
+          }
+        ]
+      },
+      {
+        "_key": "zb6",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "zb6s",
+            "_type": "span",
+            "marks": [],
+            "text": "Fáze 3: Dlouhodobé posílení středu těla (HSS) a ergonomie"
+          }
+        ]
+      },
+      {
+        "_key": "zb7",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "zb7s",
+            "_type": "span",
+            "marks": [],
+            "text": "Prevence recidivy stojí na aktivaci hlubokého stabilizačního systému – bránice, příčného svalu břišního (m. transversus abdominis) a pánevního dna. Současně je nutné optimalizovat pracovní místo: správná výška stolu, monitor v úrovni očí a pravidelné střídání poloh."
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Mám při bolesti zad ležet v posteli?",
+        "answer": "Pouze v nejnutnější akutní fázi (maximálně 1–2 dny). Dlouhý klid na lůžku vede k atrofii stabilizátorů a prodlužuje ztuhlost. Co nejdříve zařaďte chůzi a šetrný pohyb."
+      },
+      {
+        "question": "Pomůže masáž?",
+        "answer": "Masáž je skvělá pro uvolnění povrchového svalového napětí v subakutní fázi. Neřeší však hlubokou stabilizaci páteře, kterou je nutné vybudovat aktivním cvičením."
+      }
+    ],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Nauč se techniky, které opravdu fungují: krátkodobá úleva, dlouhodobá prevence, posílení středu těla a správné ergonomické návyky u počítače.",
+      "metaTitle": "Jak se zbavit bolesti zad – rychlá úleva i dlouhodobé řešení"
+    }
+  },
+  {
+    "id": "e0c02a6c-91db-4cba-a719-eaa894bfabcd",
+    "title": "Typy bolesti zad",
+    "slug": "typy-bolesti",
+    "content": [
+      {
+        "_key": "5467cb33e526-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "5467cb33e526-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Krční páteř"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "0025d1c6d20e",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "d8e7a4e898f0",
+            "_type": "span",
+            "marks": [],
+            "text": "Bolest krční páteře se projevuje ztuhlostí, tlakem do ramen nebo bolestmi hlavy. Nejčastěji vzniká z dlouhého sezení s hlavou posunutou dopředu, práce na notebooku nebo stresu, který zatíná trapézy."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "ffbcdec1621b-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "ffbcdec1621b-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Hrudní páteř"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "f7c810b7bc16",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "f40a018e82a1",
+            "_type": "span",
+            "marks": [],
+            "text": "Tlak mezi lopatkami, pocit ztuhlého hrudníku nebo pálení po dlouhém sezení. Hrudní páteř často „zatuhne“ z hrbení, slabého středu těla a nedostatku rotace."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "ec302c4f8d30-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "ec302c4f8d30-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Bederní páteř"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "8ea690ac7d95",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "67ff053b9901",
+            "_type": "span",
+            "marks": [],
+            "text": "Bolest v bedrech vzniká často kvůli špatné poloze při sezení, slabému hlubokému stabilizačnímu systému nebo dlouhému statickému sezení. Typicky bolí ráno při vstávání nebo po delším sezení."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "5261488a12bf-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "5261488a12bf-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Křížová oblast a SI kloub"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "bea80ae505fb",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "cc2bad4fbc49",
+            "_type": "span",
+            "marks": [],
+            "text": "Bodavá bolest v jednom konkrétním místě, někdy vystřelující do hýždě. Často jde o zablokovaný SI kloub nebo dlouhé asymetrické sezení. Problém zhoršuje oslabený hýžďový sval."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      },
+      {
+        "_key": "6360992ab1b0-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "6360992ab1b0-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Ischias (vystřelující bolest do nohy)"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "1bb6ad11dd98",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "bd6fe9d7378e",
+            "_type": "span",
+            "marks": [],
+            "text": "Bolest, která začíná v bedrech a vystřeluje do jedné nohy. Může být doprovázena brněním nebo slabostí. Nejčastěji vzniká podrážděním sedacího nervu, svalovým spazmem v hýždi nebo výhřezem ploténky."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "faq": [],
+    "seo": {
+      "_type": "seo",
+      "metaDescription": "Jaké jsou nejčastější typy bolesti zad? Přehled problémů od krční páteře po ischias. Jasné příčiny, projevy a jednoduché kroky k úlevě.",
+      "metaTitle": "Typy bolesti zad: Krční, bederní, SI kloub a ischias (Průvodce 2026)"
+    }
+  },
+  {
+    "id": "f95f30b3-5848-4e20-8657-7501f06e271e",
+    "title": "Dlouhodobé řešení a prevence bolesti zad",
+    "slug": "dlouhodobe-reseni",
+    "content": [
+      {
+        "_key": "dlr-1",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s1",
+            "_type": "span",
+            "marks": [],
+            "text": "Trvalé odstranění bolesti zad nespočívá v jednorázovém zákroku ani v polykání léků tlumících příznaky. Skutečné řešení vyžaduje nápravu biomechanických příčin a vytvoření udržitelných každodenních návyků."
+          }
+        ]
+      },
+      {
+        "_key": "dlr-2",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s2",
+            "_type": "span",
+            "marks": [],
+            "text": "1. Mikro-pohyby a pravidlo 45 / 15"
+          }
+        ]
+      },
+      {
+        "_key": "dlr-3",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s3",
+            "_type": "span",
+            "marks": [],
+            "text": "Nejhorší pozice je ta, ve které zůstáváte příliš dlouho. Zaveďte dynamické střídání 45 minut sedu, 15 minut stoje a krátkých protažení k židli."
+          }
+        ]
+      },
+      {
+        "_key": "dlr-4",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s4",
+            "_type": "span",
+            "marks": [],
+            "text": "2. Výcvik bráničního dýchání a HSS"
+          }
+        ]
+      },
+      {
+        "_key": "dlr-5",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s5",
+            "_type": "span",
+            "marks": [],
+            "text": "Správný dechový stereotyp podle principů DNS učí zapojovat bránici jako píst, který vytváří nitrobřišní tlak a chrání bederní páteř zevnitř."
+          }
+        ]
+      },
+      {
+        "_key": "dlr-6",
+        "_type": "block",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s6",
+            "_type": "span",
+            "marks": [],
+            "text": "3. Ergonomická optimalizace pracovního místa"
+          }
+        ]
+      },
+      {
+        "_key": "dlr-7",
+        "_type": "block",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_key": "s7",
+            "_type": "span",
+            "marks": [],
+            "text": "Přizpůsobte stůl, židli a polohu monitoru své výšce pomocí naší ISO kalkulačky. Investice do správného nastavení se vám vrátí v podobě energie a bezbolestného dne."
+          }
+        ]
+      }
+    ],
+    "faq": [],
+    "seo": {}
+  }
+]

@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity';
+import { defineType, defineField, defineArrayMember } from 'sanity';
 
 export const page = defineType({
   name: 'page',
@@ -25,6 +25,37 @@ export const page = defineType({
       name: 'content',
       title: 'Obsah stránky',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'faq',
+      title: 'Často kladené otázky (FAQ)',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'question',
+              type: 'string',
+              title: 'Otázka',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'answer',
+              type: 'text',
+              title: 'Odpověď',
+              rows: 3,
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'question',
+              subtitle: 'answer',
+            },
+          },
+        }),
+      ],
     }),
     defineField({
       name: 'seo',

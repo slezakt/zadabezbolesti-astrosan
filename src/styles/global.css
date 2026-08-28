@@ -1,35 +1,71 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Outfit', 'Inter', system-ui, sans-serif;
+@layer base {
+  :root {
+    --color-paper: #F7F5EF;
+    --color-mint: #EAF4EE;
+    --color-ink: #18211C;
+    --color-deep-forest: #173326;
+    --color-forest: #2F5941;
+    --color-muted: #66736A;
+    --color-line: #DDE5DD;
+    --color-coral: #F2644B;
+    --color-warning-soft: #FFF1E8;
+    --color-sage: #C9DCCF;
 
-  --color-bg-dark: #090d16;
-  --color-bg-alt: #111827;
-  --color-surface: rgba(30, 41, 59, 0.6);
-  --color-surface-hover: rgba(51, 65, 85, 0.8);
-  --color-border-dark: rgba(255, 255, 255, 0.1);
+    --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Fraunces', Georgia, serif;
+  }
 
-  --color-brand-primary: #6366f1;
-  --color-brand-primary-hover: #4f46e5;
-  --color-brand-accent: #a855f7;
+  html {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    scroll-behavior: smooth;
+  }
 
-  --color-text-body: #e2e8f0;
-  --color-text-muted: #94a3b8;
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
 
-  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.25);
+  h1, h2, h3, h4, .font-serif-editorial {
+    font-family: 'Fraunces', Georgia, serif;
+    font-feature-settings: "liga", "clig", "kern";
+  }
+
+  /* Custom focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-coral) !important;
+    outline-offset: 4px !important;
+  }
 }
 
-@layer base {
-  html, body {
-    background-color: var(--color-bg-dark);
-    color: var(--color-text-body);
-    font-family: var(--font-sans);
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
+/* Micro-interaction classes */
+.editorial-row {
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-  }
+.editorial-row:hover .row-arrow {
+  transform: translateX(4px);
+}
+
+.btn-press {
+  transition: transform 0.1s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness 0.15s ease, color 0.15s ease;
+}
+
+.link-underline:hover {
+  text-decoration-thickness: 2px;
 }

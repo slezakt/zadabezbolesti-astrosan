@@ -19,11 +19,11 @@ Tento dokument v novém standardu llms.txt slouží jako strukturovaný výtah o
 
 ## Hlavní sekce a služby
 - [Úvodní stránka](${siteUrl}/)
-- [Přehled článků](${siteUrl}/clanky)
+- [Magazín a přehled článků](${siteUrl}/blog)
 
 ${pages && pages.length > 0 ? `## Stránky\n${pages.map((p) => `- [${p.title}](${siteUrl}/${p.slug})`).join('\n')}` : ''}
 
-${posts && posts.length > 0 ? `## Nejnovější Články\n${posts.map((p) => `- [${p.title}](${siteUrl}/clanky/${p.slug})`).join('\n')}` : ''}
+${posts && posts.length > 0 ? `## Nejnovější Články\n${posts.map((p) => `- [${p.title}](${siteUrl}/blog/${p.slug})`).join('\n')}` : ''}
 
 ## Kontaktní informace
 - Web: ${siteUrl}

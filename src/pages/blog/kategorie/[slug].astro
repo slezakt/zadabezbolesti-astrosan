@@ -1,0 +1,118 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SanityImage from '../../../components/SanityImage.astro';
+import { getAllCategories, getCategory, getPostsByCategory } from '../../../utils/content';
+
+export async function getStaticPaths() {
+  const categories = await getAllCategories();
+  return categories.map((cat) => ({ params: { slug: cat.slug } }));
+}
+
+const { slug } = Astro.params;
+const category = slug ? await getCategory(slug) : null;
+
+if (!category) {
+  return new Response(null, { status: 404 });
+}
+
+const posts = await getPostsByCategory(category.slug);
+const allCategories = await getAllCategories();
+---
+
+<Layout
+  title={`${category.title} – Články a návody | ZádaBezBolesti.cz`}
+  description={category.description || `Odborné články a návody v kategorii ${category.title}.`}
+>
+  <div class="max-w-7xl mx-auto py-6">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs text-[#66736A] mb-8 font-medium" aria-label="Drobečková navigace">
+      <a href="/" class="hover:text-[#2F5941] link-underline">Domů</a>
+      <span>/</span>
+      <a href="/blog/" class="hover:text-[#2F5941] link-underline">Magazín</a>
+      <span>/</span>
+      <span class="text-[#18211C]">{category.title}</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 mb-3">
+        <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
+        <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
+          Tématická kategorie
+        </span>
+      </div>
+      <h1 class="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#18211C] tracking-tight mb-4">
+        {category.title}
+      </h1>
+      {category.description && (
+        <p class="text-[17px] text-[#66736A] max-w-2xl leading-relaxed">
+          {category.description}
+        </p>
+      )}
+
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap gap-2 pt-6">
+        <a
+          href="/blog/"
+          class="px-4 py-2 rounded-xl text-xs font-semibold bg-[#EAF4EE] text-[#18211C] hover:bg-[#C9DCCF] border border-[#DDE5DD] transition-colors"
+        >
+          Všechny články
+        </a>
+        {allCategories.map((cat) => (
+          <a
+            href={`/blog/kategorie/${cat.slug}/`}
+            class={`px-4 py-2 rounded-xl text-xs font-semibold border transition-colors ${
+              cat.slug === category.slug
+                ? 'bg-[#173326] text-[#F7F5EF] border-[#173326]'
+                : 'bg-[#EAF4EE] text-[#18211C] hover:bg-[#C9DCCF] border-[#DDE5DD]'
+            }`}
+          >
+            {cat.title}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <!-- Articles Grid -->
+    {posts && posts.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <article class="editorial-row bg-[#F7F5EF] border border-[#DDE5DD] rounded-2xl overflow-hidden flex flex-col hover:border-[#2F5941] hover:bg-[#EAF4EE]/30 transition-all group">
+            {post.mainImage && (
+              <a href={`/blog/${post.slug}/`} class="h-52 overflow-hidden bg-[#EAF4EE] block focus:outline-none">
+                <SanityImage image={post.mainImage} alt={post.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+              </a>
+            )}
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center gap-2 text-xs text-[#66736A] mb-3">
+                <span>{category.title}</span>
+                {post.publishedAt && (
+                  <span>
+                    • {new Date(post.publishedAt).toLocaleDateString('cs-CZ')}
+                  </span>
+                )}
+              </div>
+              <h2 class="font-serif-editorial text-2xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-3 leading-snug">
+                <a href={`/blog/${post.slug}/`} class="focus:outline-none">{post.title}</a>
+              </h2>
+              {post.excerpt && (
+                <p class="text-[14.5px] text-[#66736A] leading-relaxed mb-6 flex-1 line-clamp-3">
+                  {post.excerpt}
+                </p>
+              )}
+              <div class="pt-4 border-t border-[#DDE5DD] flex items-center justify-between mt-auto">
+                <span class="text-xs uppercase tracking-wider font-semibold text-[#2F5941]">Číst celý návod</span>
+                <span class="row-arrow text-sm font-semibold text-[#2F5941] group-hover:text-[#F2644B] transition-transform">→</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16 px-6 bg-[#EAF4EE] border border-dashed border-[#DDE5DD] rounded-2xl">
+        <p class="text-lg font-serif-editorial font-semibold text-[#18211C] mb-2">V této kategorii zatím nejsou žádné články.</p>
+        <a href="/blog/" class="text-sm text-[#2F5941] underline">Zobrazit všechny články v magazínu</a>
+      </div>
+    )}
+  </div>
+</Layout>
