@@ -18,6 +18,16 @@ export const ErgonomicCalculator: React.FC = () => {
     setIsCalculated(true);
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setInputValue(val);
+    const num = parseInt(val, 10);
+    if (!isNaN(num) && num >= 140 && num <= 215) {
+      setHeight(num);
+      setIsCalculated(true);
+    }
+  };
+
   const handleInputBlur = () => {
     const num = parseInt(inputValue, 10);
     if (!isNaN(num)) {
@@ -68,20 +78,22 @@ export const ErgonomicCalculator: React.FC = () => {
                   </label>
                   <div className="grid grid-cols-2 p-1 bg-[#EAF4EE] rounded-xl border border-[#DDE5DD]">
                     <button
+                      type="button"
                       onClick={() => setMode('sitting')}
                       className={`py-2.5 px-4 rounded-lg text-[14px] font-semibold transition-all cursor-pointer ${
                         mode === 'sitting'
-                          ? 'bg-[#173326] text-[#F7F5EF]'
+                          ? 'bg-[#173326] text-[#F7F5EF] shadow-sm'
                           : 'text-[#18211C] hover:text-[#173326]'
                       }`}
                     >
                       Práce vsedě
                     </button>
                     <button
+                      type="button"
                       onClick={() => setMode('standing')}
                       className={`py-2.5 px-4 rounded-lg text-[14px] font-semibold transition-all cursor-pointer ${
                         mode === 'standing'
-                          ? 'bg-[#173326] text-[#F7F5EF]'
+                          ? 'bg-[#173326] text-[#F7F5EF] shadow-sm'
                           : 'text-[#18211C] hover:text-[#173326]'
                       }`}
                     >
@@ -106,7 +118,7 @@ export const ErgonomicCalculator: React.FC = () => {
                       min={140}
                       max={215}
                       value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
+                      onChange={handleInputChange}
                       onBlur={handleInputBlur}
                       onKeyDown={(e) => { if (e.key === 'Enter') handleInputBlur(); }}
                       className="w-full text-3xl sm:text-4xl font-bold font-serif-editorial text-[#18211C] bg-[#EAF4EE]/50 border-2 border-[#DDE5DD] focus:border-[#F2644B] rounded-2xl py-4 px-5 pr-16 focus:outline-none transition-colors"
@@ -121,17 +133,17 @@ export const ErgonomicCalculator: React.FC = () => {
                 <div className="mb-6">
                   <input
                     type="range"
-                    min={145}
-                    max={210}
+                    min={140}
+                    max={215}
                     value={height}
                     onChange={(e) => handleHeightChange(parseInt(e.target.value, 10))}
                     className="w-full h-2 bg-[#DDE5DD] rounded-lg appearance-none cursor-pointer accent-[#F2644B]"
                     aria-label="Nastavení výšky posuvníkem"
                   />
                   <div className="flex justify-between text-[11px] text-[#66736A] mt-1 font-mono">
-                    <span>145 cm</span>
+                    <span>140 cm</span>
                     <span>175 cm</span>
-                    <span>210 cm</span>
+                    <span>215 cm</span>
                   </div>
                 </div>
 
@@ -141,6 +153,7 @@ export const ErgonomicCalculator: React.FC = () => {
                   <div className="flex flex-wrap gap-2">
                     {presets.map((preset) => (
                       <button
+                        type="button"
                         key={preset}
                         onClick={() => handleHeightChange(preset)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
@@ -159,8 +172,9 @@ export const ErgonomicCalculator: React.FC = () => {
               {/* Action Button & Checklist hint */}
               <div className="pt-4 border-t border-[#DDE5DD] flex flex-col gap-3">
                 <button
+                  type="button"
                   onClick={() => handleHeightChange(parseInt(inputValue, 10) || height)}
-                  className="btn-press w-full py-3.5 px-6 rounded-xl bg-[#F2644B] text-white font-semibold text-[16px] hover:bg-[#e05138] transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                  className="btn-press w-full py-3.5 px-6 rounded-xl bg-[#F2644B] text-white font-semibold text-[16px] hover:bg-[#e05138] transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md"
                 >
                   <Sliders className="w-4 h-4" />
                   Přepočítat ergonomické hodnoty
