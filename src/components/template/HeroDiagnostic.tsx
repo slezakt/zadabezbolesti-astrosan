@@ -1,158 +1,65 @@
 import React from 'react';
-import { ArrowRight, Compass, ShieldCheck, Activity, Laptop, Moon, Smile, Sparkles } from 'lucide-react';
 import { DIAGNOSTIC_ITEMS } from '../../data/healthData';
-import type { PainCategory } from '../../types/health';
-
-interface HeroDiagnosticProps {
-  onSelectPain?: (id: PainCategory) => void;
-}
-
-export const HeroDiagnostic: React.FC<HeroDiagnosticProps> = () => {
-  // Map icons
-  const getIcon = (id: PainCategory) => {
-    switch (id) {
-      case 'scapula': return <Activity className="w-5 h-5 text-[#2F5941]" />;
-      case 'lumbar': return <ShieldCheck className="w-5 h-5 text-[#2F5941]" />;
-      case 'neck': return <Compass className="w-5 h-5 text-[#2F5941]" />;
-      case 'sleep': return <Moon className="w-5 h-5 text-[#2F5941]" />;
-      case 'computer': return <Laptop className="w-5 h-5 text-[#2F5941]" />;
-      case 'stress': return <Smile className="w-5 h-5 text-[#2F5941]" />;
-      default: return <Activity className="w-5 h-5 text-[#2F5941]" />;
-    }
-  };
-
+export const HeroDiagnostic: React.FC = () => {
   return (
-    <section id="diagnostic" className="w-full pt-6 pb-20 sm:pb-28">
+    <section id="diagnostic" className="w-full pt-10 sm:pt-14 pb-20 sm:pb-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        
-        {/* Asymmetric Split 60/40 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          {/* Left Column (60% -> 7 cols on desktop) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start">
           <div className="lg:col-span-7 flex flex-col">
-            
-            {/* Editorial Category Tag */}
-            <div className="inline-flex items-center gap-2 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#F2644B]"></span>
-              <span className="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-                Bezpečný první krok • Zdravotní rozcestník
-              </span>
-            </div>
+            <p className="eyebrow mb-5">Bezpečný první krok · Zdravotní rozcestník</p>
 
-            {/* H1 Headline */}
-            <h1 className="font-serif-editorial text-[36px] sm:text-[46px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
-              Najděte, proč vás bolí záda, <br className="hidden sm:inline" />
-              a co s tím udělat <span className="italic font-normal">jako první</span>
+            <h1 className="font-serif-editorial text-[40px] sm:text-[52px] lg:text-[62px] leading-[1.02] font-semibold text-[#18211C] tracking-[-0.04em] mb-7">
+              Najděte bezpečný první krok při bolesti zad
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-[17px] sm:text-[18px] leading-[1.6] text-[#66736A] max-w-2xl mb-12">
-              Praktické návody, cviky a ergonomické tipy pro lidi, kteří sedí u počítače, 
-              budí se s bolestí zad nebo cítí napětí v krku, bedrech a mezi lopatkami.
+            <p className="text-[17px] sm:text-[19px] leading-[1.65] text-[#66736A] max-w-2xl mb-12">
+              Srozumitelné návody pro chvíle, kdy vás bolí bedra, šíje nebo oblast mezi lopatkami — včetně situací, kdy je lepší domácí cvičení odložit.
             </p>
 
-            {/* Diagnostic Selection Panel - "Co vás trápí nejvíc?" */}
-            <div className="mt-2">
-              <div className="flex items-center justify-between pb-3 mb-2 border-b border-[#DDE5DD]">
-                <h2 className="text-[15px] font-semibold uppercase tracking-wider text-[#18211C]">
+            <div>
+              <div className="flex items-end justify-between gap-5 pb-3 border-b-2 border-[#18211C]">
+                <h2 className="text-[14px] font-semibold uppercase tracking-[0.08em] text-[#18211C]">
                   Co vás trápí nejvíc?
                 </h2>
-                <span className="text-xs text-[#66736A]">
-                  Vyberte oblast pro okamžitý návod
-                </span>
+                <span className="hidden sm:block text-xs text-[#66736A]">Vyberte oblast</span>
               </div>
 
-              {/* 2x3 Grid on Desktop, 1 Col on Mobile */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
-                {DIAGNOSTIC_ITEMS.map((item) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
+                {DIAGNOSTIC_ITEMS.map((item, index) => (
                   <a
                     key={item.id}
                     href={item.href}
-                    className="editorial-row group w-full min-h-[56px] py-3.5 px-3 -mx-3 flex items-center justify-between border-b border-[#DDE5DD] text-left hover:bg-[#EAF4EE] rounded-md transition-all cursor-pointer focus:outline-none"
+                    className="group min-h-[58px] py-4 flex items-center gap-3 border-b border-[#DDE5DD] text-left hover:text-[#2F5941] focus:outline-none"
                     aria-label={`Zobrazit průvodce pro: ${item.title}`}
                   >
-                    <div className="flex items-center gap-3.5">
-                      <div className="p-1.5 rounded bg-[#EAF4EE] group-hover:bg-[#C9DCCF] transition-colors">
-                        {getIcon(item.id)}
-                      </div>
-                      <div>
-                        <span className="text-[16px] font-semibold text-[#18211C] group-hover:text-[#173326] transition-colors block">
-                          {item.title}
-                        </span>
-                      </div>
-                    </div>
-                    
-                    <div className="row-arrow text-[#66736A] group-hover:text-[#F2644B] transition-transform duration-150 pr-1">
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
+                    <span className="font-serif-editorial text-sm text-[#66736A]">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="text-[16px] font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors flex-1">{item.title}</span>
+                    <span className="text-[#66736A] group-hover:text-[#F2644B] transition-colors" aria-hidden="true">↗</span>
                   </a>
                 ))}
               </div>
-
-              <div className="mt-4 flex items-center gap-2 text-xs text-[#66736A]">
-                <Sparkles className="w-3.5 h-3.5 text-[#2F5941]" />
-                <span>Obsahuje okamžité bezpečné cviky, doporučené pozice a varovné červené vlajky.</span>
-              </div>
             </div>
-
           </div>
 
-          {/* Right Column (40% -> 5 cols on desktop) */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            
-            {/* Visual Workspace Canvas */}
-            <div className="relative w-full rounded-[24px] overflow-hidden bg-[#EAF4EE] border border-[#DDE5DD]">
-              
-              {/* Ergonomic Lifestyle Photography */}
+          <article className="lg:col-span-5 lg:border-l lg:border-[#DDE5DD] lg:pl-10 group">
+            <a href="/ergonomie-pracoviste/" className="block">
               <img
                 src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&w=1200&q=80"
-                alt="Správné ergonomické držení těla u stolu s monitorem"
-                className="w-full h-[420px] sm:h-[500px] object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+                alt="Pracovní stůl s monitorem a notebookem"
+                className="w-full aspect-[4/3] object-cover object-center mb-5 saturate-[0.82] group-hover:saturate-100 transition-all duration-500"
                 loading="eager"
               />
-
-              {/* Floating UI Elements */}
-              <div className="absolute top-8 left-6 sm:left-8 bg-[#F7F5EF] border border-[#DDE5DD] rounded-xl px-4 py-2.5 max-w-[210px] shadow-xs">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#2F5941]"></span>
-                  <span className="text-[11px] uppercase tracking-wider font-bold text-[#2F5941]">
-                    Výška monitoru
-                  </span>
-                </div>
-                <p className="text-[13px] font-semibold text-[#18211C] mt-0.5">
-                  V horizontální rovině očí
-                </p>
-                <div className="text-[11px] text-[#66736A] mt-0.5">
-                  Šíje zůstává v neutrální ose
-                </div>
-              </div>
-
-              <div className="absolute bottom-8 right-6 sm:right-8 bg-[#F7F5EF] border border-[#DDE5DD] rounded-xl px-4 py-2.5 max-w-[210px] shadow-xs">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#F2644B]"></span>
-                  <span className="text-[11px] uppercase tracking-wider font-bold text-[#F2644B]">
-                    Správný úhel: 90°
-                  </span>
-                </div>
-                <p className="text-[13px] font-semibold text-[#18211C] mt-0.5">
-                  Předloktí opřená na stole
-                </p>
-                <div className="text-[11px] text-[#66736A] mt-0.5">
-                  Trapézy jsou zcela uvolněné
-                </div>
-              </div>
-
-            </div>
-
-            {/* Micro Caption */}
-            <p className="text-xs text-[#66736A] mt-3.5 text-center sm:text-left">
-              Ergonomický standard ISO 9241 pro prevenci statického svalového přetížení.
-            </p>
-
-          </div>
-
+              <span className="eyebrow block mb-2">Doporučený průvodce</span>
+              <h2 className="font-serif-editorial text-[27px] sm:text-[32px] leading-[1.12] font-semibold text-[#18211C] group-hover:text-[#2F5941] mb-3">
+                Jak si nastavit pracovní místo bez drahých pomůcek
+              </h2>
+              <p className="text-[14px] sm:text-[15px] leading-relaxed text-[#66736A]">
+                Výška monitoru, poloha předloktí a jednoduché úpravy, které mají při dlouhém sezení největší smysl.
+              </p>
+              <span className="inline-block mt-5 text-sm font-semibold text-[#2F5941] link-underline">Otevřít průvodce</span>
+            </a>
+          </article>
         </div>
-
       </div>
     </section>
   );

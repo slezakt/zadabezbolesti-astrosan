@@ -4,90 +4,118 @@ import SanityImage from '../../components/SanityImage.astro';
 import { getAllCategories, getAllPosts } from '../../utils/content';
 
 const [posts, categories] = await Promise.all([getAllPosts(), getAllCategories()]);
+const featuredPost = posts.find((post) => post.mainImage && post.excerpt)
+  || posts.find((post) => post.excerpt)
+  || posts[0];
+const supportingPosts = posts
+  .filter((post) => post.id !== featuredPost?.id && post.excerpt)
+  .slice(0, 2);
+const latestPosts = posts.filter(
+  (post) => post.id !== featuredPost?.id && !supportingPosts.some((supporting) => supporting.id === post.id),
+);
+
+const formatDate = (value?: string) => value
+  ? new Date(value).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })
+  : null;
 ---
 
 <Layout
   title="Magazín a odborné návody pro zdravá záda | ZádaBezBolesti.cz"
   description="Přehled ověřených fyzioterapeutických návodů, ergonomických standardů a cviků pro prevenci i úlevu od bolesti zad."
 >
-  <div class="max-w-7xl mx-auto py-6">
-    <!-- Header -->
-    <header class="mb-10">
-      <div class="inline-flex items-center gap-2 mb-3">
-        <span class="w-2 h-2 rounded-full bg-[#F2644B]"></span>
-        <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-          Zdravotní editorial & Znalostní báze
-        </span>
+  <div class="max-w-7xl mx-auto py-6 sm:py-10">
+    <header class="mb-8 sm:mb-12">
+      <p class="eyebrow mb-3">Nezávislý průvodce zdravými zády</p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-end">
+        <h1 class="lg:col-span-8 font-serif-editorial text-[44px] sm:text-6xl lg:text-[76px] font-semibold text-[#18211C] tracking-[-0.045em] leading-[0.98]">
+          Magazín
+        </h1>
+        <p class="lg:col-span-4 text-[16px] text-[#66736A] leading-relaxed max-w-xl lg:pb-1">
+          Praktické návody bez zbytečných slibů. Ergonomie, bezpečný pohyb, spánek a orientace v bolesti zad.
+        </p>
       </div>
-      <h1 class="font-serif-editorial text-4xl sm:text-5xl lg:text-6xl font-bold text-[#18211C] tracking-tight mb-4 leading-[1.1]">
-        Magazín a odborné návody
-      </h1>
-      <p class="text-[17px] text-[#66736A] max-w-2xl leading-relaxed">
-        Praktické postupy bez lékařského žargonu. Od ergonomie pracovního stolu po dechové techniky pro uvolnění šíje a beder.
-      </p>
 
-      <!-- Category Filter Pills -->
       {categories && categories.length > 0 && (
-        <div class="flex flex-wrap gap-2 pt-6">
-          <a
-            href="/blog/"
-            class="px-4 py-2 rounded-xl text-xs font-semibold bg-[#173326] text-[#F7F5EF] transition-colors"
-          >
-            Všechny články ({posts.length})
+        <nav class="mt-8 pt-4 border-t border-[#18211C] flex flex-wrap gap-x-6 gap-y-3 text-[13px] font-semibold" aria-label="Rubriky magazínu">
+          <a href="/blog/" class="text-[#18211C] underline decoration-[#F2644B] decoration-2 underline-offset-[6px]">
+            Všechny články <span class="text-[#66736A]">({posts.length})</span>
           </a>
           {categories.map((cat) => (
-            <a
-              href={`/blog/kategorie/${cat.slug}/`}
-              class="px-4 py-2 rounded-xl text-xs font-semibold bg-[#EAF4EE] text-[#18211C] hover:bg-[#C9DCCF] border border-[#DDE5DD] transition-colors"
-            >
+            <a href={`/blog/kategorie/${cat.slug}/`} class="text-[#66736A] hover:text-[#18211C] hover:underline underline-offset-[6px]">
               {cat.title}
             </a>
           ))}
-        </div>
+        </nav>
       )}
     </header>
 
-    <!-- Articles Grid -->
-    {posts && posts.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <article class="editorial-row bg-[#F7F5EF] border border-[#DDE5DD] rounded-2xl overflow-hidden flex flex-col hover:border-[#2F5941] hover:bg-[#EAF4EE]/30 transition-all group">
-            {post.mainImage && (
-              <a href={`/blog/${post.slug}/`} class="h-52 overflow-hidden bg-[#EAF4EE] block focus:outline-none">
-                <SanityImage image={post.mainImage} alt={post.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+    {featuredPost ? (
+      <>
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 py-8 sm:py-10 border-y border-[#18211C]" aria-labelledby="featured-heading">
+          <article class="lg:col-span-7 group">
+            {featuredPost.mainImage && (
+              <a href={`/blog/${featuredPost.slug}/`} class="block aspect-[16/9] overflow-hidden bg-[#EAF4EE] mb-6">
+                <SanityImage image={featuredPost.mainImage} alt={featuredPost.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.015]" />
               </a>
             )}
-            <div class="p-6 flex flex-col flex-1">
-              <div class="flex items-center gap-2 text-xs text-[#66736A] mb-3">
-                {post.categories && post.categories.length > 0 && (
-                  <span class="font-semibold uppercase tracking-wider text-[#2F5941]">
-                    {post.categories[0].title}
-                  </span>
-                )}
-                {post.publishedAt && (
-                  <span>
-                    • {new Date(post.publishedAt).toLocaleDateString('cs-CZ')}
-                  </span>
-                )}
-              </div>
-              <h2 class="font-serif-editorial text-2xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-3 leading-snug">
-                <a href={`/blog/${post.slug}/`} class="focus:outline-none">{post.title}</a>
-              </h2>
-              {post.excerpt && (
-                <p class="text-[14.5px] text-[#66736A] leading-relaxed mb-6 flex-1 line-clamp-3">
-                  {post.excerpt}
-                </p>
-              )}
-              <div class="pt-4 border-t border-[#DDE5DD] flex items-center justify-between mt-auto">
-                <span class="text-xs uppercase tracking-wider font-semibold text-[#2F5941]">Číst celý návod</span>
-                <span class="row-arrow text-sm font-semibold text-[#2F5941] group-hover:text-[#F2644B] transition-transform">→</span>
-              </div>
+            <div class="flex items-center gap-2 text-[11px] uppercase tracking-[0.12em] font-semibold text-[#2F5941] mb-3">
+              <span>{featuredPost.categories?.[0]?.title || 'Aktuálně'}</span>
+              {featuredPost.publishedAt && <span class="text-[#66736A] normal-case tracking-normal font-normal">· {formatDate(featuredPost.publishedAt)}</span>}
             </div>
+            <h2 id="featured-heading" class="font-serif-editorial text-[34px] sm:text-[46px] leading-[1.08] font-semibold tracking-[-0.025em] text-[#18211C] mb-4 group-hover:text-[#2F5941]">
+              <a href={`/blog/${featuredPost.slug}/`}>{featuredPost.title}</a>
+            </h2>
+            {featuredPost.excerpt && <p class="text-[16px] sm:text-[17px] leading-relaxed text-[#66736A] max-w-2xl">{featuredPost.excerpt}</p>}
+            {featuredPost.author?.name && <p class="mt-5 text-xs text-[#66736A]">Autor: <span class="text-[#18211C] font-medium">{featuredPost.author.name}</span></p>}
           </article>
-        ))}
-      </div>
+
+          <div class="lg:col-span-5 lg:border-l lg:border-[#DDE5DD] lg:pl-10 flex flex-col divide-y divide-[#DDE5DD]">
+            {supportingPosts.map((post, index) => (
+              <article class:list={["group", { "pb-8": index === 0, "pt-8": index > 0 }]}>
+                <div class="flex items-center gap-2 text-[11px] uppercase tracking-[0.12em] font-semibold text-[#2F5941] mb-3">
+                  <span>{post.categories?.[0]?.title || 'Magazín'}</span>
+                  {post.publishedAt && <span class="text-[#66736A] normal-case tracking-normal font-normal">· {formatDate(post.publishedAt)}</span>}
+                </div>
+                <h2 class="font-serif-editorial text-[25px] sm:text-[29px] leading-[1.14] font-semibold text-[#18211C] group-hover:text-[#2F5941] mb-3">
+                  <a href={`/blog/${post.slug}/`}>{post.title}</a>
+                </h2>
+                {post.excerpt && <p class="text-[14px] leading-relaxed text-[#66736A] line-clamp-3">{post.excerpt}</p>}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {latestPosts.length > 0 && (
+          <section class="pt-14 sm:pt-20" aria-labelledby="latest-heading">
+            <div class="flex items-baseline justify-between gap-4 pb-4 border-b-2 border-[#18211C]">
+              <h2 id="latest-heading" class="font-serif-editorial text-3xl sm:text-4xl font-semibold text-[#18211C]">Nejnovější články</h2>
+              <span class="hidden sm:inline text-xs text-[#66736A]">{latestPosts.length} dalších textů</span>
+            </div>
+
+            <div class="divide-y divide-[#DDE5DD]">
+              {latestPosts.map((post) => (
+                <article class="group grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 py-7 sm:py-8">
+                  <div class="md:col-span-2 text-xs text-[#66736A] pt-1">
+                    {post.publishedAt && <time datetime={post.publishedAt}>{formatDate(post.publishedAt)}</time>}
+                    <span class="block mt-1 uppercase tracking-wider font-semibold text-[#2F5941]">{post.categories?.[0]?.title || 'Magazín'}</span>
+                  </div>
+                  <div class="md:col-span-6">
+                    <h3 class="font-serif-editorial text-[23px] sm:text-[27px] leading-[1.16] font-semibold text-[#18211C] group-hover:text-[#2F5941]">
+                      <a href={`/blog/${post.slug}/`}>{post.title}</a>
+                    </h3>
+                  </div>
+                  <div class="md:col-span-4 flex items-start gap-5">
+                    {post.excerpt && <p class="text-[14px] leading-relaxed text-[#66736A] line-clamp-3 flex-1">{post.excerpt}</p>}
+                    <a href={`/blog/${post.slug}/`} class="text-[#2F5941] group-hover:text-[#F2644B] text-lg" aria-label={`Číst: ${post.title}`}>↗</a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+      </>
     ) : (
-      <div class="text-center py-16 px-6 bg-[#EAF4EE] border border-dashed border-[#DDE5DD] rounded-2xl">
+      <div class="text-center py-16 px-6 border-y border-[#DDE5DD]">
         <p class="text-lg font-serif-editorial font-semibold text-[#18211C] mb-2">Zatím nebyly publikovány žádné články.</p>
         <p class="text-sm text-[#66736A]">
           Přidejte první článek v <a href="/admin/" class="text-[#2F5941] underline">administraci Sanity Studio (/admin)</a>.

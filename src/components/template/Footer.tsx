@@ -2,35 +2,34 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-[#EAF4EE] border-t border-[#DDE5DD] py-14 text-[#18211C]">
+    <footer className="w-full bg-[#173326] border-t border-[#2F5941] py-14 text-[#F7F5EF]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#DDE5DD]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#2F5941]">
           
           {/* Col 1: Brand & Identity */}
           <div className="md:col-span-5 flex flex-col">
-            <span className="font-serif-editorial text-2xl font-bold tracking-tight text-[#18211C] mb-3">
+            <span className="font-serif-editorial text-2xl font-bold tracking-tight text-[#F7F5EF] mb-3">
               ZádaBezBolesti<span className="text-[#F2644B]">.cz</span>
             </span>
-            <p className="text-[14px] leading-relaxed text-[#66736A] max-w-sm mb-4">
-              Prémiový digitální zdravotní průvodce a ergonomický kalkulátor. 
-              Pomáháme lidem se sedavým zaměstnáním udělat bezpečný první krok k úlevě od bolesti zad.
+            <p className="text-[14px] leading-relaxed text-[#C9DCCF] max-w-sm mb-4">
+              Praktický zdravotní magazín pro lidi se sedavým zaměstnáním. Pomáhá s orientací, prevencí a bezpečnými prvními kroky při bolesti zad.
             </p>
-            <div className="text-xs text-[#66736A]">
-              Obsah je koncipován podle doporučení České fyzioterapeutické společnosti a standardů ISO 9241.
+            <div className="text-xs text-[#C9DCCF]/70">
+              Informace mají edukativní charakter a nenahrazují individuální vyšetření ani fyzioterapii.
             </div>
           </div>
 
           {/* Col 2: Navigation */}
           <div className="md:col-span-3 flex flex-col">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#173326] mb-4">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#C9DCCF] mb-4">
               Hlavní témata
             </span>
-            <ul className="space-y-2.5 text-[14px] text-[#18211C]">
+            <ul className="space-y-2.5 text-[14px] text-[#C9DCCF]">
               <li>
                 <a 
                   href="/typy-bolesti/"
-                  className="hover:text-[#2F5941] link-underline"
+                  className="hover:text-white transition-colors link-underline"
                 >
                   Bolesti zad a příčiny
                 </a>
@@ -38,7 +37,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a 
                   href="/cviky-na-zada/"
-                  className="hover:text-[#2F5941] link-underline"
+                  className="hover:text-white transition-colors link-underline"
                 >
                   Cviky a mobilita u stolu
                 </a>
@@ -46,7 +45,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a 
                   href="/ergonomie-pracoviste/"
-                  className="hover:text-[#2F5941] link-underline"
+                  className="hover:text-white transition-colors link-underline"
                 >
                   Ergonomie stolu a židle
                 </a>
@@ -54,7 +53,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a 
                   href="/zdravy-spanek/"
-                  className="hover:text-[#2F5941] link-underline"
+                  className="hover:text-white transition-colors link-underline"
                 >
                   Zdravý spánek a regenerace
                 </a>
@@ -62,7 +61,7 @@ export const Footer: React.FC = () => {
               <li>
                 <a 
                   href="/blog/"
-                  className="hover:text-[#2F5941] link-underline"
+                  className="hover:text-white transition-colors link-underline"
                 >
                   Magazín a všechny články
                 </a>
@@ -72,14 +71,14 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Tools & Disclaimer */}
           <div className="md:col-span-4 flex flex-col">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#173326] mb-4">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#C9DCCF] mb-4">
               Nástroje a bezpečí
             </span>
-            <ul className="space-y-2.5 text-[14px] text-[#18211C] mb-6">
+            <ul className="space-y-2.5 text-[14px] text-[#C9DCCF] mb-6">
               <li>
                 <a 
                   href="/nastroje/kalkulacka/"
-                  className="hover:text-[#2F5941] link-underline font-medium"
+                  className="hover:text-white transition-colors link-underline font-medium"
                 >
                   Ergonomická kalkulačka (ISO 9241)
                 </a>
@@ -87,29 +86,29 @@ export const Footer: React.FC = () => {
               <li>
                 <a 
                   href="/rizikove-faktory/"
-                  className="text-[#F2644B] hover:text-[#173326] link-underline font-medium"
+                  className="text-[#F2644B] hover:text-white transition-colors link-underline font-medium"
                 >
                   Varovné signály a kdy volat lékaře
                 </a>
               </li>
             </ul>
 
-            <div className="bg-[#F7F5EF] p-3.5 rounded-xl border border-[#DDE5DD] text-xs text-[#66736A] leading-relaxed">
-              <strong>Upozornění:</strong> Informace na tomto webu mají výhradně edukativní charakter a v žádném případě nenahrazují odborné lékařské vyšetření ani individuální fyzioterapii.
+            <div className="bg-[#2F5941]/50 p-3.5 rounded-xl border border-[#2F5941] text-xs text-[#C9DCCF]/80 leading-relaxed">
+              <strong className="text-[#C9DCCF]">Upozornění:</strong> Informace na tomto webu mají výhradně edukativní charakter a v žádném případě nenahrazují odborné lékařské vyšetření ani individuální fyzioterapii.
             </div>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#66736A] gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#C9DCCF]/60 gap-4">
           <div>
             © {new Date().getFullYear()} ZádaBezBolesti.cz. Všechna práva vyhrazena.
           </div>
           <div className="flex items-center gap-3">
-            <a href="/llms.txt" target="_blank" className="hover:underline">AEO (llms.txt)</a> •
-            <a href="/rss.xml" target="_blank" className="hover:underline">RSS Feed</a> •
-            <a href="/sitemap-index.xml" target="_blank" className="hover:underline">Sitemap</a>
+            <a href="/llms.txt" target="_blank" className="hover:text-[#C9DCCF] transition-colors hover:underline">AEO (llms.txt)</a> •
+            <a href="/rss.xml" target="_blank" className="hover:text-[#C9DCCF] transition-colors hover:underline">RSS Feed</a> •
+            <a href="/sitemap-index.xml" target="_blank" className="hover:text-[#C9DCCF] transition-colors hover:underline">Sitemap</a>
           </div>
         </div>
 

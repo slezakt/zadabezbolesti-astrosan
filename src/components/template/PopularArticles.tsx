@@ -13,9 +13,7 @@ export const PopularArticles: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
           <div>
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#2F5941] block mb-2">
-              Knihovna znalostí
-            </span>
+            <span className="eyebrow block mb-2">Výběr redakce</span>
             <h2 className="font-serif-editorial text-[32px] sm:text-[40px] leading-[1.15] font-semibold text-[#18211C]">
               Nejčtenější návody
             </h2>
@@ -34,8 +32,7 @@ export const PopularArticles: React.FC = () => {
               href={featuredArticle.href}
               className="group text-left focus:outline-none block w-full"
             >
-              {/* Photo with 24px radius */}
-              <div className="w-full h-[300px] sm:h-[380px] rounded-[24px] overflow-hidden bg-[#EAF4EE] mb-6 border border-[#DDE5DD]">
+              <div className="w-full h-[300px] sm:h-[380px] overflow-hidden bg-[#EAF4EE] mb-6">
                 <img
                   src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80"
                   alt={featuredArticle.title}
@@ -45,7 +42,7 @@ export const PopularArticles: React.FC = () => {
 
               {/* Tag and Meta */}
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#2F5941] bg-[#C9DCCF]/50 px-2.5 py-1 rounded">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#2F5941]">
                   {featuredArticle.tag}
                 </span>
                 <span className="text-xs text-[#66736A] flex items-center gap-1">
@@ -83,7 +80,7 @@ export const PopularArticles: React.FC = () => {
               <a
                 key={article.id}
                 href={article.href}
-                className="editorial-row group py-5 px-3 -mx-3 flex items-start justify-between text-left hover:bg-[#EAF4EE] rounded-lg transition-colors w-full"
+                className="editorial-row group py-6 flex items-start justify-between text-left w-full"
               >
                 <div className="flex-1 pr-4">
                   {/* Category Tag */}

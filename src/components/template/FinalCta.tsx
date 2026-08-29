@@ -1,60 +1,36 @@
 import React from 'react';
-import { Compass, CheckSquare, Sparkles } from 'lucide-react';
 
-export const FinalCta: React.FC = () => {
-  return (
-    <section className="w-full py-20 sm:py-28 bg-[#F7F5EF] border-t border-[#DDE5DD]">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col items-center">
-        
-        {/* Subtle decorative dot & tag */}
-        <div className="inline-flex items-center gap-2 mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#F2644B]"></span>
-          <span className="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-            První krok bez odkládání
-          </span>
+const NEXT_STEPS = [
+  { title: 'Vybrat průvodce podle místa bolesti', href: '#diagnostic', meta: 'Rychlý rozcestník' },
+  { title: 'Nastavit stůl, židli a monitor', href: '/ergonomie-pracoviste/', meta: 'Ergonomie' },
+  { title: 'Projít všechny odborné návody', href: '/blog/', meta: 'Magazín' },
+];
+
+export const FinalCta: React.FC = () => (
+  <section className="w-full py-16 sm:py-20 bg-[#F7F5EF]">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-10 items-end pb-6 border-b-2 border-[#18211C]">
+        <div className="md:col-span-7">
+          <p className="eyebrow mb-2">Pokračujte podle své situace</p>
+          <h2 className="font-serif-editorial text-[34px] sm:text-[44px] leading-[1.08] font-semibold tracking-[-0.025em] text-[#18211C]">
+            Jeden srozumitelný krok je lepší než deset náhodných rad
+          </h2>
         </div>
-
-        {/* Massive Centered Editorial Heading */}
-        <h2 className="font-serif-editorial text-[36px] sm:text-[46px] lg:text-[50px] leading-[1.12] font-semibold text-[#18211C] tracking-tight mb-6">
-          Začněte jednou malou úpravou dnes
-        </h2>
-
-        {/* Subtitle */}
-        <p className="text-[17px] sm:text-[18px] leading-[1.6] text-[#66736A] max-w-2xl mb-10">
-          Změna výšky monitoru o 3 centimetry nebo 3minutové prodýchání bránice 
-          dokáže ulevit zádům víc než drahá bederní opěrka koupená naslepo.
+        <p className="md:col-span-5 text-[15px] leading-relaxed text-[#66736A]">
+          Vyberte si cestu podle problému, který právě řešíte. Všechny návody jsou dostupné bez registrace.
         </p>
-
-        {/* Dual Actions: Primary Coral & Outline Deep Forest */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          
-          {/* Primary CTA (Coral) */}
-          <a
-            href="#diagnostic"
-            className="btn-press w-full sm:w-auto px-8 py-4 rounded-[12px] bg-[#F2644B] text-white font-semibold text-[16px] hover:bg-[#e05138] transition-colors flex items-center justify-center gap-2.5 shadow-none"
-          >
-            <Compass className="w-5 h-5" />
-            <span>Vybrat podle typu bolesti</span>
-          </a>
-
-          {/* Secondary CTA (Outline Deep Forest) */}
-          <a
-            href="/ergonomie-pracoviste/"
-            className="btn-press w-full sm:w-auto px-8 py-4 rounded-[12px] border-2 border-[#173326] text-[#173326] hover:bg-[#173326] hover:text-[#F7F5EF] font-semibold text-[16px] transition-colors flex items-center justify-center gap-2.5"
-          >
-            <CheckSquare className="w-5 h-5" />
-            <span>Průvodce ergonomií stolu a židle</span>
-          </a>
-
-        </div>
-
-        {/* Micro reassurance */}
-        <p className="text-xs text-[#66736A] mt-6 flex items-center justify-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-[#2F5941]" />
-          <span>Zdarma, bez registrace, založeno na lékařských standardech.</span>
-        </p>
-
       </div>
-    </section>
-  );
-};
+
+      <div className="divide-y divide-[#DDE5DD]">
+        {NEXT_STEPS.map((item, index) => (
+          <a key={item.href} href={item.href} className="group grid grid-cols-[2.5rem_1fr_auto] sm:grid-cols-[4rem_10rem_1fr_auto] items-center gap-3 sm:gap-6 py-5 text-[#18211C] hover:text-[#2F5941]">
+            <span className="font-serif-editorial text-[#66736A]">0{index + 1}</span>
+            <span className="hidden sm:block text-[11px] uppercase tracking-[0.12em] font-bold text-[#66736A]">{item.meta}</span>
+            <span className="font-serif-editorial text-[20px] sm:text-[23px] font-semibold leading-tight">{item.title}</span>
+            <span className="text-lg text-[#66736A] group-hover:text-[#F2644B]" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+);

@@ -63,14 +63,14 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
   <body class="bg-[#F7F5EF] text-[#18211C] min-h-screen flex flex-col antialiased selection:bg-[#C9DCCF] selection:text-[#18211C]">
     <div class="flex flex-col min-h-screen">
       {!hideChrome && (
-        <header class="sticky top-0 z-40 w-full bg-[#F7F5EF]/90 backdrop-blur-md border-b border-[#DDE5DD]/60" x-data="{ mobileMenuOpen: false }">
+        <header class="sticky top-0 z-40 w-full bg-[#F7F5EF] border-b border-[#DDE5DD]">
           <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
             <a href="/" class="group flex items-baseline gap-1.5 focus:outline-none" data-analytics-event="navigation_click" data-analytics-target-id="home" data-analytics-location="header">
               <span class="font-serif-editorial text-2xl font-bold tracking-tight text-[#18211C]">
                 ZádaBezBolesti<span class="text-[#F2644B]">.cz</span>
               </span>
-              <span class="hidden sm:inline-block text-[11px] uppercase tracking-wider text-[#66736A] font-medium border-l border-[#DDE5DD] pl-2.5 ml-1">
-                Zdravotní editorial
+                <span class="hidden sm:inline-block text-[11px] uppercase tracking-wider text-[#66736A] font-medium border-l border-[#DDE5DD] pl-2.5 ml-1">
+                  Zdravotní magazín
               </span>
             </a>
 
@@ -81,7 +81,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
               <a href="/zdravy-spanek/" class="hover:text-[#2F5941] link-underline">Spánek</a>
               <a href="/nastroje/kalkulacka/" class="hover:text-[#2F5941] link-underline inline-flex items-center gap-1.5">
                 Kalkulačka
-                <span class="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#C9DCCF] text-[#173326] font-semibold">ISO</span>
               </a>
               <a href="/blog/" class="hover:text-[#2F5941] link-underline">Magazín</a>
             </nav>
@@ -89,43 +88,30 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
             <div class="hidden sm:flex items-center gap-4">
               <a
                 href="/#diagnostic"
-                class="btn-press inline-flex items-center justify-center px-5 py-2.5 rounded-[12px] bg-[#173326] text-[#F7F5EF] text-[15px] font-medium hover:bg-[#2F5941] transition-colors"
+                class="text-[14px] font-semibold text-[#173326] link-underline hover:text-[#F2644B]"
               >
-                Najít pomoc
+                Rychlý rozcestník
               </a>
             </div>
 
-            <button
-              class="lg:hidden p-2 text-[#18211C] hover:bg-[#EAF4EE] rounded-lg transition-colors"
-              @click="mobileMenuOpen = !mobileMenuOpen"
-              :aria-expanded="mobileMenuOpen"
-              aria-label="Přepnout menu"
-            >
-              <span x-text="mobileMenuOpen ? '✕' : '☰'" class="text-lg"></span>
-            </button>
-          </div>
+            <details class="group lg:hidden relative">
+              <summary class="p-2 -mr-2 text-xl text-[#18211C] cursor-pointer focus:outline-none" aria-label="Přepnout menu">
+                <span class="group-open:hidden" aria-hidden="true">☰</span>
+                <span class="hidden group-open:inline" aria-hidden="true">✕</span>
+              </summary>
 
-          <div
-            class="lg:hidden bg-[#F7F5EF] border-b border-[#DDE5DD] px-6 py-6"
-            x-show="mobileMenuOpen"
-            x-transition
-          >
-            <nav class="flex flex-col gap-4 text-lg font-medium text-[#18211C]">
-              <a href="/typy-bolesti/" class="py-1 hover:text-[#2F5941]">Bolesti zad</a>
-              <a href="/cviky-na-zada/" class="py-1 hover:text-[#2F5941]">Cviky na záda</a>
-              <a href="/ergonomie-pracoviste/" class="py-1 hover:text-[#2F5941]">Ergonomie pracoviště</a>
-              <a href="/zdravy-spanek/" class="py-1 hover:text-[#2F5941]">Zdravý spánek</a>
-              <a href="/nastroje/kalkulacka/" class="py-1 hover:text-[#2F5941]">Ergonomická kalkulačka</a>
-              <a href="/blog/" class="py-1 hover:text-[#2F5941]">Magazín a články</a>
-              <div class="pt-4 border-t border-[#DDE5DD]">
-                <a
-                  href="/#diagnostic"
-                  class="w-full block btn-press py-3 rounded-[12px] bg-[#173326] text-[#F7F5EF] text-center font-medium hover:bg-[#2F5941]"
-                >
-                  Najít pomoc podle bolesti
-                </a>
+              <div class="fixed left-0 right-0 top-20 bg-[#F7F5EF] border-b border-[#DDE5DD] px-6 py-6">
+                <nav class="max-w-7xl mx-auto flex flex-col text-[17px] font-medium text-[#18211C] divide-y divide-[#DDE5DD]">
+                  <a href="/typy-bolesti/" class="py-3.5 hover:text-[#2F5941]">Bolesti zad</a>
+                  <a href="/cviky-na-zada/" class="py-3.5 hover:text-[#2F5941]">Cviky na záda</a>
+                  <a href="/ergonomie-pracoviste/" class="py-3.5 hover:text-[#2F5941]">Ergonomie pracoviště</a>
+                  <a href="/zdravy-spanek/" class="py-3.5 hover:text-[#2F5941]">Zdravý spánek</a>
+                  <a href="/nastroje/kalkulacka/" class="py-3.5 hover:text-[#2F5941]">Ergonomická kalkulačka</a>
+                  <a href="/blog/" class="py-3.5 hover:text-[#2F5941]">Magazín a články</a>
+                  <a href="/#diagnostic" class="py-3.5 font-semibold text-[#2F5941]">Rychlý rozcestník podle bolesti</a>
+                </nav>
               </div>
-            </nav>
+            </details>
           </div>
         </header>
       )}
@@ -135,52 +121,52 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin)
       </main>
 
       {!hideChrome && (
-        <footer class="w-full bg-[#EAF4EE] border-t border-[#DDE5DD] py-14 text-[#18211C] mt-auto">
+        <footer class="w-full bg-[#173326] border-t border-[#2F5941] py-14 text-[#F7F5EF] mt-auto">
           <div class="max-w-7xl mx-auto px-6 sm:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#DDE5DD]">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#2F5941]">
               <div class="md:col-span-5 flex flex-col">
-                <span class="font-serif-editorial text-2xl font-bold tracking-tight text-[#18211C] mb-3">
+                <span class="font-serif-editorial text-2xl font-bold tracking-tight text-[#F7F5EF] mb-3">
                   ZádaBezBolesti<span class="text-[#F2644B]">.cz</span>
                 </span>
-                <p class="text-[14px] leading-relaxed text-[#66736A] max-w-sm mb-4">
-                  Prémiový digitální zdravotní průvodce a ergonomický kalkulátor. Pomáháme lidem se sedavým zaměstnáním udělat bezpečný první krok k úlevě od bolesti zad.
+                <p class="text-[14px] leading-relaxed text-[#C9DCCF] max-w-sm mb-4">
+                  Praktický zdravotní magazín pro lidi se sedavým zaměstnáním. Pomáhá s orientací, prevencí a bezpečnými prvními kroky při bolesti zad.
                 </p>
-                <div class="text-xs text-[#66736A]">
-                  Obsah je koncipován podle doporučení České fyzioterapeutické společnosti a standardů ISO 9241.
+                <div class="text-xs text-[#C9DCCF]/70">
+                  Informace mají edukativní charakter a nenahrazují individuální vyšetření ani fyzioterapii.
                 </div>
               </div>
 
               <div class="md:col-span-3 flex flex-col">
-                <span class="text-xs uppercase tracking-widest font-semibold text-[#173326] mb-4">Sekce a témata</span>
-                <ul class="space-y-2.5 text-[14px] text-[#18211C]">
-                  <li><a href="/typy-bolesti/" class="hover:text-[#2F5941] link-underline">Bolesti zad a příčiny</a></li>
-                  <li><a href="/cviky-na-zada/" class="hover:text-[#2F5941] link-underline">Cviky a mobilita u stolu</a></li>
-                  <li><a href="/ergonomie-pracoviste/" class="hover:text-[#2F5941] link-underline">Ergonomie stolu a židle</a></li>
-                  <li><a href="/zdravy-spanek/" class="hover:text-[#2F5941] link-underline">Zdravý spánek a regenerace</a></li>
-                  <li><a href="/blog/" class="hover:text-[#2F5941] link-underline font-medium">Magazín a články</a></li>
+                <span class="text-xs uppercase tracking-widest font-semibold text-[#C9DCCF] mb-4">Sekce a témata</span>
+                <ul class="space-y-2.5 text-[14px] text-[#C9DCCF]">
+                  <li><a href="/typy-bolesti/" class="hover:text-white transition-colors link-underline">Bolesti zad a příčiny</a></li>
+                  <li><a href="/cviky-na-zada/" class="hover:text-white transition-colors link-underline">Cviky a mobilita u stolu</a></li>
+                  <li><a href="/ergonomie-pracoviste/" class="hover:text-white transition-colors link-underline">Ergonomie stolu a židle</a></li>
+                  <li><a href="/zdravy-spanek/" class="hover:text-white transition-colors link-underline">Zdravý spánek a regenerace</a></li>
+                  <li><a href="/blog/" class="hover:text-white transition-colors link-underline font-medium">Magazín a články</a></li>
                 </ul>
               </div>
 
               <div class="md:col-span-4 flex flex-col">
-                <span class="text-xs uppercase tracking-widest font-semibold text-[#173326] mb-4">Nástroje a bezpečí</span>
-                <ul class="space-y-2.5 text-[14px] text-[#18211C] mb-6">
-                  <li><a href="/nastroje/kalkulacka/" class="hover:text-[#2F5941] link-underline font-medium">Ergonomická kalkulačka (ISO)</a></li>
-                  <li><a href="/rizikove-faktory/" class="text-[#F2644B] hover:text-[#173326] link-underline font-medium">Varovné signály a kdy volat lékaře</a></li>
+                <span class="text-xs uppercase tracking-widest font-semibold text-[#C9DCCF] mb-4">Nástroje a bezpečí</span>
+                <ul class="space-y-2.5 text-[14px] text-[#C9DCCF] mb-6">
+                  <li><a href="/nastroje/kalkulacka/" class="hover:text-white transition-colors link-underline font-medium">Ergonomická kalkulačka (ISO)</a></li>
+                  <li><a href="/rizikove-faktory/" class="text-[#F2644B] hover:text-white transition-colors link-underline font-medium">Varovné signály a kdy volat lékaře</a></li>
                 </ul>
-                <div class="bg-[#F7F5EF] p-4 rounded-xl border border-[#DDE5DD] text-xs text-[#66736A] leading-relaxed">
-                  <strong>Upozornění:</strong> Informace na tomto webu mají výhradně edukativní charakter a v žádném případě nenahrazují odborné lékařské vyšetření ani individuální fyzioterapii. Akutní nesnesitelná bolest vyžaduje linku 155.
+                <div class="bg-[#2F5941]/50 p-4 rounded-xl border border-[#2F5941] text-xs text-[#C9DCCF]/80 leading-relaxed">
+                  <strong class="text-[#C9DCCF]">Upozornění:</strong> Informace na tomto webu mají výhradně edukativní charakter a v žádném případě nenahrazují odborné lékařské vyšetření ani individuální fyzioterapii. Akutní nesnesitelná bolest vyžaduje linku 155.
                 </div>
               </div>
             </div>
 
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#66736A] gap-4">
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#C9DCCF]/60 gap-4">
               <div>
                 © {new Date().getFullYear()} ZádaBezBolesti.cz. Všechna práva vyhrazena.
               </div>
-              <div class="flex gap-3 text-[#2F5941] text-xs">
-                <a href="/llms.txt" target="_blank" class="hover:underline">AEO (llms.txt)</a> •
-                <a href="/rss.xml" target="_blank" class="hover:underline">RSS Feed</a> •
-                <a href="/sitemap-index.xml" target="_blank" class="hover:underline">Sitemap</a>
+              <div class="flex gap-3 text-[#C9DCCF]/60 text-xs">
+                <a href="/llms.txt" target="_blank" class="hover:text-[#C9DCCF] transition-colors hover:underline">AEO (llms.txt)</a> •
+                <a href="/rss.xml" target="_blank" class="hover:text-[#C9DCCF] transition-colors hover:underline">RSS Feed</a> •
+                <a href="/sitemap-index.xml" target="_blank" class="hover:text-[#C9DCCF] transition-colors hover:underline">Sitemap</a>
               </div>
             </div>
           </div>

@@ -47,7 +47,7 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
             {post.categories.map((cat) => (
               <a
                 href={`/blog/kategorie/${cat.slug}/`}
-                class="text-xs font-semibold uppercase tracking-wider text-[#2F5941] bg-[#C9DCCF]/50 hover:bg-[#C9DCCF] px-2.5 py-1 rounded transition-colors"
+                class="text-xs font-semibold uppercase tracking-wider text-[#2F5941] hover:text-[#F2644B] link-underline"
               >
                 {cat.title}
               </a>
@@ -76,7 +76,7 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
           )}
           <div>
             <span class="text-sm font-semibold text-[#18211C] block">{post.author.name}</span>
-            <span class="text-xs text-[#66736A]">Odborná lékařská a fyzioterapeutická revize</span>
+            <span class="text-xs text-[#66736A]">Autor článku</span>
           </div>
         </div>
       )}
@@ -84,16 +84,9 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
     <!-- Featured Image -->
     {post.mainImage && (
-      <div class="mb-10 rounded-2xl overflow-hidden bg-[#EAF4EE] border border-[#DDE5DD]">
+      <div class="mb-10 overflow-hidden bg-[#EAF4EE] border-y border-[#DDE5DD]">
         <SanityImage image={post.mainImage} alt={post.title} loading="eager" class="w-full object-cover max-h-[480px]" />
       </div>
-    )}
-
-    <!-- Lead / Excerpt -->
-    {post.excerpt && (
-      <p class="font-serif-editorial text-xl sm:text-2xl leading-relaxed text-[#18211C] italic mb-8 border-l-2 border-[#2F5941] pl-6">
-        {post.excerpt}
-      </p>
     )}
 
     <!-- Main Content -->
@@ -105,7 +98,7 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
     <!-- Key Takeaways Box -->
     {post.takeaways && post.takeaways.length > 0 && (
-      <div class="bg-[#EAF4EE] rounded-2xl p-6 sm:p-8 border border-[#C9DCCF] my-10">
+      <div class="bg-[#EAF4EE] p-6 sm:p-8 border-y border-[#C9DCCF] my-10">
         <div class="flex items-center gap-2.5 mb-4">
           <span class="w-2.5 h-2.5 rounded-full bg-[#2F5941]"></span>
           <h3 class="font-serif-editorial text-xl font-bold text-[#173326]">
@@ -131,7 +124,7 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
         </h2>
         <div class="space-y-3">
           {post.faq.map((item) => (
-            <details class="bg-[#F7F5EF] border border-[#DDE5DD] rounded-xl p-4 sm:p-5 group open:bg-[#EAF4EE]/40 transition-colors">
+            <details class="border-y border-[#DDE5DD] p-4 sm:p-5 group open:bg-[#EAF4EE]/40 transition-colors">
               <summary class="font-semibold text-[16px] text-[#18211C] cursor-pointer list-none flex items-center justify-between gap-4">
                 <span>{item.question}</span>
                 <span class="text-[#2F5941] text-xl transition-transform duration-200 group-open:rotate-45">+</span>
@@ -151,11 +144,11 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
         <h2 class="font-serif-editorial text-2xl sm:text-3xl font-bold text-[#18211C] mb-6">
           Související články a návody
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="divide-y divide-[#DDE5DD] border-y border-[#DDE5DD]">
           {relatedPosts.map((related) => (
             <a
               href={`/blog/${related.slug}/`}
-              class="editorial-row p-5 rounded-2xl bg-[#EAF4EE]/60 border border-[#DDE5DD] hover:border-[#2F5941] transition-all flex flex-col justify-between group"
+              class="editorial-row py-5 grid grid-cols-[1fr_auto] gap-5 items-center group"
             >
               <div>
                 <span class="text-[11px] font-semibold uppercase tracking-wider text-[#2F5941] block mb-2">
@@ -165,10 +158,7 @@ const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
                   {related.title}
                 </h3>
               </div>
-              <div class="mt-4 pt-3 border-t border-[#DDE5DD] flex items-center justify-between text-xs text-[#2F5941] font-semibold">
-                <span>Přečíst</span>
-                <span class="row-arrow">→</span>
-              </div>
+              <span class="row-arrow text-[#2F5941] group-hover:text-[#F2644B]">↗</span>
             </a>
           ))}
         </div>

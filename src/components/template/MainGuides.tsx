@@ -22,16 +22,16 @@ export const MainGuides: React.FC = () => {
         </div>
 
         {/* 4 Thematic Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20">
           {MAIN_GUIDES.map((guide) => (
             <div key={guide.number} className="flex flex-col">
               
               {/* Visual Anchor: Typographic Number + Sage Accent Bar */}
               <a href={guide.pillarHref} className="flex items-center gap-4 mb-4 group focus:outline-none">
-                <span className="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#2F5941]/60 select-none group-hover:text-[#2F5941] transition-colors">
+                <span className="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#2F5941]/35 select-none group-hover:text-[#2F5941]/70 transition-colors">
                   {guide.number}
                 </span>
-                <div className="h-[2px] flex-1 bg-[#C9DCCF] group-hover:bg-[#2F5941] transition-colors"></div>
+                <div className="h-px flex-1 bg-[#C9DCCF] group-hover:bg-[#2F5941] transition-colors"></div>
               </a>
 
               {/* Title as Link to Pillar Page */}

@@ -1,122 +1,51 @@
 import React from 'react';
-import { ShieldCheck, AlertCircle, FileCheck, Stethoscope, ArrowUpRight } from 'lucide-react';
 
 export const TrustSection: React.FC = () => {
+  const principles = [
+    {
+      title: 'Bezpečnost před rychlými sliby',
+      text: 'Domácí postupy popisujeme jako první pomoc a prevenci, ne jako náhradu diagnózy nebo léčby.',
+    },
+    {
+      title: 'Varovné příznaky na viditelném místě',
+      text: 'U návodů oddělujeme běžné přetížení od situací, které patří lékaři nebo záchranné službě.',
+    },
+    {
+      title: 'Dohledatelné podklady',
+      text: 'U konkrétních ergonomických hodnot a zdravotních tvrzení má být zřejmé, z jakých doporučení vycházejí.',
+    },
+  ];
+
   return (
-    <section className="w-full py-20 sm:py-28 bg-[#173326] text-[#F7F5EF] relative overflow-hidden">
+    <section className="w-full py-16 sm:py-24 border-y border-[#DDE5DD] bg-[#F7F5EF]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        
-        {/* Asymmetric Breaker Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          {/* Left Column: Poster Heading */}
-          <div className="lg:col-span-6 flex flex-col justify-between">
-            <div>
-              <div className="inline-flex items-center gap-2 mb-6">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#F2644B]"></span>
-                <span className="text-xs uppercase tracking-widest font-semibold text-[#C9DCCF]">
-                  Lékařský disclaimer & Manifest
-                </span>
-              </div>
-
-              <h2 className="font-serif-editorial text-[38px] sm:text-[48px] lg:text-[54px] leading-[1.08] font-bold text-[#F7F5EF] tracking-tight mb-8">
-                Praktické rady, <br />
-                <span className="text-[#C9DCCF] font-normal italic">ale ne náhrada</span> <br />
-                lékaře
-              </h2>
-            </div>
-
-            {/* Emergency badge */}
-            <div className="p-5 rounded-2xl bg-[#2F5941]/50 border border-[#C9DCCF]/20 text-[#F7F5EF] max-w-md">
-              <div className="flex items-center gap-3">
-                <Stethoscope className="w-5 h-5 text-[#F2644B] flex-shrink-0" />
-                <p className="text-[14px] leading-snug">
-                  Akutní nesnesitelná bolest, poruchy citlivosti nebo ztráta hybnosti vyžadují neodkladnou péči (volejte linku <strong>155</strong>).
-                </p>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <p className="eyebrow mb-3">Redakční standard</p>
+            <h2 className="font-serif-editorial text-[36px] sm:text-[48px] leading-[1.06] font-semibold tracking-[-0.03em] text-[#18211C] mb-6">
+              Praktické rady nejsou náhradou lékaře
+            </h2>
+            <p className="text-[16px] leading-relaxed text-[#66736A] max-w-lg mb-7">
+              Pomáháme s orientací, prevencí a bezpečnými prvními kroky. Náhlá, silná nebo dlouhodobá bolest patří vždy k odborníkovi.
+            </p>
+            <div className="border-l-2 border-[#C94734] pl-5 py-1 text-[14px] leading-relaxed text-[#18211C] max-w-lg">
+              Akutní nesnesitelná bolest, porucha citlivosti, ztráta hybnosti, dušnost nebo tlak na hrudi vyžadují neodkladnou pomoc. Volejte <strong>155</strong>.
             </div>
           </div>
 
-          {/* Right Column: Two-segment editorial manifest & 3 Principles */}
-          <div className="lg:col-span-6 flex flex-col gap-10">
-            
-            {/* Manifest Quote Block */}
-            <div className="border-l-2 border-[#F2644B] pl-6 sm:pl-8 py-2">
-              <p className="font-serif-editorial text-[20px] sm:text-[23px] leading-[1.5] text-[#F7F5EF] mb-4">
-                „ZádaBezBolesti.cz pomáhá s orientací, prevencí a bezpečnými prvními kroky. 
-                Náhlá, silná nebo dlouhodobá bolest patří vždy k odborníkovi.“
-              </p>
-              <p className="text-[15px] leading-relaxed text-[#C9DCCF]">
-                Naším posláním není diagnostikovat nemoci na dálku ani prodávat zázračné pomůcky. 
-                Dáváme vám srozumitelnou mapu k uvolnění těla a přesným návykům, které chrání vaši páteř před degenerací.
-              </p>
-            </div>
-
-            {/* 3 Core Editorial Principles */}
-            <div className="space-y-6 pt-4 border-t border-[#2F5941]">
-              <h3 className="text-xs uppercase tracking-widest font-semibold text-[#C9DCCF]">
-                Naše tři etické zásady
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                
-                {/* Principle 1 */}
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2 mb-2 text-[#F2644B]">
-                    <ShieldCheck className="w-4 h-4" />
-                    <span className="text-[15px] font-semibold text-[#F7F5EF]">
-                      Bezpečnost před sliby
-                    </span>
-                  </div>
-                  <p className="text-xs leading-relaxed text-[#C9DCCF]/90">
-                    Netvrdíme, že 3 cviky vyřeší vyhřezlou ploténku. Učíme bezpečný pohyb bez rizika.
-                  </p>
-                </div>
-
-                {/* Principle 2 */}
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2 mb-2 text-[#F2644B]">
-                    <AlertCircle className="w-4 h-4" />
-                    <span className="text-[15px] font-semibold text-[#F7F5EF]">
-                      Varovné příznaky
-                    </span>
-                  </div>
-                  <p className="text-xs leading-relaxed text-[#C9DCCF]/90">
-                    Červené vlajky jsou v každém návodu na prvním místě. Včasné rozpoznání zachraňuje zdraví.
-                  </p>
-                </div>
-
-                {/* Principle 3 */}
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2 mb-2 text-[#F2644B]">
-                    <FileCheck className="w-4 h-4" />
-                    <span className="text-[15px] font-semibold text-[#F7F5EF]">
-                      Odborné revize
-                    </span>
-                  </div>
-                  <p className="text-xs leading-relaxed text-[#C9DCCF]/90">
-                    Všechny postupy vycházejí z fyzioterapeutických a ergonomických standardů ISO.
-                  </p>
-                </div>
-
+          <div className="lg:col-span-7 border-t-2 border-[#18211C]">
+            {principles.map((principle, index) => (
+              <div key={principle.title} className="grid grid-cols-[2.5rem_1fr] sm:grid-cols-[3.5rem_12rem_1fr] gap-3 sm:gap-6 py-6 border-b border-[#DDE5DD]">
+                <span className="font-serif-editorial text-xl text-[#2F5941]">0{index + 1}</span>
+                <h3 className="font-serif-editorial text-[19px] leading-snug font-semibold text-[#18211C]">{principle.title}</h3>
+                <p className="col-start-2 sm:col-start-auto text-[14px] leading-relaxed text-[#66736A]">{principle.text}</p>
               </div>
-            </div>
-
-            {/* Action Trigger */}
-            <div className="pt-2">
-              <a
-                href="/rizikove-faktory/"
-                className="text-xs font-semibold text-[#F7F5EF] hover:text-[#F2644B] inline-flex items-center gap-1.5 link-underline cursor-pointer"
-              >
-                <span>Prohlédnout kompletní lékařské standardy a červené vlajky</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-
+            ))}
+            <a href="/rizikove-faktory/" className="inline-block mt-7 text-sm font-semibold text-[#2F5941] link-underline hover:text-[#F2644B]">
+              Varovné příznaky a kdy vyhledat pomoc
+            </a>
           </div>
-
         </div>
-
       </div>
     </section>
   );
