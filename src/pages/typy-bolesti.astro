@@ -2,22 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import { Header } from '../components/template/Header';
 import { Footer } from '../components/template/Footer';
+import ContentSafetyNote from '../components/ContentSafetyNote.astro';
 
 const faqItems = [
   {
-    question: 'Jak poznám, zda jde o svalové přetížení, nebo o ploténku?',
-    answer: 'Svalové přetížení se projevuje tupým tlakem a ztuhlostí, která se zhoršuje statickým sezením a zlepšuje mírným pohybem. Postižení ploténky (h carnage, protruze) často vyvolává ostrou, pálivou bolest vystřelující do nohy či paže, provázenou brněním nebo ztrátou citlivosti.'
+    question: 'Jak poznám, zda jde o svalové přetížení, nebo jiný problém?',
+    answer: 'Z popisu příznaků nelze spolehlivě určit diagnózu. Tuhnutí po dlouhém sezení může být běžné, ale bolest do končetiny, slabost, necitlivost nebo rychlé zhoršování jsou důvodem k odbornému posouzení.'
   },
   {
     question: 'Co je to syndrom horního zkřížení?',
-    answer: 'Jde o svalovou dysbalanci typickou pro práci u počítače. Vyznačuje se zkrácením prsních svalů a horních trapézů v kombinaci s oslabením mezilopatkových svalů a hlubokých flexorů krku, což vede k předsunutí hlavy a zakulacení ramen.'
+    answer: 'Je to termín používaný pro soubor častých posturálních návyků v oblasti krku, ramen a hrudníku. Sám o sobě ale nevysvětluje příčinu bolesti ani neurčuje léčbu.'
   },
   {
     question: 'Proč mě bolí v kříži po delším stání nebo chůzi?',
-    answer: 'Častou příčinou je překlopení pánve dopředu (hyperlordóza) způsobené zkrácenými flexory kyčlí ze sezení a ochablými hýžďovými a břišními svaly, které neposkytují oporu bedrům.'
+    answer: 'Důvodů může být více a bez vyšetření je nelze rozlišit. Všímejte si, co potíže zhoršuje či naopak ulevuje, a při přetrvávání je proberte se zdravotníkem.'
   },
   {
-    question: 'Kdy je nutné při bolesti zad okamžitě volat lékaře?',
+    question: 'Kdy je nutné při bolesti zad vyhledat neodkladnou pomoc?',
     answer: 'Při ztrátě kontroly nad močením či stolicí, náhlé slabosti nohy (zakopávání špičkou), necitlivosti v oblasti rozkroku nebo při vystřelující bolesti provázené vysokou horečkou.'
   }
 ];
@@ -27,7 +28,7 @@ const painTypes = [
     id: 'krcni',
     tag: 'Cervikální oblast',
     title: 'Krční páteř a šíje',
-    desc: 'Tuhnutí trapézů, omezený rozsah otáčení hlavy a tenzní bolesti vystřelující do spánků.',
+    desc: 'Oblast krku a ramen může být citlivá při práci s obrazovkou, dlouhém sezení i z dalších důvodů. Samotné místo bolesti příčinu neurčuje.',
     symptoms: ['Pocit tíhy na ramenou', 'Bolest hlavy v zátylku', 'Zhoršení při práci na notebooku'],
     articleHref: '/bolest-krku-a-ramen/'
   },
@@ -35,7 +36,7 @@ const painTypes = [
     id: 'hrudni',
     tag: 'Torakální oblast',
     title: 'Hrudní páteř a mezi lopatkami',
-    desc: 'Pálivý tlak, bodání při hlubokém nádechu a pocit zablokovaného žebra z mělkého dýchání a předklonu.',
+    desc: 'Nepříjemný tlak, pálení nebo bodání mezi lopatkami může mít různé souvislosti. Při potížích s dýcháním nebo tlaku na hrudi vyhledejte pomoc ihned.',
     symptoms: ['Bodavá bolest pod lopatkou', 'Pálení při dlouhém sezení', 'Omezená rotace hrudníku'],
     articleHref: '/blog/bolest-mezi-lopatkami/'
   },
@@ -43,7 +44,7 @@ const painTypes = [
     id: 'bederni',
     tag: 'Lumbální oblast',
     title: 'Bederní páteř a kříž',
-    desc: 'Nejčastější typ bolesti. Tupý tlak po probuzení, únava v bedrech při stání nebo akutní ústřel (houserec).',
+    desc: 'Bolest v bedrech může být tupá, ostrá i proměnlivá. Všímejte si, zda se šíří do nohy, sílí nebo omezuje běžný pohyb.',
     symptoms: ['Ztuhlost při vstávání z židle', 'Tlak v kříži po chůzi', 'Úlevová poloha v lehu'],
     articleHref: '/blog/cviky-na-uvolneni-bederni-patere/'
   },
@@ -51,7 +52,7 @@ const painTypes = [
     id: 'si-kloub',
     tag: 'Pánevní pletenec',
     title: 'Kostrč a SI skloubení',
-    desc: 'Jednostranná bodavá bolest v oblasti hýždě vystřelující do zadní strany stehna, často zaměňovaná za ischias.',
+    desc: 'Bolest v oblasti pánve, kříže nebo hýždě může být jednostranná i proměnlivá. Bez odborného posouzení ji nelze označit konkrétním názvem.',
     symptoms: ['Bolest při došlapu na jednu nohu', 'Potíže při vstávání ze sedu', 'Citlivost na dotek u křížové kosti'],
     articleHref: '/blog/sedavy-zivotni-styl-jak-nici-zada-a-co-s-tim-delat/'
   }
@@ -62,13 +63,13 @@ const clusterArticles = [
     title: 'Příčiny a úleva od bolesti mezi lopatkami',
     href: '/blog/bolest-mezi-lopatkami/',
     readTime: '6 min čtení',
-    desc: 'Mechanismus zkrácených prsních svalů, blokád žeber a první pomoc u stolu.'
+    desc: 'Praktický průvodce běžným napětím mezi lopatkami a bezpečnými prvními kroky u stolu.'
   },
   {
     title: 'Cviky na uvolnění bederní páteře',
     href: '/blog/cviky-na-uvolneni-bederni-patere/',
     readTime: '6 min praxe',
-    desc: '5 rehabilitačních kroků pro dekompresi bederních plotének a stabilizaci pánve.'
+    desc: 'Pět šetrných pohybů pro chvíle, kdy vám jsou příjemné a nezhoršují obtíže.'
   },
   {
     title: 'Bolest zad v noci: proč vzniká a jak spát',
@@ -86,8 +87,8 @@ const clusterArticles = [
 ---
 
 <Layout
-  title="Typy bolesti zad: rozdělení, příčiny a varovné signály | ZádaBezBolesti.cz"
-  description="Přehledný anatomický průvodce typy bolesti zad. Zjistěte původ bolesti v krku, mezi lopatkami, v bedrech či kříži a naučte se rozpoznat varovné signály."
+  title="Bolest zad podle místa: orientace a varovné signály | ZádaBezBolesti.cz"
+  description="Přehledný průvodce tím, jak bolest zad popsat, co bezpečně sledovat a kdy vyhledat zdravotníka. Neurčuje příčinu ani diagnózu."
   faq={faqItems}
   hideChrome={true}
 >
@@ -110,32 +111,33 @@ const clusterArticles = [
           <div class="inline-flex items-center gap-2 mb-4">
             <span class="w-2 h-2 rounded-full bg-[#F2644B]"></span>
             <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-              Tematický pilíř • Diagnostická mapa
+              Tematický pilíř • Orientační mapa
             </span>
           </div>
 
           <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
             Typy bolesti zad: <br class="hidden sm:inline" />
-            jak rozpoznat příčinu a zvolit správný postup
+            jak popsat potíže a zvolit bezpečný další krok
           </h1>
 
           <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
-            Bolest zad není diagnóza, ale signál těla o přetížení konkrétního svalového, kloubního nebo vazivového segmentu. 
-            Správné určení lokality a charakteru bolesti je prvním krokem k bezpečné a trvalé úlevě.
+            Bolest zad může mít řadu příčin a samotné místo bolesti je neurčuje. Tato stránka pomůže potíže srozumitelně popsat, vybrat přiměřený další krok a rozpoznat situace, kdy domácí tipy nestačí.
           </p>
 
         </div>
       </section>
+
+      <ContentSafetyNote context="Tato mapa slouží k popisu potíží a výběru dalšího kroku. Místo bolesti ani její charakter samy o sobě neurčují diagnózu." />
 
       {/* 4 Anatomical Pain Areas */}
       <section class="w-full py-16 sm:py-20 border-b border-[#DDE5DD]">
         <div class="max-w-4xl mx-auto px-6 sm:px-8">
           
           <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
-            1. Rozdělení bolesti podle anatomické lokality
+            1. Kde potíže cítíte
           </h2>
           <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
-            Každá část páteře má odlišnou biomechaniku, hybnost a náchylnost k jinému typu přetížení:
+            Místo a charakter bolesti pomáhají potíže popsat. Nejsou ale způsobem, jak si sami určit diagnózu.
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
@@ -147,7 +149,7 @@ const clusterArticles = [
                   <p class="text-sm text-[#66736A] leading-relaxed mb-4">{area.desc}</p>
                   
                   <div class="space-y-1.5 mb-6 pt-3 border-t border-[#DDE5DD]">
-                    <span class="text-xs font-semibold text-[#18211C] block mb-1">Typické projevy:</span>
+                    <span class="text-xs font-semibold text-[#18211C] block mb-1">Časté popisy:</span>
                     {area.symptoms.map((s) => (
                       <div class="flex items-center gap-2 text-xs text-[#66736A]">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#F2644B]"></span>
@@ -184,8 +186,7 @@ const clusterArticles = [
           </h2>
 
           <p class="text-[16px] text-[#18211C]/90 leading-relaxed mb-8">
-            Ve většině případů (cca 90 %) jde o tzv. nespecifickou bolest zad způsobenou svalovým napětím. 
-            Při následujících příznacích však může jít o útlak nervového kořene nebo interní onemocnění:
+            Tyto příznaky neznamenají automaticky konkrétní diagnózu, ale není vhodné je řešit domácími cviky nebo čekáním. Vyhledejte neodkladnou pomoc nebo zdravotníka podle závažnosti situace:
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white p-6 sm:p-8 rounded-2xl border border-[#F2644B]/30">
@@ -237,7 +238,7 @@ const clusterArticles = [
             Článkový klastr
           </span>
           <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
-            Doporučené návody k jednotlivým typům bolesti
+            Další informace podle situace
           </h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -295,7 +296,7 @@ const clusterArticles = [
         <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <h2 class="font-serif-editorial text-3xl font-bold mb-4">Víte, co vás trápí? Vyberte další krok</h2>
           <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
-            Pokračujte na ucelené cvičební sestavy nebo si změřte správné ergonomické parametry stolu.
+            Pokud nemáte varovné příznaky, můžete pokračovat u šetrného pohybu nebo nastavení pracovního místa. Zhoršující se či nejasné potíže proberte se zdravotníkem.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <a href="/cviky-na-zada/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">

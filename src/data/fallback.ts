@@ -1,11 +1,11 @@
 import type { CategorySummary, ContentPage, ContentPost, PageSummary, PostSummary, SiteSettings } from '../domain/models';
 
 export const fallbackSiteSettings: SiteSettings = {
-  title: 'ZádaBezBolesti.cz – Zdravotní magazín a ergonomický nástroj',
-  description: 'Praktický průvodce ergonomií, zdravým spánkem a bezpečnou úlevou od bolesti zad.',
+  title: 'ZádaBezBolesti.cz – Praktický magazín o ergonomii a pohybu',
+  description: 'Praktické informace o ergonomii, pohybu, spánku a bezpečné orientaci při bolesti zad.',
   seo: {
-    metaTitle: 'ZádaBezBolesti.cz – Zdravotní magazín a ergonomický nástroj',
-    metaDescription: 'Bezpečný první krok při bolesti zad. Praktické návody, ergonomická kalkulačka a ověřené cviky pro lidi se sedavým zaměstnáním.',
+    metaTitle: 'ZádaBezBolesti.cz – Ergonomie, pohyb a zdravější návyky',
+    metaDescription: 'Praktické návody k ergonomii, pohybu a spánku pro lidi se sedavým zaměstnáním. Informace nenahrazují vyšetření.',
   },
 };
 

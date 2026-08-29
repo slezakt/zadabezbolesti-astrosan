@@ -295,8 +295,9 @@ export const getAllPosts = () => executeContentSourcePolicy<PostSummary[]>({ mod
   const supplementary = fallbackPostSummaries
     .filter((p) => !sanitySlugs.has(p.slug))
     .map((post) => mapPost({ ...post, _id: post.id }));
-  return [...sanityPosts, ...supplementary];
-}, getFallbackData: () => fallbackPostSummaries.map((post) => mapPost({ ...post, _id: post.id })) });
+  const combined = [...sanityPosts, ...supplementary];
+  return combined.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+}, getFallbackData: () => fallbackPostSummaries.map((post) => mapPost({ ...post, _id: post.id })).sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()) });
 
 export async function getPost(slug: string): Promise<ContentPost | null> {
   const fallback = () => fallbackPosts.find((post) => post.slug === slug) ?? null;
@@ -337,12 +338,14 @@ export async function getCategory(slug: string): Promise<CategorySummary | null>
 export async function getPostsByCategory(categorySlug: string): Promise<PostSummary[]> {
   const fallback = () => fallbackPostSummaries
     .filter((post) => post.categories.some((c) => c.slug === categorySlug))
-    .map((post) => mapPost({ ...post, _id: post.id }));
+    .map((post) => mapPost({ ...post, _id: post.id }))
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
   return executeContentSourcePolicy({ mode: mode(), getSanityData: async () => {
     const data = await fetchCms<PostsByCategoryQueryResult>(postsByCategoryQuery, { categorySlug });
     const sanityPosts = Array.isArray(data) ? data.map((item) => mapPost(item)) : [];
     const sanitySlugs = new Set(sanityPosts.map((p) => p.slug));
     const supplementary = fallback().filter((p) => !sanitySlugs.has(p.slug));
-    return [...sanityPosts, ...supplementary];
+    const combined = [...sanityPosts, ...supplementary];
+    return combined.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
   }, getFallbackData: fallback });
 }

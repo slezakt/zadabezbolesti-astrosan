@@ -15,33 +15,54 @@ if (!category) {
   return new Response(null, { status: 404 });
 }
 
-const posts = await getPostsByCategory(category.slug);
+const rawPosts = await getPostsByCategory(category.slug);
+const posts = [...rawPosts].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 const allCategories = await getAllCategories();
+
+function getTopicFallbackImage(slug: string, title: string): string {
+  const s = `${slug} ${title}`.toLowerCase();
+  if (s.includes('monitor') || s.includes('stul') || s.includes('stůl') || s.includes('ergonom') || s.includes('sedet') || s.includes('sedět') || s.includes('pocitac') || s.includes('počítač')) {
+    return 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&w=800&q=80';
+  }
+  if (s.includes('span') || s.includes('spán') || s.includes('matrac') || s.includes('polstar') || s.includes('polštář') || s.includes('noc')) {
+    return 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80';
+  }
+  if (s.includes('cvik') || s.includes('strec') || s.includes('streč') || s.includes('uvolneni') || s.includes('uvolnění') || s.includes('pohyb')) {
+    return 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80';
+  }
+  if (s.includes('krk') || s.includes('sij') || s.includes('šíj') || s.includes('trapez') || s.includes('trapéz') || s.includes('lopatk')) {
+    return 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80';
+  }
+  if (s.includes('stres') || s.includes('psych') || s.includes('unav')) {
+    return 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80';
+  }
+  return 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80';
+}
 ---
 
 <Layout
   title={`${category.title} – Články a návody | ZádaBezBolesti.cz`}
   description={category.description || `Odborné články a návody v kategorii ${category.title}.`}
 >
-  <div class="max-w-7xl mx-auto py-6">
+  <div class="max-w-7xl mx-auto py-6 sm:py-10">
     <!-- Breadcrumbs -->
-    <nav class="flex items-center gap-2 text-xs text-[#66736A] mb-8 font-medium" aria-label="Drobečková navigace">
-      <a href="/" class="hover:text-[#2F5941] link-underline">Domů</a>
-      <span>/</span>
-      <a href="/blog/" class="hover:text-[#2F5941] link-underline">Magazín</a>
-      <span>/</span>
-      <span class="text-[#18211C]">{category.title}</span>
+    <nav class="flex items-center gap-2 text-xs font-mono text-[#66736A] mb-8 font-medium" aria-label="Drobečková navigace">
+      <a href="/" class="hover:text-[#2F5941] underline underline-offset-2">Domů</a>
+      <span aria-hidden="true">/</span>
+      <a href="/blog/" class="hover:text-[#2F5941] underline underline-offset-2">Magazín</a>
+      <span aria-hidden="true">/</span>
+      <span class="text-[#18211C] font-semibold">{category.title}</span>
     </nav>
 
     <!-- Header -->
-    <header class="mb-10">
+    <header class="mb-10 pb-8 border-b border-[#18211C]">
       <div class="inline-flex items-center gap-2 mb-3">
-        <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
+        <span class="w-2 h-2 bg-[#2F5941]"></span>
         <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-          Tématická kategorie
+          Tématická rubrika
         </span>
       </div>
-      <h1 class="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#18211C] tracking-tight mb-4">
+      <h1 class="font-serif-editorial text-4xl sm:text-5xl lg:text-6xl font-bold text-[#18211C] tracking-tight mb-4">
         {category.title}
       </h1>
       {category.description && (
@@ -50,18 +71,18 @@ const allCategories = await getAllCategories();
         </p>
       )}
 
-      <!-- Category Filter Pills -->
+      <!-- Category Filter Pills (Sharp) -->
       <div class="flex flex-wrap gap-2 pt-6">
         <a
           href="/blog/"
-          class="px-4 py-2 rounded-xl text-xs font-semibold bg-[#EAF4EE] text-[#18211C] hover:bg-[#C9DCCF] border border-[#DDE5DD] transition-colors"
+          class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#EAF4EE] text-[#18211C] hover:bg-[#C9DCCF] border border-[#DDE5DD] transition-colors"
         >
           Všechny články
         </a>
         {allCategories.map((cat) => (
           <a
             href={`/blog/kategorie/${cat.slug}/`}
-            class={`px-4 py-2 rounded-xl text-xs font-semibold border transition-colors ${
+            class={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider border transition-colors ${
               cat.slug === category.slug
                 ? 'bg-[#173326] text-[#F7F5EF] border-[#173326]'
                 : 'bg-[#EAF4EE] text-[#18211C] hover:bg-[#C9DCCF] border-[#DDE5DD]'
@@ -77,22 +98,24 @@ const allCategories = await getAllCategories();
     {posts && posts.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
-          <article class="editorial-row bg-[#F7F5EF] border border-[#DDE5DD] rounded-2xl overflow-hidden flex flex-col hover:border-[#2F5941] hover:bg-[#EAF4EE]/30 transition-all group">
-            {post.mainImage && (
-              <a href={`/blog/${post.slug}/`} class="h-52 overflow-hidden bg-[#EAF4EE] block focus:outline-none">
+          <article class="editorial-row bg-[#F7F5EF] border border-[#DDE5DD] overflow-hidden flex flex-col hover:border-[#2F5941] hover:bg-[#EAF4EE]/30 transition-all group">
+            <a href={`/blog/${post.slug}/`} class="h-52 overflow-hidden bg-[#EAF4EE] block focus:outline-none border-b border-[#DDE5DD]">
+              {post.mainImage ? (
                 <SanityImage image={post.mainImage} alt={post.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
-              </a>
-            )}
+              ) : (
+                <img src={getTopicFallbackImage(post.slug, post.title)} alt={post.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+              )}
+            </a>
             <div class="p-6 flex flex-col flex-1">
-              <div class="flex items-center gap-2 text-xs text-[#66736A] mb-3">
-                <span>{category.title}</span>
+              <div class="flex items-center gap-2 text-xs text-[#66736A] mb-3 font-mono">
+                <span class="text-[#2F5941] font-semibold uppercase">{category.title}</span>
                 {post.publishedAt && (
                   <span>
-                    • {new Date(post.publishedAt).toLocaleDateString('cs-CZ')}
+                    • {new Date(post.publishedAt).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </span>
                 )}
               </div>
-              <h2 class="font-serif-editorial text-2xl font-semibold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-3 leading-snug">
+              <h2 class="font-serif-editorial text-[22px] sm:text-[24px] font-bold text-[#18211C] group-hover:text-[#2F5941] transition-colors mb-3 leading-snug">
                 <a href={`/blog/${post.slug}/`} class="focus:outline-none">{post.title}</a>
               </h2>
               {post.excerpt && (
@@ -109,10 +132,11 @@ const allCategories = await getAllCategories();
         ))}
       </div>
     ) : (
-      <div class="text-center py-16 px-6 bg-[#EAF4EE] border border-dashed border-[#DDE5DD] rounded-2xl">
+      <div class="text-center py-16 px-6 bg-[#EAF4EE] border border-dashed border-[#DDE5DD]">
         <p class="text-lg font-serif-editorial font-semibold text-[#18211C] mb-2">V této kategorii zatím nejsou žádné články.</p>
         <a href="/blog/" class="text-sm text-[#2F5941] underline">Zobrazit všechny články v magazínu</a>
       </div>
     )}
   </div>
 </Layout>
+

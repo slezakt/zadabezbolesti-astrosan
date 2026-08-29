@@ -2,23 +2,24 @@
 import Layout from '../layouts/Layout.astro';
 import { Header } from '../components/template/Header';
 import { Footer } from '../components/template/Footer';
+import ContentSafetyNote from '../components/ContentSafetyNote.astro';
 
 const faqItems = [
   {
     question: 'Jak často bych měl při sedavé práci cvičit?',
-    answer: 'Ideální je tzv. mikro-cvičení: každých 45–60 minut vstát a zařadit 1–2 minuty protažení hrudníku a šíje. Pravidelné krátké intervence během dne jsou účinnější než jednorázový hodinový trénink večer.'
+    answer: 'Začněte malou dávkou, kterou zvládnete pravidelně, třeba krátkou změnou polohy či chůzí během dne. Neexistuje jeden správný interval pro všechny; důležité je nesetrvávat dlouho v nepohodlí.'
   },
   {
     question: 'Můžu cvičit, když mám akutní bolest v bedrech?',
-    answer: 'Při akutní bolesti se vyhněte hlubokým předklonům a rotacím. Zvolte úlevovou pozici v lehu na zádech s nohama položenýma na židli (90° v kolenou a kyčlích) a jemné brániční dýchání.'
+    answer: 'Bez vyšetření nelze říct, který pohyb je pro vás vhodný. Pokud nemáte varovné příznaky, můžete volit jemný pohyb nebo polohu, která obtíže nezhoršuje. Při ostré, sílící či vystřelující bolesti cvičení přerušte a poraďte se se zdravotníkem.'
   },
   {
     question: 'Proč mě bolí mezi lopatkami po cvičení?',
-    answer: 'Často jde o reakci přetížených svalů, které byly příliš dlouho v protažení. Cvičte bez švihových pohybů, s důrazem na výdech a otevření prsních svalů.'
+    answer: 'Může jít o přetížení, ale na dálku nelze určit příčinu. Snižte intenzitu nebo cvik vynechte; pokud se bolest opakuje, zhoršuje nebo se přidají jiné příznaky, vyhledejte odborné posouzení.'
   },
   {
     question: 'Které cviky jsou pro záda rizikové?',
-    answer: 'Klasické sedy-lehy (zkracují flexory kyčlí a stlačují bedra), prudké kroužení hlavou v záklonu a rotace trupu se zátěží bez zpevněného středu těla.'
+    answer: 'Rizikový je zejména pohyb přes ostrou bolest, prudké švihy a cvik, po kterém se obtíže zřetelně zhoršují. Vhodnost konkrétního cviku závisí na člověku i jeho potížích.'
   }
 ];
 
@@ -27,32 +28,32 @@ const clusterArticles = [
     title: '3minutový strečink v kanceláři přímo u stolu',
     href: '/blog/strecink-v-kancelari/',
     readTime: '3 min praxe',
-    desc: 'Blesková dechová a mobilizační sekvence na židli pro uvolnění hrudníku a trapézů.'
+    desc: 'Krátká sekvence pomalých pohybů na židli pro chvíle, kdy vám je příjemné se rozhýbat.'
   },
   {
     title: '7 jednoduchých cviků pro úlevu od bolesti zad',
     href: '/blog/7-jednoduchych-cviku-pro-ulevu-od-bolesti-zad/',
     readTime: '5 min praxe',
-    desc: 'Základní rehabilitační cviky, které zvládnete doma na koberci bez jakéhokoliv náčiní.'
+    desc: 'Základní šetrné pohyby, které můžete vyzkoušet doma bez náčiní, pokud vám jsou příjemné.'
   },
   {
     title: 'Cviky na krční páteř pro kancelářské pracovníky',
     href: '/blog/cviky-na-krcni-pater-pro-kancelarske-pracovniky/',
     readTime: '4 min praxe',
-    desc: 'Bezpečné posílení hlubokých flexorů krku a protažení přetížených šíjových svalů.'
+    desc: 'Jemné pohyby pro krk a ramena bez prudkých švihů a bez cvičení přes bolest.'
   },
   {
     title: 'Cviky na uvolnění bederní páteře',
     href: '/blog/cviky-na-uvolneni-bederni-patere/',
     readTime: '6 min praxe',
-    desc: 'Sestava pro dekompresi bederních obratlů, aktivaci hýždí a uvolnění flexorů kyčlí.'
+    desc: 'Pomalá sestava pro bedra a pánev, kterou můžete vyzkoušet, pokud obtíže nezhoršuje.'
   }
 ];
 ---
 
 <Layout
   title="Cviky na záda: jednoduché sestavy pro úlevu a zdravou páteř | ZádaBezBolesti.cz"
-  description="Ověřené rehabilitační a mobilizační cviky na záda pro lidi u počítače. Rychlé 3minutové sestavy k židli i hloubková cvičení na doma."
+  description="Šetrné pohybové tipy pro lidi u počítače. Vyberte si krátkou sestavu k židli nebo pomalé cvičení doma podle toho, co vám vyhovuje."
   faq={faqItems}
   hideChrome={true}
 >
@@ -75,22 +76,23 @@ const clusterArticles = [
           <div class="inline-flex items-center gap-2 mb-4">
             <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
             <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-              Tematický pilíř • Pohybová terapie & Mobilita
+              Tematický pilíř • Šetrný pohyb a mobilita
             </span>
           </div>
 
           <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
             Cviky na záda: <br class="hidden sm:inline" />
-            bezpečné sestavy pro okamžitou úlevu i prevenci
+            šetrné sestavy pro více pohybu během dne
           </h1>
 
           <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
-            Záda nepotřebují dril ani pocení v posilovně. Potřebují přesné, kontrolované pohyby, 
-            které uvolní zkrácené svalové skupiny a aktivují hluboké stabilizátory páteře.
+            Neexistuje jeden cvik pro každá záda. Začněte pomalu, sledujte reakci těla a vybírejte pohyb, který nezhoršuje obtíže. Tento obsah nenahrazuje individuální posouzení.
           </p>
 
         </div>
       </section>
+
+      <ContentSafetyNote context="Tyto sestavy jsou obecné pohybové tipy. Zvolte jen pohyb, který je vám příjemný, a nesnažte se bolest překonat silou." />
 
       {/* 3 Core Exercise Categories */}
       <section class="w-full py-16 sm:py-20 border-b border-[#DDE5DD]">
@@ -100,7 +102,7 @@ const clusterArticles = [
             Vyberte si sestavu podle situace
           </h2>
           <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
-            Přehled tří hlavních cvičebních protokolů podle toho, kolik máte času a kde se právě nacházíte:
+            Vyberte si krátkou a proveditelnou variantu podle toho, kde jste a kolik máte času. Pokud pohyb obtíže zhoršuje, přerušte ho.
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
@@ -110,7 +112,7 @@ const clusterArticles = [
                 <span class="text-xs uppercase tracking-wider font-semibold text-[#2F5941] block mb-2">3 minuty • Bez pomůcek</span>
                 <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">U pracovního stolu</h3>
                 <p class="text-sm text-[#66736A] leading-relaxed mb-4">
-                  Mobilizace hrudníku, uvolnění trapézů a brániční dech přímo na kancelářské židli bez nutnosti převlékání.
+                  Krátká změna polohy a pomalé pohyby přímo na kancelářské židli, bez převlékání a bez pomůcek.
                 </p>
               </div>
               <a href="/blog/strecink-v-kancelari/" class="text-xs font-semibold text-[#2F5941] bg-[#F7F5EF] px-3 py-2 rounded-xl border border-[#DDE5DD] text-center hover:bg-white transition-colors">
@@ -123,7 +125,7 @@ const clusterArticles = [
                 <span class="text-xs uppercase tracking-wider font-semibold text-[#66736A] block mb-2">7 minut • Podložka</span>
                 <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">Bedra a pánev</h3>
                 <p class="text-sm text-[#66736A] leading-relaxed mb-4">
-                  Dekomprese bederních plotének, protažení flexorů kyčlí a aktivace hýžďových svalů pro stabilní pánev.
+                  Pomalé pohyby v lehu pro dny, kdy je vám příjemné rozhýbat se mimo pracovní stůl.
                 </p>
               </div>
               <a href="/blog/cviky-na-uvolneni-bederni-patere/" class="text-xs font-semibold text-[#18211C] bg-[#F7F5EF] px-3 py-2 rounded-xl border border-[#DDE5DD] text-center hover:bg-[#EAF4EE] transition-colors">
@@ -136,7 +138,7 @@ const clusterArticles = [
                 <span class="text-xs uppercase tracking-wider font-semibold text-[#66736A] block mb-2">5 minut • Sed či stoj</span>
                 <h3 class="font-serif-editorial text-xl font-semibold text-[#18211C] mb-3">Krk a šíje</h3>
                 <p class="text-sm text-[#66736A] leading-relaxed mb-4">
-                  Korekce předsunuté hlavy (chin tuck), laterální úklony šíje a uvolnění pálivého napětí mezi lopatkami.
+                  Jemné pohyby pro šíji a ramena bez kroužení hlavou v krajních polohách.
                 </p>
               </div>
               <a href="/blog/cviky-na-krcni-pater-pro-kancelarske-pracovniky/" class="text-xs font-semibold text-[#18211C] bg-[#F7F5EF] px-3 py-2 rounded-xl border border-[#DDE5DD] text-center hover:bg-[#EAF4EE] transition-colors">
@@ -157,7 +159,7 @@ const clusterArticles = [
             Článkový klastr
           </span>
           <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
-            Všechny návody a cvičební sestavy
+            Další šetrné pohybové tipy
           </h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -215,7 +217,7 @@ const clusterArticles = [
         <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <h2 class="font-serif-editorial text-3xl font-bold mb-4">Máte odcvičeno? Zkontrolujte ergonomii stolu</h2>
           <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
-            Správné nastavení židle a monitoru zabrání tomu, aby se napětí v těle znovu vytvořilo.
+            Nastavení židle a monitoru může zpříjemnit pracovní den, zejména když jej spojíte s pravidelnou změnou polohy a činnosti.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <a href="/ergonomie-pracoviste/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">

@@ -3,19 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import { Header } from '../components/template/Header';
 import { Footer } from '../components/template/Footer';
 import { ErgonomicCalculator } from '../components/template/ErgonomicCalculator';
+import ContentSafetyNote from '../components/ContentSafetyNote.astro';
 
 const faqItems = [
   {
     question: 'Jaká je ideální výška pracovního stolu pro sezení?',
-    answer: 'Ideální výška desky stolu závisí na výšce vaší postavy. Při sezení by měla odpovídat výšce vašich loktů v úhlu 90° při uvolněných ramenech (např. 72 cm pro výšku 175 cm).'
+    answer: 'Výška stolu závisí na proporcích, židli i použité klávesnici. Začněte tak, aby ramena byla uvolněná a předloktí měla oporu; pak nastavení dolaďte podle pohodlí a možnosti měnit polohu.'
   },
   {
     question: 'Jak vysoko má být horní hrana monitoru?',
-    answer: 'Horní hrana zobrazovací plochy má být přesně v horizontální rovině vašich očí. Oči přirozeně hledí mírně dolů (úhel 15–20°), což zabraňuje přetížení šíje.'
+    answer: 'Obrazovku obvykle začněte nastavovat přibližně do výšky očí nebo o něco níž. Cílem není milimetrová poloha, ale pohodlný pohled bez opakovaného předklánění či zaklánění hlavy.'
   },
   {
     question: 'Má smysl pracovat celý den ve stoje?',
-    answer: 'Ne. Celodenní stání přetěžuje plosky nohou a bederní lordózu. Ideální rytmus podle ergonomické normy ISO 9241 je střídání 45 minut dynamického sedu a 15 minut práce ve stoje.'
+    answer: 'Ne. Ani stání není univerzálně lepší než sed. Většině lidí prospívá střídání poloh a činností v průběhu dne; zvolte rytmus, který je slučitelný s vaší prací a nezvyšuje obtíže.'
   },
   {
     question: 'Jak poznám, že mám špatně nastavenou židli?',
@@ -28,32 +29,32 @@ const clusterArticles = [
     title: 'Ideální nastavení monitoru: výška, vzdálenost, sklon',
     href: '/blog/idealni-nastaveni-monitoru-vyska-vzdalenost-sklon/',
     readTime: '5 min čtení',
-    desc: 'Podrobný průvodce umístěním jednoho i dvou monitorů pro úlevu od bolesti krční páteře.'
+    desc: 'Průvodce umístěním jednoho i dvou monitorů pro pohodlnější pohled při práci.'
   },
   {
     title: 'Jak správně sedět u počítače krok za krokem',
     href: '/blog/jak-spravne-sedet-u-pocitace/',
     readTime: '6 min čtení',
-    desc: 'Kompletní ergonomický návod na nastavení židle, područek, bederní opěrky a nohou.'
+    desc: 'Praktický postup pro nastavení židle, područek, bederní opěrky a opory nohou.'
   },
   {
     title: 'Polohovací stoly a střídání sedu a stoje',
     href: '/blog/vyskove-nastavitelny-stul-pruvodce/',
     readTime: '4 min čtení',
-    desc: 'Jak nastavit výšku stolu pro práci ve stoje a pravidlo 45/15 v praxi.'
+    desc: 'Jak orientačně nastavit výšku stolu pro práci ve stoje a střídat polohy v praxi.'
   },
   {
     title: 'Monitor vs. laptop: proč samotný notebook ničí záda',
     href: '/blog/monitor-vs-laptop-zada/',
     readTime: '5 min čtení',
-    desc: 'Proč práce s notebookem na klíně vede k syndromu horního zkřížení a jak to vyřešit.'
+    desc: 'Proč samotný notebook často svádí k nepohodlné poloze a jak si pracovní místo jednoduše upravit.'
   }
 ];
 ---
 
 <Layout
   title="Ergonomie pracoviště: nastavení stolu, židle a monitoru | ZádaBezBolesti.cz"
-  description="Vědecky přesný návod na ergonomické nastavení pracovního místa. Zjistěte ideální výšku stolu, židle a monitoru podle své výšky s naší interaktivní kalkulačkou."
+  description="Praktický návod k nastavení pracovního místa. Kalkulačka nabídne orientační výchozí hodnoty pro židli, stůl a monitor."
   faq={faqItems}
   hideChrome={true}
 >
@@ -76,22 +77,23 @@ const clusterArticles = [
           <div class="inline-flex items-center gap-2 mb-4">
             <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
             <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-              Tematický pilíř • Ergonomický standard ISO 9241
+              Tematický pilíř • Praktické nastavení pracovního místa
             </span>
           </div>
 
           <h1 class="font-serif-editorial text-[36px] sm:text-[48px] lg:text-[54px] leading-[1.1] font-semibold text-[#18211C] tracking-tight mb-6">
             Ergonomie pracoviště: <br class="hidden sm:inline" />
-            nastavte svůj stůl, židli a monitor na milimetr přesně
+            najděte pohodlné nastavení stolu, židle a monitoru
           </h1>
 
           <p class="text-[18px] sm:text-[20px] leading-[1.6] text-[#66736A]">
-            Většina bolestí zad při práci u počítače nevzniká slabým svalstvem, ale statickým přetížením 
-            v nevhodných úhlech. Zde najdete přesné parametry vycházející z biomechanických norem.
+            Dlouhé setrvání v jedné poloze může být nepříjemné bez ohledu na kvalitu vybavení. Začněte jednoduchým nastavením a průběžně střídejte polohy i činnosti.
           </p>
 
         </div>
       </section>
+
+      <ContentSafetyNote context="Tento průvodce nabízí orientační nastavení pracovního místa a pomáhá vybrat malé změny, které můžete postupně vyzkoušet." />
 
       {/* Embedded Interactive Calculator */}
       <div class="border-b border-[#DDE5DD]">
@@ -103,10 +105,10 @@ const clusterArticles = [
         <div class="max-w-4xl mx-auto px-6 sm:px-8">
           
           <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-4">
-            Přehledná tabulka ergonomických výšek (pro sed i stoj)
+            Orientační výchozí hodnoty pro sed i stoj
           </h2>
           <p class="text-[16px] text-[#66736A] leading-relaxed mb-8">
-            Referenční hodnoty vycházející z evropské normy EN 527 a ISO 9241 pro tělesné proporce:
+            Čísla berte jako první nastavení, ne jako přesný předpis. Dolaďte je podle židle, obuvi, klávesnice, zraku a toho, zda dokážete během dne pohodlně měnit polohu.
           </p>
 
           <div class="overflow-x-auto rounded-xl border border-[#DDE5DD] mb-8">
@@ -159,7 +161,7 @@ const clusterArticles = [
             Článkový klastr
           </span>
           <h2 class="font-serif-editorial text-[28px] sm:text-[36px] font-semibold text-[#18211C] mb-8">
-            Všechny články o ergonomii pracoviště
+            Návody k pracovnímu místu
           </h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -217,7 +219,7 @@ const clusterArticles = [
         <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <h2 class="font-serif-editorial text-3xl font-bold mb-4">Máte správně nastavený stůl? Začněte s pohybem</h2>
           <p class="text-[#C9DCCF] mb-8 text-lg max-w-xl mx-auto">
-            Prohlédněte si rehabilitační cviky a dechové techniky, které můžete provádět přímo u stolu.
+            Prohlédněte si šetrné pohybové tipy, které můžete vyzkoušet přímo u stolu, pokud vaše obtíže nezhoršují.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <a href="/cviky-na-zada/" class="px-6 py-3.5 rounded-xl bg-[#F7F5EF] text-[#173326] font-semibold hover:bg-white transition-colors">

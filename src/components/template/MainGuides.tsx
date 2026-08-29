@@ -10,14 +10,13 @@ export const MainGuides: React.FC = () => {
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <span className="text-xs uppercase tracking-widest font-semibold text-[#2F5941] block mb-2">
-            Znalostní báze & Pilíře zdraví
+            Tematické pilíře
           </span>
           <h2 className="font-serif-editorial text-[32px] sm:text-[42px] leading-[1.15] font-semibold text-[#18211C] mb-4">
             Projděte si hlavní průvodce
           </h2>
           <p className="text-[17px] leading-relaxed text-[#66736A]">
-            Čtyři ucelené tematické okruhy. Od pochopení původu bolesti přes konkrétní cviky 
-            až po správné spánkové návyky pro plnou regeneraci těla.
+            Čtyři ucelené tematické okruhy pro ergonomii, šetrný pohyb, spánek a bezpečnou orientaci v potížích se zády.
           </p>
         </div>
 

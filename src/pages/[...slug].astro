@@ -23,7 +23,7 @@ if (!page) {
 
 <Layout
   title={page.seo?.metaTitle || `${page.title} | ZádaBezBolesti.cz`}
-  description={page.seo?.metaDescription || `${page.title} – praktické informace a ověřené postupy pro zdravá záda.`}
+  description={page.seo?.metaDescription || `${page.title} – praktické informace pro pohodlnější práci, pohyb a spánek.`}
   noindex={page.seo?.noIndex}
 >
   <article class="max-w-4xl mx-auto py-6">
@@ -39,7 +39,7 @@ if (!page) {
       <div class="inline-flex items-center gap-2 mb-3">
         <span class="w-2 h-2 rounded-full bg-[#2F5941]"></span>
         <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">
-          Informační & Odborný průvodce
+          Informační průvodce
         </span>
       </div>
       <h1 class="font-serif-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#18211C] leading-[1.15] mb-4 tracking-tight">
@@ -53,6 +53,10 @@ if (!page) {
         <PortableText value={page.content} />
       </div>
     )}
+
+    <aside class="my-10 border-l-4 border-[#C94734] bg-[#FDF4F1] px-5 py-4 text-sm leading-relaxed text-[#18211C]">
+      Tento obsah slouží k orientaci. Neurčuje příčinu bolesti ani nenahrazuje lékařské vyšetření nebo individuální doporučení fyzioterapeuta.
+    </aside>
 
     <!-- FAQ section if available -->
     {page.faq && page.faq.length > 0 && (

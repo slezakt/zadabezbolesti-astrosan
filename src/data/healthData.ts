@@ -215,7 +215,7 @@ export const MAIN_GUIDES: GuidePillar[] = [
   {
     number: '01',
     title: 'Bolesti zad',
-    description: 'Pochopte biologii a mechaniku své bolesti. Zjistěte, kdy jde o běžné svalové přetížení a kdy je nutné navštívit fyzioterapeuta či lékaře.',
+    description: 'Naučte se potíže popsat, vybrat bezpečný další krok a rozpoznat situace, kdy domácí tipy nestačí.',
     pillarHref: '/typy-bolesti',
     links: [
       { id: 'scapula-guide', title: 'Příčiny a úleva od bolesti mezi lopatkami', readTime: '5 min čtení', href: '/blog/bolest-mezi-lopatkami/' },
@@ -226,7 +226,7 @@ export const MAIN_GUIDES: GuidePillar[] = [
   {
     number: '02',
     title: 'Cviky na záda',
-    description: 'Cílené sestavy pohybů, které nevyžadují žádné pomůcky a zvládnete je přímo u pracovního stolu nebo ráno po probuzení.',
+    description: 'Šetrné pohybové tipy bez pomůcek pro pracovní stůl nebo domov. Vybírejte jen pohyb, který vám je příjemný.',
     pillarHref: '/cviky-na-zada',
     links: [
       { id: 'stretch-routine', title: '3minutová mobilizace pro lidi u počítače', readTime: '3 min praxe', href: '/blog/strecink-v-kancelari/' },
@@ -237,7 +237,7 @@ export const MAIN_GUIDES: GuidePillar[] = [
   {
     number: '03',
     title: 'Ergonomie pracoviště',
-    description: 'Matematicky přesné nastavení židle, monitoru a stolu. Eliminujte statické mikrotraumata páteře správnými úhly a vzdálenostmi.',
+    description: 'Orientační nastavení židle, monitoru a stolu a praktické tipy pro častější změnu polohy během práce.',
     pillarHref: '/ergonomie-pracoviste',
     links: [
       { id: 'monitor-height', title: 'Výška a vzdálenost monitoru: přesný návod', readTime: '5 min čtení', href: '/blog/idealni-nastaveni-monitoru-vyska-vzdalenost-sklon/' },
@@ -248,7 +248,7 @@ export const MAIN_GUIDES: GuidePillar[] = [
   {
     number: '04',
     title: 'Spánek a regenerace',
-    description: 'Jak poloha při spánku, tuhost matrace a výška polštáře ovlivňují regeneraci meziobratlových plotének během noci.',
+    description: 'Jak postupně zkoušet změny spánkové polohy, matrace a polštáře a jak sledovat ranní pohodlí.',
     pillarHref: '/zdravy-spanek',
     links: [
       { id: 'sleep-positions', title: 'Nejlepší poloha při spánku pro ploténky', readTime: '6 min čtení', href: '/blog/nejlepsi-poloha-pri-spanku/' },

@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Workers
+name: Deploy to Vercel
 on:
   push:
     branches: [main, master]
@@ -50,13 +50,11 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm run test:predeploy
-      - name: Deploy immutable static release
-        uses: cloudflare/wrangler-action@v3
-        timeout-minutes: 10
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
+      - name: Deploy to Vercel
+        run: npx vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       - name: Verify live release
         env: { GITHUB_SHA: "${{ github.sha }}" }
         run: npm run test:postdeploy

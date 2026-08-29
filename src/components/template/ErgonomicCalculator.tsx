@@ -50,15 +50,15 @@ export const ErgonomicCalculator: React.FC = () => {
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-2 h-2 rounded-full bg-[#173326]"></span>
             <span className="text-xs uppercase tracking-widest font-semibold text-[#173326]">
-              Interaktivní kalkulačka • ISO 9241 Standard
+              Interaktivní kalkulačka • orientační výchozí hodnoty
             </span>
           </div>
           <h2 className="font-serif-editorial text-[32px] sm:text-[42px] leading-[1.15] font-semibold text-[#18211C] mb-4">
             Nastavte si pracovní místo podle své výšky
           </h2>
           <p className="text-[17px] leading-relaxed text-[#66736A]">
-            Univerzální nábytek neexistuje. Zadejte svou tělesnou výšku a získejte přesné rozměry 
-            pro židli, desku stolu i pozici monitoru.
+            Univerzální nábytek neexistuje. Zadejte svou tělesnou výšku a získejte orientační výchozí hodnoty
+            pro židli, desku stolu i pozici monitoru. Nastavení pak dolaďte podle pohodlí a možnosti často měnit polohu.
           </p>
         </div>
 

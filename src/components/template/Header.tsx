@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
             ZádaBezBolesti<span className="text-[#F2644B]">.cz</span>
           </span>
           <span className="hidden sm:inline-block text-[11px] uppercase tracking-wider text-[#66736A] font-medium border-l border-[#DDE5DD] pl-2.5 ml-1">
-            Zdravotní magazín
+            Praktický průvodce
           </span>
         </a>
 
@@ -41,12 +41,6 @@ export const Header: React.FC = () => {
             className="hover:text-[#2F5941] link-underline"
           >
             Spánek
-          </a>
-          <a 
-            href="/nastroje/kalkulacka/" 
-            className="hover:text-[#2F5941] link-underline"
-          >
-            Kalkulačka
           </a>
           <a 
             href="/blog/" 
@@ -77,7 +71,6 @@ export const Header: React.FC = () => {
               <a href="/cviky-na-zada/" className="py-3.5 hover:text-[#2F5941]">Cviky na záda</a>
               <a href="/ergonomie-pracoviste/" className="py-3.5 hover:text-[#2F5941]">Ergonomie pracoviště</a>
               <a href="/zdravy-spanek/" className="py-3.5 hover:text-[#2F5941]">Zdravý spánek</a>
-              <a href="/nastroje/kalkulacka/" className="py-3.5 hover:text-[#2F5941]">Ergonomická kalkulačka</a>
               <a href="/blog/" className="py-3.5 hover:text-[#2F5941]">Magazín a články</a>
               <a href="/#diagnostic" className="py-3.5 font-semibold text-[#2F5941]">Rychlý rozcestník podle bolesti</a>
             </nav>

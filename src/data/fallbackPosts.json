@@ -6407,10 +6407,10 @@
   },
   {
     "id": "424c016a-1233-4025-ac80-e9da5c1ada00",
-    "title": "Moderní fyzioterapie: Jak technologie zlepšují léčbu bolesti zad",
+    "title": "Technologie ve fyzioterapii: co umí a co od nich nečekat",
     "slug": "moderni-fyzioterapie-jak-technologie-zlepsuji-lecbu-bolesti-zad",
     "publishedAt": "2025-12-12T18:31:00.000Z",
-    "excerpt": "Bolest zad dnes řeší mnohem víc než jen „klasická rehabilitace“. Moderní fyzioterapie využívá technologie, které umožňují rychlejší úlevu, lepší aktivaci hlubokých svalů i přesnější kontrolu pohybu.",
+    "excerpt": "EMS, biofeedback i masážní pomůcky mohou mít ve fyzioterapii své místo. Samy o sobě ale neurčují příčinu bolesti ani nenahrazují individuální péči.",
     "categories": [],
     "body": [
       {
@@ -6421,7 +6421,7 @@
             "_key": "1cdd1e381820",
             "_type": "span",
             "marks": [],
-            "text": "Bolest zad dnes řeší mnohem víc než jen „klasická rehabilitace“. Moderní fyzioterapie využívá technologie, které umožňují rychlejší úlevu, lepší aktivaci hlubokých svalů i přesnější kontrolu pohybu. Některé z těchto nástrojů lze dokonce používat doma, což léčbu výrazně doplňuje."
+            "text": "Technologie mohou ve fyzioterapii sloužit jako doplněk práce s pohybem a zpětnou vazbou. To, zda a pro koho dávají smysl, závisí na konkrétní situaci; domácí přístroj neurčuje příčinu bolesti ani nenahrazuje vyšetření."
           }
         ],
         "markDefs": [],
@@ -6477,7 +6477,7 @@
             "_key": "f34b70893dea",
             "_type": "span",
             "marks": [],
-            "text": "EMS využívá jemné elektrické impulsy k aktivaci svalů bez toho, aby bylo nutné pohyb provést vědomě. Stimuluje jak hluboké, tak povrchové svaly, které bývají u bolestí zad oslabené nebo špatně zapojené."
+            "text": "EMS používá elektrické impulsy k vyvolání svalové kontrakce. Je to nástroj používaný v některých zdravotnických a tréninkových souvislostech; vhodnost, nastavení i kontraindikace je potřeba řešit s kvalifikovaným odborníkem a podle návodu konkrétního zařízení."
           }
         ],
         "markDefs": [],
@@ -6605,7 +6605,7 @@
             "_key": "ff10818f53bf",
             "_type": "span",
             "marks": [],
-            "text": "Lidi se sedavým zaměstnáním, po dlouhém řízení, nebo při dlouhodobém napětí v bedrech či šíji."
+            "text": "O vhodnosti nelze rozhodnout jen podle toho, že člověk sedí v práci nebo cítí napětí. Před použitím zvažte svůj zdravotní stav, návod zařízení a případnou konzultaci se zdravotníkem."
           }
         ],
         "markDefs": [],
@@ -6765,7 +6765,7 @@
             "_key": "1b825b2eec4e",
             "_type": "span",
             "marks": [],
-            "text": "Moderní závěsné systémy pracují s nestabilním prostředím, které zapojuje hluboké svaly mnohem efektivněji než běžné posilování."
+            "text": "Závěsné systémy umožňují měnit náročnost a pracovat s pohybem pod dohledem. Nejsou ale samy o sobě účinnější než jiné formy vhodně zvoleného pohybu."
           }
         ],
         "markDefs": [],
@@ -6907,7 +6907,7 @@
             "_key": "c863e97e4062",
             "_type": "span",
             "marks": [],
-            "text": "Technologie pronikla i do domácí regenerace. Kvalitní masážní pomůcky dokážou uvolnit přetížení, které vzniká sedem, stresem i špatnou ergonomií."
+            "text": "Masážní pomůcky mohou některým lidem zpříjemnit krátkodobé uvolnění po zátěži. Neřeší však příčinu bolesti a nejsou vhodné pro každou bolestivou oblast ani každou situaci."
           }
         ],
         "markDefs": [],
@@ -7221,16 +7221,16 @@
       }
     ],
     "seo": {
-      "metaTitle": "Moderní fyzioterapie: Jak technologie konečně poráží bolest zad (2026)",
+      "metaTitle": "Technologie ve fyzioterapii: co umí a co od nich nečekat",
       "metaDescription": "EMS, biofeedback i moderní rehabilitační systémy. Podívejte se, jak technologie zlepšují aktivaci svalů a urychlují úlevu od chronické bolesti zad."
     }
   },
   {
     "id": "4cfe5fda-58aa-4f3f-9a29-315a2eba4154",
-    "title": "Budíte se s bolestí zad? 7 nejčastějších příčin a řešení",
+    "title": "Budíte se s bolestí zad? Co sledovat a kdy kontaktovat lékaře",
     "slug": "bolest-zad-v-noci",
     "publishedAt": "2025-12-28T17:33:00.000Z",
-    "excerpt": "Bolí tě záda hlavně v noci nebo tě dokonce budí ze spánku?\nPřes den se to dá jakž takž zvládnout, ale jakmile si lehneš, bolest zesílí, pálí nebo tlačí?",
+    "excerpt": "Bolest zad v noci nebo po probuzení má mnoho možných vysvětlení. Tento článek nenahrazuje vyšetření; pomůže vám rozlišit šetrné změny spánkového prostředí od situací, které je vhodné řešit se zdravotníkem.",
     "categories": [],
     "body": [
       {
@@ -7255,7 +7255,7 @@
             "_key": "a2c17c39a5ba",
             "_type": "span",
             "marks": [],
-            "text": "Dobrá zpráva je, že ve většině případů "
+            "text": "Noční bolest může souviset se spánkovou polohou, denní zátěží nebo stresem, ale bez vyšetření ji nelze bezpečně připsat jediné příčině. Pravidelné buzení bolestí proto "
           },
           {
             "_key": "6c011ba29f2d",
@@ -7263,13 +7263,13 @@
             "marks": [
               "strong"
             ],
-            "text": "nejde o nic nebezpečného"
+            "text": "nepodceňujte"
           },
           {
             "_key": "d1c47e51423b",
             "_type": "span",
             "marks": [],
-            "text": ".\nNoční bolest zad má obvykle "
+            "text": "."
           },
           {
             "_key": "1123ed7a3acf",
@@ -7277,13 +7277,13 @@
             "marks": [
               "strong"
             ],
-            "text": "funkční příčinu"
+            "text": ""
           },
           {
             "_key": "43a4b40520a3",
             "_type": "span",
             "marks": [],
-            "text": " – souvisí s polohou, svalovým napětím, stresem nebo špatnou regenerací."
+            "text": ""
           }
         ],
         "markDefs": [],
@@ -8563,7 +8563,7 @@
             "_key": "ba83e97f011e",
             "_type": "span",
             "marks": [],
-            "text": "Už pár minut výrazně snižuje noční bolest."
+            "text": "Někomu může pomalé dýchání zpříjemnit usínání a snížit vnímané napětí; nejde ale o náhradu vyšetření přetrvávající bolesti."
           }
         ],
         "markDefs": [],
@@ -16043,7 +16043,7 @@
     "title": "Rychlá pomoc při bolesti zad: co dělat hned teď?",
     "slug": "rychla-pomoc-pri-bolesti-zad-co-delat-hned-ted",
     "publishedAt": "2025-11-21T17:21:21.679Z",
-    "excerpt": "Když tě uprostřed práce chytne bolest zad, je to nepříjemné a často i omezující.",
+    "excerpt": "Když se bolest zad objeví během práce nebo po ní, bez vyšetření nelze určit proč. Tady najdete šetrné první kroky a jasné situace, kdy domácí postupy nestačí.",
     "categories": [],
     "body": [
       {
@@ -17341,7 +17341,7 @@
             "_key": "810b932ae046",
             "_type": "span",
             "marks": [],
-            "text": "Rychlá pomoc má smysl, ale pokud se bolest vrací, je potřeba řešit i příčinu.Rychlá pomoc při bolesti zad má smysl, pokud zvolíš správný postup. Ve většině případů pomůže "
+            "text": "Pokud nemáte varovné příznaky, může být rozumným prvním krokem přerušit zátěž, změnit polohu a zvolit pohyb, který bolest nezhoršuje. Bez vyšetření ale nelze určit příčinu ani slíbit, co zabere. "
           },
           {
             "_key": "b1ed054d3103",
@@ -17349,13 +17349,13 @@
             "marks": [
               "strong"
             ],
-            "text": "změna polohy, jemný pohyb a teplo"
+            "text": "Změnu vždy posuzujte podle své reakce"
           },
           {
             "_key": "60bc33e6bc27",
             "_type": "span",
             "marks": [],
-            "text": ". Pokud se ale bolest vrací nebo přetrvává, je nutné zaměřit se na příčinu – ergonomii, pohyb během dne a celkové návyky."
+            "text": ". Pokud se bolest vrací, přetrvává nebo omezuje běžné fungování, proberte ji se zdravotníkem."
           }
         ],
         "markDefs": [],
@@ -17412,7 +17412,7 @@
             "_key": "18e0567dbec8",
             "_type": "span",
             "marks": [],
-            "text": "Bolest zad není něco, co bys měl „přetrpět“. Správná rychlá reakce může výrazně zkrátit dobu obtíží a zabránit jejich návratu. Naslouchej svému tělu a ber bolest jako signál, že je čas něco změnit."
+            "text": "Bolest zad není nutné jen přetrpět, ale ani ji nemusíte sami diagnostikovat. Pokud nejsou přítomné varovné příznaky, zkuste šetrnou změnu aktivity. Při nejistotě, zhoršování nebo opakování potíží vyhledejte zdravotníka."
           }
         ],
         "markDefs": [],
@@ -17420,8 +17420,8 @@
       }
     ],
     "seo": {
-      "metaTitle": "Rychlá pomoc při bolesti zad: co dělat hned teď pro okamžitou úlevu",
-      "metaDescription": "Chytila tě bolest zad během práce? Zkus ty nejúčinnější techniky, cviky a tipy, které přinesou rychlou úlevu už za pár minut. Praktické kroky, které zvládneš hned."
+      "metaTitle": "Bolest zad: šetrné první kroky a kdy vyhledat pomoc",
+      "metaDescription": "Bolest zad během práce nebo po ní? Zjistěte, jaké šetrné první kroky můžete zvážit a kdy je lepší nečekat na domácí rady."
     }
   },
   {
@@ -21492,7 +21492,7 @@
   },
   {
     "id": "df6449eb-2008-47ed-9634-0993f6007f4b",
-    "title": "Bolest zad ze stresu: proč vzniká a jak ji konečně uvolnit",
+    "title": "Stres a bolest zad: možné souvislosti a bezpečné další kroky",
     "slug": "bolest-zad-ze-stresu",
     "publishedAt": "2025-12-24T14:03:19.870Z",
     "excerpt": "Bolí tě záda, ale lékař nic „mechanického“ nenašel? Bolest se zhoršuje ve stresu, večer nebo po náročném dni?",
@@ -21506,7 +21506,7 @@
             "_key": "exp17774856723111",
             "_type": "span",
             "marks": [],
-            "text": "Bolí vás záda, ale lékař nic mechanického nenašel? Bolest se zhoršuje ve stresu, večer nebo po náročném pracovním dni? Ráno je to lepší, ale během dne se vrací? Pak je velmi pravděpodobné, že hlavní roli hraje stres – nikoli výhřez ploténky, přetížení svalů z fyzické práce nebo jiná strukturální příčina."
+            "text": "Pokud se bolest zhoršuje ve stresu, večer nebo po náročném dni, může být stres jedním z faktorů. Z tohoto vzorce ale nelze poznat, co bolest způsobuje, ani vyloučit jiné příčiny; přetrvávající či zhoršující se potíže patří k odbornému posouzení."
           }
         ],
         "markDefs": [],
@@ -21534,7 +21534,7 @@
             "_key": "exp17774856723115",
             "_type": "span",
             "marks": [],
-            "text": "Dobrá zpráva: tento typ bolesti velmi dobře reaguje na správný přístup. Nemusíte to vydržet ani se s tím smířit. Tento průvodce vám ukáže, co se děje v těle, proč klasické protahování samo nestačí, a co skutečně funguje."
+            "text": "Nemusíte bolest ignorovat. Můžete bezpečně sledovat souvislosti, upravit pracovní rytmus a hledat šetrné způsoby zklidnění. Pokud se obtíže vrací, pomůže jejich probrání se zdravotníkem."
           }
         ],
         "markDefs": [],
@@ -21682,7 +21682,7 @@
             "_key": "exp177748567231123",
             "_type": "span",
             "marks": [],
-            "text": "Důležitý poznatek: bolest ze stresu není jen psychosomatická ve smyslu imaginární. Jsou to skutečné biochemické změny v svalové tkáni způsobené stresovými hormony. Proto přístup, který ignoruje stres a řeší jen záda, nikdy nevede k trvalému výsledku."
+            "text": "Bolest je skutečná bez ohledu na to, jakou roli v ní hrají tělesné, psychické a sociální vlivy. Stres může být užitečné brát jako jednu z oblastí, které stojí za pozornost, ne jako hotové vysvětlení nebo diagnózu."
           }
         ],
         "markDefs": [],
@@ -21697,7 +21697,7 @@
             "_key": "b95a0a05a1b0-span",
             "_type": "span",
             "marks": [],
-            "text": "Jak poznáš, že jde opravdu o stresovou bolest"
+            "text": "Kdy může stres hrát roli"
           }
         ],
         "markDefs": []
@@ -21710,7 +21710,7 @@
             "_key": "exp177748567231125",
             "_type": "span",
             "marks": [],
-            "text": "Stresová bolest zad má typický vzorec, který ji odlišuje od mechanické bolesti způsobené přetížením nebo výhřezem ploténky."
+            "text": "Některé souvislosti mohou naznačit, že stres obtíže zesiluje. Samy o sobě ale nerozliší běžné přetížení od jiných zdravotních příčin."
           }
         ],
         "markDefs": [],

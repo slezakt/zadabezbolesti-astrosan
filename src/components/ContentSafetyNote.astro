@@ -1,0 +1,16 @@
+---
+interface Props {
+  context: string;
+}
+
+const { context } = Astro.props;
+---
+
+<aside class="w-full border-b border-[#DDE5DD] bg-[#FFF8F4]" aria-label="Jak používat tento průvodce">
+  <div class="max-w-4xl mx-auto px-6 sm:px-8 py-6 grid gap-2 sm:grid-cols-[10rem_1fr] sm:gap-6">
+    <h2 class="text-xs uppercase tracking-widest font-semibold text-[#A53E2C]">Jak stránku používat</h2>
+    <p class="text-sm leading-relaxed text-[#18211C]">
+      {context} Neurčujeme příčinu bolesti ani nenahrazujeme vyšetření. Při náhlé nebo silné bolesti, po úrazu, při slabosti či necitlivosti, potížích s močením nebo stolicí, horečce, dušnosti či tlaku na hrudi vyhledejte neodkladnou pomoc.
+    </p>
+  </div>
+</aside>

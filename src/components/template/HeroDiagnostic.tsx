@@ -6,14 +6,14 @@ export const HeroDiagnostic: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start">
           <div className="lg:col-span-7 flex flex-col">
-            <p className="eyebrow mb-5">Bezpečný první krok · Zdravotní rozcestník</p>
+            <p className="eyebrow mb-5">Bezpečný první krok · Informační rozcestník</p>
 
             <h1 className="font-serif-editorial text-[40px] sm:text-[52px] lg:text-[62px] leading-[1.02] font-semibold text-[#18211C] tracking-[-0.04em] mb-7">
-              Najděte bezpečný první krok při bolesti zad
+              Zorientujte se v potížích se zády
             </h1>
 
             <p className="text-[17px] sm:text-[19px] leading-[1.65] text-[#66736A] max-w-2xl mb-12">
-              Srozumitelné návody pro chvíle, kdy vás bolí bedra, šíje nebo oblast mezi lopatkami — včetně situací, kdy je lepší domácí cvičení odložit.
+              Srozumitelné informace pro chvíle, kdy vás bolí bedra, šíje nebo oblast mezi lopatkami — včetně situací, kdy domácí cvičení raději odložit a obrátit se na zdravotníka.
             </p>
 
             <div>
