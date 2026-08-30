@@ -2,11 +2,34 @@
 interface Props {
   node: {
     title?: string;
-    items?: string[];
+    items?: any[];
   };
 }
 
 const { node } = Astro.props;
+
+function getItemText(item: any): string {
+  if (typeof item === 'string') return item;
+  if (!item || typeof item !== 'object') return '';
+  if (typeof item.text === 'string') return item.text;
+  if (Array.isArray(item.text)) {
+    return item.text
+      .map((block: any) => {
+        if (typeof block === 'string') return block;
+        if (block?.children && Array.isArray(block.children)) {
+          return block.children.map((c: any) => c?.text || '').join('');
+        }
+        return '';
+      })
+      .join(' ')
+      .trim();
+  }
+  if (typeof item.title === 'string') return item.title;
+  if (item.children && Array.isArray(item.children)) {
+    return item.children.map((c: any) => c?.text || '').join('');
+  }
+  return '';
+}
 ---
 
 <div class="my-6 p-5 rounded-2xl bg-[#FFF1E8] border border-[#F2644B]/30">
@@ -18,12 +41,16 @@ const { node } = Astro.props;
   )}
   {node.items && node.items.length > 0 && (
     <ul class="space-y-2 text-[15px] text-[#18211C]/90">
-      {node.items.map((item) => (
-        <li class="flex items-start gap-2.5">
-          <span class="text-[#F2644B] font-bold mt-0.5">✗</span>
-          <span>{item}</span>
-        </li>
-      ))}
+      {node.items.map((item) => {
+        const text = getItemText(item);
+        if (!text) return null;
+        return (
+          <li class="flex items-start gap-2.5">
+            <span class="text-[#F2644B] font-bold mt-0.5">✗</span>
+            <span>{text}</span>
+          </li>
+        );
+      })}
     </ul>
   )}
 </div>

@@ -1,13 +1,36 @@
 ---
 interface Props {
   node: {
-    name: string;
-    description: string;
-    reps?: string;
+    name?: any;
+    description?: any;
+    reps?: any;
   };
 }
 
 const { node } = Astro.props;
+
+function extractText(val: any): string {
+  if (typeof val === 'string') return val;
+  if (!val) return '';
+  if (Array.isArray(val)) {
+    return val
+      .map((b: any) => {
+        if (typeof b === 'string') return b;
+        if (b?.children && Array.isArray(b.children)) {
+          return b.children.map((c: any) => c?.text || '').join('');
+        }
+        return '';
+      })
+      .join(' ')
+      .trim();
+  }
+  if (typeof val === 'object' && val.text) return extractText(val.text);
+  return '';
+}
+
+const nameText = extractText(node.name) || 'Cvik';
+const descText = extractText(node.description);
+const repsText = extractText(node.reps);
 ---
 
 <div class="bg-[#F7F5EF] rounded-2xl p-6 my-6 border border-[#DDE5DD] shadow-sm">
@@ -15,16 +38,18 @@ const { node } = Astro.props;
     <div class="flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-[#F2644B]"></span>
       <h4 class="font-serif-editorial font-bold text-lg text-[#18211C] m-0">
-        {node.name}
+        {nameText}
       </h4>
     </div>
-    {node.reps && (
+    {repsText && (
       <span class="text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded bg-[#EAF4EE] text-[#2F5941] border border-[#C9DCCF]">
-        {node.reps}
+        {repsText}
       </span>
     )}
   </div>
-  <p class="text-[15px] leading-relaxed text-[#66736A] m-0">
-    {node.description}
-  </p>
+  {descText && (
+    <p class="text-[15px] leading-relaxed text-[#66736A] m-0">
+      {descText}
+    </p>
+  )}
 </div>

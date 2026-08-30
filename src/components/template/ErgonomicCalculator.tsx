@@ -361,6 +361,11 @@ export const ErgonomicCalculator: React.FC = () => {
 
                 </div>
 
+                {/* Methodology note */}
+                <div className="mt-4 px-3 py-2.5 bg-[#EAF4EE]/60 border border-[#DDE5DD] rounded-xl text-xs text-[#66736A] leading-relaxed">
+                  <strong className="text-[#173326]">Metodika výpočtu:</strong> Hodnoty vycházejí z ergonomických a antropometrických doporučení (např. OSHA a EN/ISO zásady uspořádání pracovního místa). Jsou zamýšleny jako orientační výchozí bod — nejdůležitější je osobní pohodlí a pravidelná změna polohy.
+                </div>
+
               </div>
 
             </div>

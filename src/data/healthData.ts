@@ -264,7 +264,7 @@ export const ARTICLES: Article[] = [
     title: 'Bolest mezi lopatkami: příčiny, úleva a kdy zpozornět',
     tag: 'Ergonomie & Akutní stav',
     readTime: '6 min čtení',
-    author: 'Mgr. Jan Novotný, Fyzioterapeut',
+    author: 'Redakční tým ZádaBezBolesti',
     date: '24. srpna 2026',
     href: '/blog/bolest-mezi-lopatkami/',
     summary: 'Proč oblast mezi lopatkami tolik trpí při práci na notebooku? Odhalte mechanismus zkrácených prsních svalů, oslabených mezilopatkových fixátorů a blokád žeber.'
@@ -284,7 +284,7 @@ export const ARTICLES: Article[] = [
     title: 'Bolest zad v noci: proč vzniká a co pomáhá',
     tag: 'Spánek',
     readTime: '5 min čtení',
-    author: 'MUDr. Klára Dvořáková, Neurologie',
+    author: 'Redakční tým ZádaBezBolesti',
     date: '18. srpna 2026',
     href: '/blog/bolest-zad-v-noci/',
     summary: 'Proč se v noci meziobratlové ploténky rozpínají, jak vybrat správnou oporu pro spánek na boku a kdy je noční bolest důvodem k návštěvě lékaře.'
@@ -294,7 +294,7 @@ export const ARTICLES: Article[] = [
     title: 'Bolest mezi lopatkami ze stresu',
     tag: 'Psychosomatika',
     readTime: '5 min čtení',
-    author: 'Mgr. Jan Novotný, Fyzioterapeut',
+    author: 'Redakční tým ZádaBezBolesti',
     date: '15. srpna 2026',
     href: '/blog/bolest-zad-ze-stresu/',
     summary: 'Jak sympatický nervový systém stahuje bránici, zkracuje dech a vytváří chronický krunýř kolem hrudní páteře.'
@@ -304,7 +304,7 @@ export const ARTICLES: Article[] = [
     title: 'Cviky na bederní páteř pro úlevu od ztuhlosti',
     tag: 'Cvičení',
     readTime: '7 min čtení',
-    author: 'Mgr. Jan Novotný, Fyzioterapeut',
+    author: 'Redakční tým ZádaBezBolesti',
     date: '12. srpna 2026',
     href: '/blog/cviky-na-uvolneni-bederni-patere/',
     summary: 'Sestava 5 bezpečných cviků pro aktivaci hlubokého stabilizačního systému (HSS) a uvolnění přetížených bederních vzpřimovačů.'
@@ -334,7 +334,7 @@ export const ARTICLES: Article[] = [
     title: '3minutová mobilizace pro lidi u počítače',
     tag: 'Cvičení',
     readTime: '3 min praxe',
-    author: 'Mgr. Jan Novotný, Fyzioterapeut',
+    author: 'Redakční tým ZádaBezBolesti',
     date: '5. srpna 2026',
     href: '/blog/strecink-v-kancelari/',
     summary: 'Rychlý sestup tří cviků, které uvolní ztuhlý hrudník a probudí krevní oběh za pouhé 3 minuty.'
@@ -344,7 +344,7 @@ export const ARTICLES: Article[] = [
     title: 'Jak vybrat anatomický polštář pro krční páteř',
     tag: 'Spánek',
     readTime: '4 min čtení',
-    author: 'MUDr. Klára Dvořáková, Neurologie',
+    author: 'Redakční tým ZádaBezBolesti',
     date: '3. srpna 2026',
     href: '/blog/spravny-polstar-pro-zdrava-zada/',
     summary: 'Výška, tvar a materiál polštáře v závislosti na šířce vašich ramen a oblíbené spánkové poloze.'
@@ -354,7 +354,7 @@ export const ARTICLES: Article[] = [
     title: 'Ranní desatero: jak vstávat bez ztuhlosti',
     tag: 'Spánek & Pohyb',
     readTime: '3 min čtení',
-    author: 'Mgr. Jan Novotný, Fyzioterapeut',
+    author: 'Redakční tým ZádaBezBolesti',
     date: '1. srpna 2026',
     href: '/blog/proc-me-boli-zada-po-spanku-idealni-poloha/',
     summary: 'Deset jednoduchých zvyků, které ochrání vaše ploténky v nejzranitelnější fázi dne.'

@@ -2,7 +2,8 @@ import React from 'react';
 import { DIAGNOSTIC_ITEMS } from '../../data/healthData';
 export const HeroDiagnostic: React.FC = () => {
   return (
-    <section id="diagnostic" className="w-full pt-10 sm:pt-14 pb-20 sm:pb-28">
+    <section id="diagnostic" className="w-full pt-10 sm:pt-14 pb-20 sm:pb-28 scroll-mt-24">
+      <span id="potize" className="sr-only"></span>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start">
           <div className="lg:col-span-7 flex flex-col">

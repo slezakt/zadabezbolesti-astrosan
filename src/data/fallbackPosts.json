@@ -3212,69 +3212,6 @@
     }
   },
   {
-    "id": "0cead973-bb67-4492-be0a-74fdde42edb6",
-    "title": "Test",
-    "slug": "test",
-    "publishedAt": "2027-01-12T12:57:00.000Z",
-    "excerpt": "",
-    "categories": [],
-    "body": [
-      {
-        "_key": "5707ecfadda8",
-        "_type": "positiveList",
-        "items": [
-          {
-            "_key": "fb06464e825a",
-            "_type": "listItem",
-            "text": [
-              {
-                "_key": "98b50f8633b1",
-                "_type": "block",
-                "children": [
-                  {
-                    "_key": "cda63b74ac76",
-                    "_type": "span",
-                    "marks": [],
-                    "text": "testovací"
-                  }
-                ],
-                "markDefs": [],
-                "style": "normal"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "_key": "3dead2abd81c",
-        "_type": "negativeList",
-        "items": [
-          {
-            "_key": "9b36e3643378",
-            "_type": "listItem",
-            "text": [
-              {
-                "_key": "4b6f76caf0f9",
-                "_type": "block",
-                "children": [
-                  {
-                    "_key": "2190a4eb7bda",
-                    "_type": "span",
-                    "marks": [],
-                    "text": "mínus"
-                  }
-                ],
-                "markDefs": [],
-                "style": "normal"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "seo": {}
-  },
-  {
     "id": "14f82520-f18d-4fd4-a641-bd8dc9c2c259",
     "title": "Chytré doplňky na pracovní stůl: Co opravdu funguje a co je jen marketing?",
     "slug": "chytre-doplnky-na-pracovni-stul",

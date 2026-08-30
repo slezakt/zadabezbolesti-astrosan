@@ -29,7 +29,7 @@ export const siteSettingsQuery = defineQuery(`
 
 // Dotaz na seznam všech stránek (pro sitemap a routing)
 export const allPagesQuery = defineQuery(`
-  *[_type == "page" && defined(slug.current)] | order(slug.current asc) {
+  *[_type == "page" && !(_id in path("drafts.**")) && defined(slug.current)] | order(slug.current asc) {
     title,
     "slug": slug.current,
     _updatedAt
@@ -38,7 +38,7 @@ export const allPagesQuery = defineQuery(`
 
 // Dotaz na detail jedné stránky podle slug
 export const pageQuery = defineQuery(`
-  *[_type == "page" && slug.current == $slug][0] {
+  *[_type == "page" && !(_id in path("drafts.**")) && slug.current == $slug][0] {
     _id,
     _type,
     title,
@@ -73,7 +73,7 @@ export const pageQuery = defineQuery(`
 
 // Dotaz na seznam článků (podporuje typ 'post' i 'article')
 export const allPostsQuery = defineQuery(`
-  *[_type in ["post", "article"] && defined(slug.current)] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {
+  *[_type in ["post", "article"] && !(_id in path("drafts.**")) && defined(slug.current) && (!defined(status) || status == "published") && (!defined(publishedAt) || publishedAt <= now())] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {
     _id,
     title,
     "slug": slug.current,
@@ -94,7 +94,7 @@ export const allPostsQuery = defineQuery(`
 
 // Dotaz na detail článku podle slug
 export const postQuery = defineQuery(`
-  *[_type in ["post", "article"] && slug.current == $slug][0] {
+  *[_type in ["post", "article"] && !(_id in path("drafts.**")) && slug.current == $slug && (!defined(status) || status == "published") && (!defined(publishedAt) || publishedAt <= now())][0] {
     _id,
     _type,
     title,
@@ -141,7 +141,7 @@ export const postQuery = defineQuery(`
 
 // Dotaz na seznam kategorií
 export const allCategoriesQuery = defineQuery(`
-  *[_type == "category" && defined(slug.current)] | order(title asc) {
+  *[_type == "category" && !(_id in path("drafts.**")) && defined(slug.current)] | order(title asc) {
     title,
     "slug": slug.current,
     description
@@ -150,7 +150,7 @@ export const allCategoriesQuery = defineQuery(`
 
 // Dotaz na kategorii podle slug
 export const categoryQuery = defineQuery(`
-  *[_type == "category" && slug.current == $slug][0] {
+  *[_type == "category" && !(_id in path("drafts.**")) && slug.current == $slug][0] {
     title,
     "slug": slug.current,
     description
@@ -159,7 +159,7 @@ export const categoryQuery = defineQuery(`
 
 // Dotaz na články pro konkrétní kategorii
 export const postsByCategoryQuery = defineQuery(`
-  *[_type in ["post", "article"] && defined(slug.current) && $categorySlug in categories[]->slug.current] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {
+  *[_type in ["post", "article"] && !(_id in path("drafts.**")) && defined(slug.current) && (!defined(status) || status == "published") && (!defined(publishedAt) || publishedAt <= now()) && $categorySlug in categories[]->slug.current] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {
     _id,
     title,
     "slug": slug.current,

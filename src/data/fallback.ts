@@ -36,7 +36,14 @@ import fallbackPagesData from './fallbackPages.json';
 import fallbackPostsData from './fallbackPosts.json';
 
 export const fallbackPages: ContentPage[] = fallbackPagesData as ContentPage[];
-export const fallbackPosts: ContentPost[] = fallbackPostsData as ContentPost[];
+const rawPosts: ContentPost[] = fallbackPostsData as ContentPost[];
+const now = Date.now();
+
+export const fallbackPosts: ContentPost[] = rawPosts.filter((post) => {
+  if (!post || !post.slug || post.slug === 'test' || post.slug.startsWith('test-')) return false;
+  if (post.publishedAt && new Date(post.publishedAt).getTime() > now) return false;
+  return true;
+});
 
 export const fallbackPageSummaries: PageSummary[] = fallbackPages.map(({ title, slug, updatedAt }) => ({ title, slug, updatedAt }));
 export const fallbackPostSummaries: PostSummary[] = fallbackPosts.map(({ body: _body, faq: _faq, takeaways: _takeaways, seo: _seo, ...post }) => post);

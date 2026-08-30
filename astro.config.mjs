@@ -8,7 +8,14 @@ import { loadEnv } from 'vite';
 
 const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
 
-const siteUrl = env.PUBLIC_SITE_URL?.trim() || 'http://localhost:4321';
+const defaultSiteUrl = 'https://www.zadabezbolesti.cz';
+const envSiteUrl = env.PUBLIC_SITE_URL?.trim();
+
+if (envSiteUrl && envSiteUrl.startsWith('http://localhost') && process.env.CONTENT_SOURCE === 'sanity') {
+  throw new Error('PUBLIC_SITE_URL cannot be set to localhost for production deployments.');
+}
+
+const siteUrl = envSiteUrl || defaultSiteUrl;
 const sanityProjectId = env.PUBLIC_SANITY_PROJECT_ID?.trim() || 'placeholder';
 const sanityDataset = env.PUBLIC_SANITY_DATASET?.trim() || 'production';
 
