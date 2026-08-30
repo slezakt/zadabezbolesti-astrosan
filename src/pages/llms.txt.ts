@@ -13,7 +13,9 @@ export const GET: APIRoute = async ({ site }) => {
   const [siteSettings, pages, posts] = await Promise.all([getSiteSettings(), getAllPages(), getAllPosts()]);
 
   const title = siteSettings?.title || 'ZádaBezBolesti.cz';
-  const description = siteSettings?.description || 'Praktický průvodce ergonomií, pohybem a úlevou od bolesti zad';
+  const description = siteSettings?.description || 'Praktický průvodce ergonomií, pohybem a bezpečnou úlevou od bolesti zad pro sedavá zaměstnání';
+
+  const filteredPages = (pages || []).filter((p) => p.slug !== 'home' && p.slug !== 'index');
 
   const markdown = `
 # ${title}
@@ -21,13 +23,13 @@ export const GET: APIRoute = async ({ site }) => {
 > ${description}
 
 ## O tomto webu
-Tento dokument v navrhovaném formátu llms.txt (proposal) slouží jako strukturovaný výtah obsahu pro AI vyhledávače a LLM agenty (ChatGPT, Perplexity, Claude).
+Tento dokument v navrhovaném formátu llms.txt (proposal) slouží jako strukturovaný výtah obsahu pro AI vyhledávače a LLM agenty (ChatGPT, Perplexity, Claude). Poskytuje spolehlivé, praktické a bezpečné informace o ergonomii pracoviště, cvičení, zdravém spánku a prevenci bolestí zad.
 
 ## Hlavní sekce a služby
 - [Úvodní stránka](${effectiveSiteUrl}/)
 - [Magazín a přehled článků](${effectiveSiteUrl}/blog/)
 
-${pages && pages.length > 0 ? `## Stránky\n${pages.map((p) => `- [${p.title}](${effectiveSiteUrl}/${p.slug}/)`).join('\n')}` : ''}
+${filteredPages.length > 0 ? `## Stránky\n${filteredPages.map((p) => `- [${p.title}](${effectiveSiteUrl}/${p.slug}/)`).join('\n')}` : ''}
 
 ${posts && posts.length > 0 ? `## Nejnovější Články\n${posts.map((p) => `- [${p.title}](${effectiveSiteUrl}/blog/${p.slug}/)`).join('\n')}` : ''}
 

@@ -4,7 +4,7 @@ import PortableText from '../components/PortableText/PortableText.astro';
 import { getAllPages, getPage } from '../utils/content';
 
 export async function getStaticPaths() {
-  const dedicatedSlugs = new Set(['ergonomie-pracoviste', 'zdravy-spanek', 'bolest-krku-a-ramen', 'cviky-na-zada', 'typy-bolesti']);
+  const dedicatedSlugs = new Set(['home', 'index', 'ergonomie-pracoviste', 'zdravy-spanek', 'bolest-krku-a-ramen', 'cviky-na-zada', 'typy-bolesti']);
   const pages = await getAllPages();
   return pages
     .filter((page) => !dedicatedSlugs.has(page.slug))

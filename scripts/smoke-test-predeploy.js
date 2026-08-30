@@ -45,6 +45,11 @@ for (const file of htmlFiles) {
     fail(`${relative}: contains localhost URL.`);
   }
 
+  // Guard against legacy ISO label in navigation/footer
+  if (html.includes('Ergonomická kalkulačka (ISO') || html.includes('Ergonomická kalkulačka (ISO 9241)')) {
+    fail(`${relative}: contains legacy (ISO) calculator label in link.`);
+  }
+
   if (!isStudio && !isRedirect && pathname !== '/404.html' && !/<link[^>]+rel=["']canonical["']/i.test(html)) fail(`${relative}: missing canonical.`);
   if (!isStudio && !isRedirect && !/<script[^>]+type=["']application\/ld\+json["']/i.test(html)) fail(`${relative}: missing JSON-LD.`);
   for (const match of html.matchAll(/<a[^>]+href=["']([^"']+)["']/gi)) {
@@ -84,6 +89,7 @@ if (fs.existsSync(llmsFile)) {
   if (llmsContent.includes('/admin')) fail('llms.txt must not contain /admin links.');
   if (llmsContent.includes('localhost:4321')) fail('llms.txt contains localhost URL.');
   if (llmsContent.includes('/blog/test')) fail('llms.txt contains test article link.');
+  if (llmsContent.includes('/home/')) fail('llms.txt must not contain /home/ duplicate link.');
 }
 
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');

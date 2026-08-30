@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
                   href="/nastroje/kalkulacka/"
                   className="hover:text-white transition-colors link-underline font-medium"
                 >
-                  Ergonomická kalkulačka (ISO 9241)
+                  Ergonomická kalkulačka
                 </a>
               </li>
               <li>

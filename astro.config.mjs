@@ -24,6 +24,9 @@ export default defineConfig({
   site: siteUrl,
   output: 'static',
   trailingSlash: 'always',
+  redirects: {
+    '/home': '/',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
