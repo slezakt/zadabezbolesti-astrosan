@@ -92,9 +92,32 @@ if (fs.existsSync(llmsFile)) {
   if (llmsContent.includes('/home/')) fail('llms.txt must not contain /home/ duplicate link.');
 }
 
+// Global scan across all dist/ files
+const textFiles = files.filter((f) => /\.(html|txt|xml|json)$/i.test(f));
+for (const file of textFiles) {
+  const relative = path.relative(root, file).replaceAll('\\', '/');
+  const isStudio = relative.startsWith('admin/');
+  if (isStudio) continue;
+
+  const content = fs.readFileSync(file, 'utf8');
+
+  if (content.includes('[object Object]')) {
+    fail(`${relative}: global scan found '[object Object]'`);
+  }
+  if (content.includes('http://localhost:4321') || content.includes('http://localhost:3000')) {
+    fail(`${relative}: global scan found localhost URL`);
+  }
+  if (content.includes('(ISO 9241)') || content.includes('(ISO)')) {
+    fail(`${relative}: global scan found legacy (ISO) label`);
+  }
+  if (/které ti\b/i.test(content)) {
+    fail(`${relative}: global scan found informal 'které ti'`);
+  }
+}
+
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const provider = process.env.PUBLIC_ANALYTICS_PROVIDER?.trim();
 if (provider && !homepage.includes(`"activeProvider":"${provider}"`)) fail(`analytics provider mismatch; expected ${provider}.`);
 if (provider === 'plausible' && !homepage.includes(process.env.PUBLIC_PLAUSIBLE_SCRIPT_URL || '__missing__')) fail('Plausible script URL mismatch.');
 if (errors) process.exit(1);
-console.log(`[predeploy] PASS: ${htmlFiles.length} HTML files, links, assets, anchors, canonical, JSON-LD, RSS, llms.txt and sitemap.`);
+console.log(`[predeploy] PASS: ${htmlFiles.length} HTML files + ${textFiles.length} text assets, links, assets, anchors, canonical, JSON-LD, RSS, llms.txt and sitemap (all global content checks clean).`);
