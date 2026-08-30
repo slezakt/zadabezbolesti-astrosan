@@ -21,8 +21,8 @@ const portableTextFragment = `
 // Dotaz na globální nastavení webu
 export const siteSettingsQuery = defineQuery(`
   *[_type == "siteSettings"][0] {
-    "title": coalesce(title, siteTitle, defaultSeoTitle, "ZádaBezBolesti.cz"),
-    "description": coalesce(description, defaultSeoDescription, "Praktický průvodce ergonomií a zdravým pohybem"),
+    "title": coalesce(seo.metaTitle, defaultSeoTitle, title, siteTitle, "Bolest zad, cviky a ergonomie při sedavé práci | ZádaBezBolesti.cz"),
+    "description": coalesce(seo.metaDescription, defaultSeoDescription, description, "Praktické návody, cviky a ergonomické tipy pro lepší orientaci při potížích se zády během práce u počítače. Pomohou vám upravit pracovní prostředí, pohybové návyky a každodenní režim."),
     seo
   }
 `);

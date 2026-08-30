@@ -5,7 +5,11 @@ import { createClient } from '@sanity/client';
 
 dotenv.config({ path: resolve(process.cwd(), '.env') });
 
-const slugs = ['bolest-mezi-lopatkami', 'cviky-na-uvolneni-bederni-patere'];
+const slugs = [
+  'bolest-mezi-lopatkami',
+  'cviky-na-uvolneni-bederni-patere',
+  'cviky-na-bederni-pater-uvolneni-posileni',
+];
 const shouldApply = process.argv.includes('--apply');
 const projectId = process.env.PUBLIC_SANITY_PROJECT_ID?.trim();
 const dataset = process.env.PUBLIC_SANITY_DATASET?.trim();

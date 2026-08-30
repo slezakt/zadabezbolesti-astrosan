@@ -12,8 +12,8 @@ export const GET: APIRoute = async ({ site }) => {
   const effectiveSiteUrl = siteUrl || 'https://www.zadabezbolesti.cz';
   const [siteSettings, pages, posts] = await Promise.all([getSiteSettings(), getAllPages(), getAllPosts()]);
 
-  const title = siteSettings?.title || 'ZádaBezBolesti.cz';
-  const description = siteSettings?.description || 'Praktický průvodce ergonomií, pohybem a bezpečnou úlevou od bolesti zad pro sedavá zaměstnání';
+  const title = siteSettings?.title || 'Bolest zad, cviky a ergonomie při sedavé práci | ZádaBezBolesti.cz';
+  const description = siteSettings?.description || 'Praktické návody, cviky a ergonomické tipy pro lepší orientaci při potížích se zády během práce u počítače. Pomohou vám upravit pracovní prostředí, pohybové návyky a každodenní režim.';
 
   const filteredPages = (pages || []).filter((p) => p.slug !== 'home' && p.slug !== 'index');
 

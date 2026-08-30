@@ -1,11 +1,11 @@
 import type { CategorySummary, ContentPage, ContentPost, PageSummary, PostSummary, SiteSettings } from '../domain/models';
 
 export const fallbackSiteSettings: SiteSettings = {
-  title: 'ZádaBezBolesti.cz – Praktický magazín o ergonomii a pohybu',
-  description: 'Praktické informace o ergonomii, pohybu, spánku a bezpečné orientaci při bolesti zad.',
+  title: 'Bolest zad, cviky a ergonomie při sedavé práci | ZádaBezBolesti.cz',
+  description: 'Praktické návody, cviky a ergonomické tipy pro lepší orientaci při potížích se zády během práce u počítače. Pomohou vám upravit pracovní prostředí, pohybové návyky a každodenní režim.',
   seo: {
-    metaTitle: 'ZádaBezBolesti.cz – Ergonomie, pohyb a zdravější návyky',
-    metaDescription: 'Praktické návody k ergonomii, pohybu a spánku pro lidi se sedavým zaměstnáním. Informace nenahrazují vyšetření.',
+    metaTitle: 'Bolest zad, cviky a ergonomie při sedavé práci | ZádaBezBolesti.cz',
+    metaDescription: 'Praktické návody, cviky a ergonomické tipy pro lepší orientaci při potížích se zády během práce u počítače. Pomohou vám upravit pracovní prostředí, pohybové návyky a každodenní režim.',
   },
 };
 
