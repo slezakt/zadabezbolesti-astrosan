@@ -206,6 +206,27 @@ const fallbackHeroImage = getTopicFallbackImage(post.slug, post.title);
         </div>
       )}
 
+      {post.sources && post.sources.length > 0 && (
+        <section class="my-12 border-t-2 border-[#173326] pt-8" aria-labelledby="sources-heading">
+          <div class="inline-flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 bg-[#F2644B]"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">Redakční standard</span>
+          </div>
+          <h2 id="sources-heading" class="font-serif-editorial text-2xl sm:text-3xl font-bold text-[#18211C] mb-3">Zdroje</h2>
+          <p class="text-sm leading-relaxed text-[#66736A] mb-5">Uvádíme doporučení a odborné podklady použité pro zdravotní a ergonomická tvrzení v článku.</p>
+          <ul class="space-y-3">
+            {post.sources.map((source) => (
+              <li class="border border-[#DDE5DD] bg-[#F7F5EF] px-4 py-3">
+                <a href={source.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-[#173326] underline decoration-[#2F5941]/50 underline-offset-4 hover:text-[#2F5941]">
+                  {source.title}
+                </a>
+                {source.note && <p class="mt-1 text-sm leading-relaxed text-[#66736A]">Použito pro: {source.note}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* Key Takeaways Box (Sharp Editorial Style) */}
       {post.takeaways && post.takeaways.length > 0 && (
         <div class="bg-[#EAF4EE] p-6 sm:p-8 border-l-4 border-[#2F5941] border-y border-r border-[#C9DCCF] my-12">

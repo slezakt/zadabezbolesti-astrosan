@@ -1,5 +1,5 @@
 import { sanityClient } from 'sanity:client';
-import type { CategorySummary, ContentPage, ContentPost, FaqItem, PageSummary, PortableContent, PostSummary, SeoData, SiteSettings } from '../domain/models';
+import type { CategorySummary, ContentPage, ContentPost, FaqItem, PageSummary, PortableContent, PostSummary, SeoData, SiteSettings, SourceItem } from '../domain/models';
 import { ContentValidationError, SanityConnectivityError } from '../domain/errors';
 import { executeContentSourcePolicy, isSanityConfigured, resolveContentSourceMode } from '../domain/sourcePolicy';
 import {
@@ -68,6 +68,21 @@ const mapTakeaways = (value: unknown): string[] | undefined => {
   const items = value
     .map((item) => typeof item === 'string' && item.trim() ? item.trim() : null)
     .filter((item): item is string => item !== null);
+  return items.length > 0 ? items : undefined;
+};
+
+const mapSources = (value: unknown): SourceItem[] | undefined => {
+  if (!Array.isArray(value)) return undefined;
+  const items = value
+    .map((item): SourceItem | null => {
+      const rec = record(item);
+      const title = optional(rec.title);
+      const url = optional(rec.url);
+      if (!title || !url || !/^https?:\/\//.test(url)) return null;
+      const note = optional(rec.note);
+      return note ? { title, url, note } : { title, url };
+    })
+    .filter((item): item is SourceItem => item !== null);
   return items.length > 0 ? items : undefined;
 };
 
@@ -240,6 +255,7 @@ function mapPost(value: unknown, detail = false): ContentPost {
     body: bodyBlocks,
     faq: detail ? mapFaq(item.faq) : undefined,
     takeaways: detail ? mapTakeaways(item.takeaways) : undefined,
+    sources: detail ? mapSources(item.sources) : undefined,
     seo: detail ? seo(item.seo) : undefined,
   };
 }
@@ -305,13 +321,18 @@ export async function getPost(slug: string): Promise<ContentPost | null> {
     const data = await fetchCms<PostQueryResult>(postQuery, { slug });
     const mapped = data === null ? null : mapPost(data, true);
     const fb = fallback();
-    if (mapped && fb && getPortableTextLength(mapped.body) < 500 && getPortableTextLength(fb.body) >= 500) {
-      mapped.body = fb.body;
-      if (fb.takeaways && (!mapped.takeaways || mapped.takeaways.length === 0)) {
-        mapped.takeaways = fb.takeaways;
+    if (mapped && fb) {
+      if (getPortableTextLength(mapped.body) < 500 && getPortableTextLength(fb.body) >= 500) {
+        mapped.body = fb.body;
+        if (fb.takeaways && (!mapped.takeaways || mapped.takeaways.length === 0)) {
+          mapped.takeaways = fb.takeaways;
+        }
+        if (fb.faq && (!mapped.faq || mapped.faq.length === 0)) {
+          mapped.faq = fb.faq;
+        }
       }
-      if (fb.faq && (!mapped.faq || mapped.faq.length === 0)) {
-        mapped.faq = fb.faq;
+      if (fb.sources && (!mapped.sources || mapped.sources.length === 0)) {
+        mapped.sources = fb.sources;
       }
     }
     return mapped || fb;

@@ -103,6 +103,40 @@ export const post = defineType({
       of: [{ type: 'string' }],
     }),
     defineField({
+      name: 'sources',
+      title: 'Zdroje a doporučení',
+      description: 'U zdravotních a ergonomických tvrzení uveďte podklady, ze kterých článek vychází.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Název zdroje',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'url',
+              title: 'Odkaz',
+              type: 'url',
+              validation: (Rule) => Rule.required().uri({ scheme: ['http', 'https'] }),
+            }),
+            defineField({
+              name: 'note',
+              title: 'Použito pro',
+              description: 'Krátce popište, které tvrzení nebo část článku zdroj podkládá.',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'note' },
+          },
+        }),
+      ],
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO a Metadata',
       type: 'seo',

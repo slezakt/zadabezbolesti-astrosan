@@ -135,6 +135,12 @@ export const postQuery = defineQuery(`
       answer
     },
     takeaways,
+    sources[] {
+      _key,
+      title,
+      url,
+      note
+    },
     seo
   }
 `);

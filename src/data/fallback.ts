@@ -46,4 +46,4 @@ export const fallbackPosts: ContentPost[] = rawPosts.filter((post) => {
 });
 
 export const fallbackPageSummaries: PageSummary[] = fallbackPages.map(({ title, slug, updatedAt }) => ({ title, slug, updatedAt }));
-export const fallbackPostSummaries: PostSummary[] = fallbackPosts.map(({ body: _body, faq: _faq, takeaways: _takeaways, seo: _seo, ...post }) => post);
+export const fallbackPostSummaries: PostSummary[] = fallbackPosts.map(({ body: _body, faq: _faq, takeaways: _takeaways, sources: _sources, seo: _seo, ...post }) => post);

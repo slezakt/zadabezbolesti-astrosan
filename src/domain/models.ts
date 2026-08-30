@@ -9,6 +9,12 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface SourceItem {
+  title: string;
+  url: string;
+  note?: string;
+}
+
 export interface SiteSettings {
   title: string;
   description: string;
@@ -49,6 +55,7 @@ export interface ContentPost extends PostSummary {
   body: PortableContent;
   faq?: FaqItem[];
   takeaways?: string[];
+  sources?: SourceItem[];
   seo?: SeoData;
 }
 
