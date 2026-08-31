@@ -14,6 +14,7 @@
     "test:predeploy": "node scripts/smoke-test-predeploy.js",
     "test:postdeploy": "node scripts/smoke-test-postdeploy.js",
     "migrate:legacy-health-content": "node scripts/migrate-legacy-health-content.mjs",
+    "migrate:risk-factors-page": "node scripts/migrate-risk-factors-page.mjs",
     "deploy:cloudflare": "wrangler deploy",
     "deploy:vercel": "vercel deploy --prod --yes",
     "monitor": "node scripts/monitor-production.js",

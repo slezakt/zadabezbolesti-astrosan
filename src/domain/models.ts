@@ -37,6 +37,7 @@ export interface ContentPage extends PageSummary {
   id: string;
   content: PortableContent;
   faq?: FaqItem[];
+  sources?: SourceItem[];
   seo?: SeoData;
 }
 

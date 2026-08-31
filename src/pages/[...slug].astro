@@ -54,6 +54,27 @@ if (!page) {
       </div>
     )}
 
+    {page.sources && page.sources.length > 0 && (
+      <section class="my-10 border-t-2 border-[#173326] pt-8" aria-labelledby="sources-heading">
+        <div class="inline-flex items-center gap-2 mb-2">
+          <span class="w-2 h-2 bg-[#F2644B]"></span>
+          <span class="text-xs uppercase tracking-widest font-semibold text-[#2F5941]">Redakční standard</span>
+        </div>
+        <h2 id="sources-heading" class="font-serif-editorial text-2xl sm:text-3xl font-bold text-[#18211C] mb-3">Zdroje</h2>
+        <p class="text-sm leading-relaxed text-[#66736A] mb-5">Uvádíme doporučení a odborné podklady použité pro zdravotní a ergonomická tvrzení na této stránce.</p>
+        <ul class="space-y-3">
+          {page.sources.map((source) => (
+            <li class="border border-[#DDE5DD] bg-[#F7F5EF] px-4 py-3">
+              <a href={source.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-[#173326] underline decoration-[#2F5941]/50 underline-offset-4 hover:text-[#2F5941]">
+                {source.title}
+              </a>
+              {source.note && <p class="mt-1 text-sm leading-relaxed text-[#66736A]">Použito pro: {source.note}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <aside class="my-10 border-l-4 border-[#C94734] bg-[#FDF4F1] px-5 py-4 text-sm leading-relaxed text-[#18211C]">
       Tento obsah slouží k orientaci. Neurčuje příčinu bolesti ani nenahrazuje lékařské vyšetření nebo individuální doporučení fyzioterapeuta.
     </aside>

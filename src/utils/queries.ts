@@ -67,6 +67,12 @@ export const pageQuery = defineQuery(`
       question,
       answer
     },
+    sources[] {
+      _key,
+      title,
+      url,
+      note
+    },
     seo
   }
 `);

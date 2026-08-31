@@ -1,7 +1,7 @@
 [
   {
     "id": "002ecdd3-2c0b-48da-8ff5-92517f1678f4",
-    "title": "Rizikové faktory",
+    "title": "Rizikové faktory bolesti zad: co sledovat a kdy vyhledat pomoc",
     "slug": "rizikove-faktory",
     "content": [
       {
@@ -13,7 +13,7 @@
             "_key": "2e433e4d2598-span",
             "_type": "span",
             "marks": [],
-            "text": "Sedavé zaměstnání"
+            "text": "Rizikový faktor není diagnóza"
           }
         ],
         "markDefs": []
@@ -26,7 +26,7 @@
             "_key": "7a2d6f726c78",
             "_type": "span",
             "marks": [],
-            "text": "Dlouhé sezení zvyšuje tlak na ploténky, oslabuje hluboké svaly trupu a zhoršuje cirkulaci. Nejvíce trpí dolní část zad a krční páteř. Riziko roste po 6–8 hodinách denně bez pohybu."
+            "text": "Rizikový faktor je okolnost, která může k bolesti zad přispívat nebo ztěžovat návrat k běžné aktivitě. Neříká ale, proč bolí právě vás, ani nenahrazuje vyšetření. Na bolest zad obvykle působí více tělesných, pracovních, psychických a sociálních vlivů současně."
           }
         ],
         "markDefs": [],
@@ -41,7 +41,7 @@
             "_key": "125149a15049-span",
             "_type": "span",
             "marks": [],
-            "text": "Špatné držení těla"
+            "text": "Dlouhá statická práce"
           }
         ],
         "markDefs": []
@@ -54,7 +54,7 @@
             "_key": "5a00d74552a9",
             "_type": "span",
             "marks": [],
-            "text": "Hrbění, předsunutá hlava a spadlá ramena vytváří dlouhodobé přetížení krční a hrudní páteře. Postupně se zkracují svaly na přední straně těla a oslabují mezilopatkové svaly."
+            "text": "Problémem není jedna „špatná“ poloha, ale dlouhé setrvání v jakékoli poloze bez možnosti ji změnit. U práce s obrazovkou hraje roli uspořádání stolu, židle a monitoru, druh úkolu, tempo práce i to, zda se můžete přirozeně projít nebo změnit činnost."
           }
         ],
         "markDefs": [],
@@ -69,7 +69,7 @@
             "_key": "3117aca98073-span",
             "_type": "span",
             "marks": [],
-            "text": "Nedostatek pohybu"
+            "text": "Málo pohybu nebo nezvyklá zátěž"
           }
         ],
         "markDefs": []
@@ -82,7 +82,7 @@
             "_key": "c9e1c5818314",
             "_type": "span",
             "marks": [],
-            "text": "Páteř potřebuje pohyb — bez něj tuhnou klouby, oslabují stabilizační svaly a zhoršuje se celková flexibilita. I 15 minut aktivního pohybu denně dokáže snížit bolestivost."
+            "text": "Nízká míra pohybu může být jednou z okolností spojených s nespecifickou bolestí beder. Stejně tak mohou potíže začít po skoku v intenzitě — například po víkendové práci na zahradě, stěhování nebo návratu ke sportu. Vhodný další krok závisí na reakci těla, ne na univerzální dávce cvičení."
           }
         ],
         "markDefs": [],
@@ -97,7 +97,7 @@
             "_key": "0dafecbe1fef-span",
             "_type": "span",
             "marks": [],
-            "text": "Nadváha"
+            "text": "Tělesná hmotnost, kouření a zdravotní souvislosti"
           }
         ],
         "markDefs": []
@@ -110,7 +110,7 @@
             "_key": "bf2ab8abbd45",
             "_type": "span",
             "marks": [],
-            "text": "Vyšší tělesná hmotnost zvyšuje tlak na bederní páteř, kyčle i kolena. Zároveň podporuje zánět, který může bolest zad zhoršovat. I malá redukce váhy přináší velkou úlevu."
+            "text": "Vyšší tělesná hmotnost a kouření patří mezi faktory spojené s nespecifickou bolestí beder. Neznamená to, že jsou jedinou příčinou ani že řešením je rychlé hubnutí. Pokud chcete měnit hmotnost nebo kouření, je bezpečnější stavět na dlouhodobě udržitelných krocích a v případě potřeby je probrat se zdravotníkem."
           }
         ],
         "markDefs": [],
@@ -125,7 +125,7 @@
             "_key": "2aa52517ad20-span",
             "_type": "span",
             "marks": [],
-            "text": "Stres"
+            "text": "Stres, spánek a zotavení"
           }
         ],
         "markDefs": []
@@ -138,7 +138,7 @@
             "_key": "32f4cd3de2ba",
             "_type": "span",
             "marks": [],
-            "text": "Při stresu se automaticky aktivují trapézy, ztuhne šíje a zhorší se dýchání. Dlouhodobé napětí často vede k bolestem hlavy, krčních svalů a mezilopatkové oblasti."
+            "text": "Stres, únava a nekvalitní spánek mohou ovlivnit vnímání bolesti, soustředění na ni i chuť se hýbat. Není užitečné z nich vyvozovat, že je bolest „jen v hlavě“. U přetrvávajících obtíží se vyplatí počítat vedle pohybu a pracovních podmínek také s odpočinkem, psychickou zátěží a podporou okolí."
           }
         ],
         "markDefs": [],
@@ -153,7 +153,7 @@
             "_key": "ac2b1b246b97-span",
             "_type": "span",
             "marks": [],
-            "text": "Špatný spánek"
+            "text": "Začněte jednou pozorovatelnou změnou"
           }
         ],
         "markDefs": []
@@ -166,18 +166,179 @@
             "_key": "71dba2a5ee91",
             "_type": "span",
             "marks": [],
-            "text": "Nekvalitní spánek zhoršuje regeneraci svalů i nervového systému. Tělo si hůře poradí s bolestí a zánětem. Ranní ztuhlost zad je jedním z nejčastějších projevů."
+            "text": "Vyberte si jedinou konkrétní věc, kterou můžete zkusit tento týden: přerušit dlouhou pracovní blokovou činnost změnou úkolu, připravit si pohodlnější pracovní nastavení, vrátit se k krátké procházce nebo si poznamenat, při čem se obtíže zhoršují a při čem ne. Cílem není najít dokonalou polohu ani dokázat, co bolest způsobilo."
           }
         ],
         "markDefs": [],
         "style": "normal"
+      },
+      {
+        "_key": "risk-map-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "risk-map-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Jednoduchá orientace: co sledovat"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "risk-map-p",
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_key": "risk-map-p-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Zkuste se místo hledání jediné příčiny podívat na vzorec: kdy se obtíže objevují, zda sílí nebo ustupují, jestli omezují běžné fungování a zda se přidaly nové příznaky. Tyto informace pomohou při vlastní orientaci i při rozhovoru se zdravotníkem."
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "risk-map-list-1",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_key": "risk-map-list-1-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Co obtíže provokuje nebo naopak zklidňuje — pohyb, odpočinek, dlouhé sezení, zvedání, stres nebo určitá denní doba."
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "risk-map-list-2",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_key": "risk-map-list-2-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Jak se mění funkce — zda zvládáte chůzi, spánek, práci a běžné činnosti podobně jako obvykle."
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "risk-map-list-3",
+        "_type": "block",
+        "style": "normal",
+        "listItem": "bullet",
+        "level": 1,
+        "children": [
+          {
+            "_key": "risk-map-list-3-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Co je nové nebo neobvyklé — zejména příznaky po úrazu, horečka, slabost, změna citlivosti nebo potíže s močením či stolicí."
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "risk-urgent-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "risk-urgent-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Kdy nejde jen o rizikový faktor"
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "risk-urgent-p",
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_key": "risk-urgent-p-span",
+            "_type": "span",
+            "marks": [],
+            "text": "Následující situace nejsou vhodné pro samoléčbu podle internetového návodu. Neurčují samy diagnózu, ale vyžadují rychlé posouzení zdravotníkem."
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "risk-urgent-callout",
+        "_type": "calloutBox",
+        "type": "warning",
+        "title": "Vyhledejte akutní pomoc",
+        "text": "Nečekejte při nové poruše močení nebo stolice, necitlivosti v oblasti hráze, rychle vznikající či zhoršující se slabosti nohou, ani při bolesti zad spojené s tlakem nebo bolestí na hrudi, dušností, pocením, nevolností či závratí. V Česku volejte 155 nebo 112."
+      },
+      {
+        "_key": "risk-soon-callout",
+        "_type": "calloutBox",
+        "type": "info",
+        "title": "Objednejte se k lékaři nebo fyzioterapeutovi",
+        "text": "Domluvte odborné posouzení, pokud bolest po úrazu nepolevuje, omezuje běžný pohyb či práci, opakovaně vás budí, zhoršuje se, šíří se do končetiny se slabostí nebo necitlivostí, nebo ji provází horečka či výrazná celková nevolnost."
       }
     ],
-    "faq": [],
+    "faq": [
+      {
+        "question": "Znamená jeden rizikový faktor, že bolest zad určitě vznikne?",
+        "answer": "Ne. Rizikové faktory popisují souvislosti v populaci, ne předpověď pro jednotlivce. Mohou se kombinovat s pracovními podmínkami, celkovým zdravím, spánkem, stresem i konkrétní zátěží."
+      },
+      {
+        "question": "Existuje jedna správná poloha při práci u počítače?",
+        "answer": "Neexistuje poloha vhodná beze změny pro celý den. Pracoviště by mělo umožnit pohodlnou práci a průběžné střídání poloh či činností."
+      },
+      {
+        "question": "Potřebuji při bolesti zad hned magnetickou rezonanci nebo rentgen?",
+        "answer": "Ne vždy. O vhodnosti vyšetření rozhoduje zdravotník podle příznaků a toho, zda by výsledek změnil další postup. U běžné bolesti beder se zobrazovací vyšetření rutinně nedoporučuje."
+      },
+      {
+        "question": "Mohu zkusit pohyb, když mě bolí záda?",
+        "answer": "Pokud nemáte varovné příznaky, můžete zvolit jemný pohyb nebo polohu, která bolest nezhoršuje. Při ostré, sílící nebo vystřelující bolesti pohyb přerušte a poraďte se se zdravotníkem."
+      }
+    ],
+    "sources": [
+      {
+        "_key": "risk-who-low-back-pain",
+        "title": "WHO: Low back pain",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/low-back-pain",
+        "note": "Přehled faktorů spojených s nespecifickou bolestí beder a zásad sebepéče."
+      },
+      {
+        "_key": "risk-eu-osha-static-sitting",
+        "title": "EU-OSHA: Prolonged static sitting at work",
+        "url": "https://healthy-workplaces.osha.europa.eu/sites/hwc/files/hwc/publication/Sitting_at_work_%20summary_EN.pdf",
+        "note": "Střídání poloh, pohyb v práci a ergonomie jako součást prevence."
+      },
+      {
+        "_key": "risk-nice-ng127",
+        "title": "NICE: Suspected neurological conditions — recognition and referral",
+        "url": "https://www.nice.org.uk/guidance/ng127/chapter/Recommendations-for-adults-aged-over-16",
+        "note": "Akutní neurologické příznaky, včetně nové poruchy močení či stolice a necitlivosti v oblasti hráze."
+      },
+      {
+        "_key": "risk-nice-ng59",
+        "title": "NICE: Low back pain and sciatica in over 16s — assessment and management",
+        "url": "https://www.nice.org.uk/guidance/ng59/chapter/Recommendations",
+        "note": "Individuální posouzení a zobrazovací vyšetření pouze tehdy, když změní další postup."
+      }
+    ],
     "seo": {
       "_type": "seo",
-      "metaDescription": "Nejčastější rizikové faktory bolesti zad: sedavé zaměstnání, špatné držení těla, nedostatek pohybu, nadváha, stres a špatný spánek. Zjisti, co je způsobuje a jak je můžeš začít řešit.",
-      "metaTitle": "Rizikové faktory bolesti zad – sedavé zaměstnání, držení těla, stres | ZádaBezBolesti.cz"
+      "metaDescription": "Co může souviset s bolestí zad, co lze šetrně upravit a kdy už je vhodné vyhledat zdravotníka. Přehled varovných příznaků i zdrojů.",
+      "metaTitle": "Rizikové faktory bolesti zad: kdy upravit návyky a kdy vyhledat pomoc | ZádaBezBolesti.cz"
     }
   },
   {

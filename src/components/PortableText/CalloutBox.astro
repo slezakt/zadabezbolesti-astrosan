@@ -8,48 +8,61 @@ interface Props {
 }
 
 const { node } = Astro.props;
-const type = node.type || 'tip';
-const isWarning = type === 'warning';
-const isInfo = type === 'info';
+const type = node.type || "tip";
+const isWarning = type === "warning";
+const isInfo = type === "info";
 
 function extractText(val: any): string {
-  if (typeof val === 'string') return val;
-  if (!val) return '';
+  if (typeof val === "string") return val;
+  if (!val) return "";
   if (Array.isArray(val)) {
     return val
       .map((b: any) => {
-        if (typeof b === 'string') return b;
+        if (typeof b === "string") return b;
         if (b?.children && Array.isArray(b.children)) {
-          return b.children.map((c: any) => c?.text || '').join('');
+          return b.children.map((c: any) => c?.text || "").join("");
         }
-        return '';
+        return "";
       })
-      .join(' ')
+      .join(" ")
       .trim();
   }
-  if (typeof val === 'object' && val.text) return extractText(val.text);
-  return '';
+  if (typeof val === "object" && val.text) return extractText(val.text);
+  return "";
 }
 
 const textContent = extractText(node.text);
 ---
 
-<div class={`rounded-2xl p-6 my-6 border ${
-  isWarning 
-    ? 'bg-[#FFF1E8] border-[#F2644B]/30 text-[#18211C]' 
-    : isInfo 
-    ? 'bg-[#F7F5EF] border-[#2F5941]/30 text-[#18211C]' 
-    : 'bg-[#EAF4EE] border-[#C9DCCF] text-[#173326]'
-}`}>
+<div
+  class={`rounded-2xl p-6 my-6 border ${
+    isWarning
+      ? "bg-[#FFF1E8] border-[#F2644B]/30 text-[#18211C]"
+      : isInfo
+        ? "bg-[#F7F5EF] border-[#2F5941]/30 text-[#18211C]"
+        : "bg-[#EAF4EE] border-[#C9DCCF] text-[#173326]"
+  }`}
+>
   <div class="flex items-center gap-2 mb-2">
-    <span class={`w-2.5 h-2.5 rounded-full ${isWarning ? 'bg-[#F2644B]' : 'bg-[#2F5941]'}`}></span>
-    <h4 class="font-serif-editorial font-bold text-lg text-[#18211C] m-0">
-      {node.title || (isWarning ? 'Upozornění' : isInfo ? 'Informace' : 'Tip fyzioterapeuta')}
+    <span
+      class={`w-2.5 h-2.5 rounded-full ${isWarning ? "bg-[#F2644B]" : "bg-[#2F5941]"}`}
+    ></span>
+    <h4 class="font-serif-editorial font-bold text-lg text-[#18211C] !m-0">
+      {
+        node.title ||
+          (isWarning
+            ? "Upozornění"
+            : isInfo
+              ? "Informace"
+              : "Tip fyzioterapeuta")
+      }
     </h4>
   </div>
-  {textContent && (
-    <p class="text-[15px] leading-relaxed text-[#18211C]/90 m-0">
-      {textContent}
-    </p>
-  )}
+  {
+    textContent && (
+      <p class="text-[15px] leading-relaxed text-[#18211C]/90 m-0">
+        {textContent}
+      </p>
+    )
+  }
 </div>

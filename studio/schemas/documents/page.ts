@@ -58,6 +58,39 @@ export const page = defineType({
       ],
     }),
     defineField({
+      name: 'sources',
+      title: 'Zdroje a doporučení',
+      description: 'U zdravotních a ergonomických tvrzení uveďte podklady, ze kterých stránka vychází.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Název zdroje',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'url',
+              title: 'Odkaz',
+              type: 'url',
+              validation: (Rule) => Rule.required().uri({ scheme: ['http', 'https'] }),
+            }),
+            defineField({
+              name: 'note',
+              title: 'Použito pro',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'note' },
+          },
+        }),
+      ],
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO a Metadata',
       type: 'seo',

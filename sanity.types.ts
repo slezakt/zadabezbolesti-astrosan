@@ -163,6 +163,12 @@ export type Page = {
     answer: string;
     _key: string;
   }>;
+  sources?: Array<{
+    title: string;
+    url: string;
+    note?: string;
+    _key: string;
+  }>;
   seo?: Seo;
 };
 
@@ -427,7 +433,7 @@ export type AllPagesQueryResult = Array<{
 
 // Source: src/utils/queries.ts
 // Variable: pageQuery
-// Query: *[_type == "page" && !(_id in path("drafts.**")) && slug.current == $slug][0] {    _id,    _type,    title,    "slug": slug.current,    content[] {        ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }    },    sections[] {      _key,      _type,      heading,      title,      variant,      text[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      content[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      items[] {        title,        description      }    },    faq[] {      question,      answer    },    seo  }
+// Query: *[_type == "page" && !(_id in path("drafts.**")) && slug.current == $slug][0] {    _id,    _type,    title,    "slug": slug.current,    content[] {        ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }    },    sections[] {      _key,      _type,      heading,      title,      variant,      text[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      content[] {          ...,  _type == "block" => {    ...,    markDefs[] {      ...,      _type == "internalLink" => {        "reference": reference->{          _type,          title,          "slug": slug.current        }      }    }  }      },      items[] {        title,        description      }    },    faq[] {      question,      answer    },    sources[] {      _key,      title,      url,      note    },    seo  }
 export type PageQueryResult = {
   _id: string;
   _type: "page";
@@ -505,6 +511,12 @@ export type PageQueryResult = {
   faq: Array<{
     question: string;
     answer: string;
+  }> | null;
+  sources: Array<{
+    _key: string;
+    title: string;
+    url: string;
+    note: string | null;
   }> | null;
   seo: Seo | null;
 } | null;
@@ -668,7 +680,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '\n  *[_type == "siteSettings"][0] {\n    "title": coalesce(seo.metaTitle, defaultSeoTitle, title, siteTitle, "Bolest zad, cviky a ergonomie p\u0159i sedav\xE9 pr\xE1ci | Z\xE1daBezBolesti.cz"),\n    "description": coalesce(seo.metaDescription, defaultSeoDescription, description, "Praktick\xE9 n\xE1vody, cviky a ergonomick\xE9 tipy pro lep\u0161\xED orientaci p\u0159i pot\xED\u017E\xEDch se z\xE1dy b\u011Bhem pr\xE1ce u po\u010D\xEDta\u010De. Pomohou v\xE1m upravit pracovn\xED prost\u0159ed\xED, pohybov\xE9 n\xE1vyky a ka\u017Edodenn\xED re\u017Eim."),\n    seo\n  }\n': SiteSettingsQueryResult;
     '\n  *[_type == "page" && !(_id in path("drafts.**")) && defined(slug.current)] | order(slug.current asc) {\n    title,\n    "slug": slug.current,\n    _updatedAt\n  }\n': AllPagesQueryResult;
-    '\n  *[_type == "page" && !(_id in path("drafts.**")) && slug.current == $slug][0] {\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    content[] {\n      \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n    },\n    sections[] {\n      _key,\n      _type,\n      heading,\n      title,\n      variant,\n      text[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      content[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      items[] {\n        title,\n        description\n      }\n    },\n    faq[] {\n      question,\n      answer\n    },\n    seo\n  }\n': PageQueryResult;
+    '\n  *[_type == "page" && !(_id in path("drafts.**")) && slug.current == $slug][0] {\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    content[] {\n      \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n    },\n    sections[] {\n      _key,\n      _type,\n      heading,\n      title,\n      variant,\n      text[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      content[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      items[] {\n        title,\n        description\n      }\n    },\n    faq[] {\n      question,\n      answer\n    },\n    sources[] {\n      _key,\n      title,\n      url,\n      note\n    },\n    seo\n  }\n': PageQueryResult;
     '\n  *[_type in ["post", "article"] && !(_id in path("drafts.**")) && defined(slug.current) && (!defined(status) || status == "published") && (!defined(publishedAt) || publishedAt <= now())] | order(coalesce(publishedAt, publishDate, _createdAt) desc) {\n    _id,\n    title,\n    "slug": slug.current,\n    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),\n    "excerpt": coalesce(excerpt, lead, ""),\n    mainImage,\n    author->{\n      name,\n      "slug": slug.current,\n      image\n    },\n    categories[]->{\n      title,\n      "slug": slug.current\n    }\n  }\n': AllPostsQueryResult;
     '\n  *[_type in ["post", "article"] && !(_id in path("drafts.**")) && slug.current == $slug && (!defined(status) || status == "published") && (!defined(publishedAt) || publishedAt <= now())][0] {\n    _id,\n    _type,\n    title,\n    "slug": slug.current,\n    "publishedAt": coalesce(publishedAt, publishDate, _createdAt),\n    "excerpt": coalesce(excerpt, lead, ""),\n    mainImage,\n    author->{\n      name,\n      "slug": slug.current,\n      image,\n      bio\n    },\n    categories[]->{\n      title,\n      "slug": slug.current\n    },\n    "body": coalesce(body, content, []),\n    sections[] {\n      _key,\n      _type,\n      heading,\n      title,\n      variant,\n      text[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      content[] {\n        \n  ...,\n  _type == "block" => {\n    ...,\n    markDefs[] {\n      ...,\n      _type == "internalLink" => {\n        "reference": reference->{\n          _type,\n          title,\n          "slug": slug.current\n        }\n      }\n    }\n  }\n\n      },\n      items[] {\n        title,\n        description\n      }\n    },\n    faq[] {\n      question,\n      answer\n    },\n    takeaways,\n    sources[] {\n      _key,\n      title,\n      url,\n      note\n    },\n    seo\n  }\n': PostQueryResult;
     '\n  *[_type == "category" && !(_id in path("drafts.**")) && defined(slug.current)] | order(title asc) {\n    title,\n    "slug": slug.current,\n    description\n  }\n': AllCategoriesQueryResult;

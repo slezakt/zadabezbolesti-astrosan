@@ -221,6 +221,7 @@ function mapPage(value: unknown): ContentPage | null {
     slug: technicalId(item.slug, 'slug', id),
     content: contentBlocks,
     faq: mapFaq(item.faq),
+    sources: mapSources(item.sources),
     seo: seo(item.seo),
   };
 }
@@ -290,13 +291,18 @@ export async function getPage(slug: string): Promise<ContentPage | null> {
     const data = await fetchCms<PageQueryResult>(pageQuery, { slug });
     const mapped = data === null ? null : mapPage(data);
     const fb = fallback();
-    if (mapped && fb && getPortableTextLength(mapped.content) < 500 && getPortableTextLength(fb.content) >= 500) {
-      mapped.content = fb.content;
-      if (fb.faq && fb.faq.length > 0 && (!mapped.faq || mapped.faq.length === 0)) {
-        mapped.faq = fb.faq;
+    if (mapped && fb) {
+      if (getPortableTextLength(mapped.content) < 500 && getPortableTextLength(fb.content) >= 500) {
+        mapped.content = fb.content;
+        if (fb.faq && fb.faq.length > 0 && (!mapped.faq || mapped.faq.length === 0)) {
+          mapped.faq = fb.faq;
+        }
+        if (fb.title && (!mapped.title || mapped.title.length < 15)) {
+          mapped.title = fb.title;
+        }
       }
-      if (fb.title && (!mapped.title || mapped.title.length < 15)) {
-        mapped.title = fb.title;
+      if (fb.sources && (!mapped.sources || mapped.sources.length === 0)) {
+        mapped.sources = fb.sources;
       }
     }
     return mapped || fb;
